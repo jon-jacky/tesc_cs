@@ -1,0 +1,149 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Your first Java programs</title>
+</head>
+
+<body>
+
+<h2>Your first Java programs</h2>
+
+April 3, 2001
+
+<hr>
+
+<p>
+Here are some suggestions for getting familiar with Java.
+</p>
+
+<h3>Demonstrate</h3>
+
+<p>
+Create a subdirectory for your Java programs.  You might want to 
+create a subdirectory for each Java program.
+</p>
+
+<p>
+Use an editor to create a file <tt>Demonstrate.java</tt> that contains
+the <tt>Demonstrate</tt> class from page 10 in <b>On to Java</b>.
+</p>
+
+<p>
+(There is also a copy of this program on grace in <tt>/usr/users4/fofc/java/winston</tt>.)
+
+<p>
+Compile the program:
+</p>
+
+<pre>
+   $ javac Demonstrate.java
+</pre>
+
+<p>
+Confirm that the compiler created a  new <tt>Demonstrate.class</tt> file.
+</p>
+
+<p>
+Run the program:
+</p>
+
+<pre>
+   $ java Demonstrate
+   The rating of the movie is 23 
+</pre>
+
+<h3>Hello world (etc.)</h3>
+
+<p>
+Create your own "Hello world"-style program that uses <tt>print</tt>
+or <tt>println</tt> to write messages on the screen.
+</p>
+
+<p>
+Remember that the name of the file must be the same as the name of the
+class in the file.
+</p>
+
+<h3>Echo</h3>
+
+<p>
+Copy, compile and run the <tt>Echo</tt> program in
+<tt>/usr/users4/fofc/java/sample</tt> on grace.
+</p>
+
+<p>
+This program shows how to read command line arguments, read from
+standard input, and write to standard output in Java.  
+</p>
+
+<p>
+You provide the input, by typing at the console or redirecting input
+from a file.  Try different ways of running it:
+</p>
+
+<pre>
+   $ java Echo
+   Hello
+   ...
+
+   $ java Echo "> "
+   > Hello
+   ...
+
+   $ java Echo < infile
+   ...
+</pre>
+
+<h3>Client-server</h3>
+
+<p>
+Copy, compile, and run the <tt>Client</tt> and <tt>Server</tt> programs
+in <tt>/usr/users4/fofc/java/client-server</tt> on grace.
+</p>
+
+<p>
+Run both programs on your own computer.  Start each program in its own
+terminal window.  A window will pop up for each.  Press the START
+button on the Server window.  In the Client, make sure the IP address
+is 127.0.0.1.  Type port number 1234 into the Client, type a message
+and press SEND.
+</p>
+
+<p>
+Use your Client to send a message to the Server running on the
+computer at the next desk.  Its IP address should be on a label over
+the monitor screen.
+</p>
+
+<p>
+Observe what happens in the Client terminal window if you 
+try to send a message when your Server isn't running, or if you
+use the wrong port number or IP address.
+</p>
+
+<p>
+Try the TermClient.  Type the IP address and port number on the command line like this:
+</p>
+
+<pre>
+  $ java TermClient 127.0.0.1 1234
+</pre>
+
+<p>
+Then type messages into the terminal window.
+</p>
+
+<p>
+Since TermClient runs in the terminal window, you can use it in a
+telnet session.  You can telnet to grace, run TermClient and use it to
+communicate with a Server running on your computer at home.
+</p>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+
+

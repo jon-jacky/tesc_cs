@@ -1,0 +1,161 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Java Quiz, Foundations of Computing, Spring</title>
+</head>
+
+<body>
+
+<h4>Java Quiz, Foundations of Computing, Spring</h4> 
+
+Name:<br><br><br>
+
+<ol type=1>
+
+<li>
+
+<p>
+A single file contains the following Java code (exactly as it appears
+here, there is nothing else in the file).  The file is compiled
+by the Java compiler and the resulting Java program is run.
+</p>
+
+<pre>
+class Foo {
+    public static void println() {
+	System.out.println("Foo");
+    }
+}
+
+public class FooDemo {
+    public static void main(String[] argv) {
+	System.out.println("FooDemo");
+	Foo.println();
+    }
+}
+</pre>
+
+<ol type=a>
+<li>
+What is the name of this file?
+<br><br>
+</li>
+<li>
+What is the command to compile this file with the Java compiler?
+<br><br>
+<li>
+What is (are) the name(s) of the file(s) that the Java compiler produces?
+<br><br>
+<li>
+What do(es) the file(s) contain?
+<br><br>
+</li>
+<li>
+What is the command to run the program?
+<br><br>
+</li>
+<li>
+What output does the program produce?
+<br><br><br><br><br>
+</li>
+</ol>
+</li>
+
+<li>
+
+<p>
+A single file contains the following Java code (exactly as it appears
+here, there is nothing else in the file).  The file is compiled
+by the Java compiler and the resulting Java program is run.
+</p>
+
+<pre>
+public class Loop {
+    public static void main(String[] argv) {
+	String a[] = new String[4];
+	a[0] = "Alpha"; a[1] = "Beta"; a[2] = "Delta"; a[3] = "Gamma"; // init
+	for (int i = 0; i < 4; i++) {
+	    System.out.println((i+1) + ".  " + a[i]);
+	}
+    }
+}
+</pre>
+<p>What output does the program produce?</p>
+<br><br><br><br><br>
+</li>
+
+<li>
+In the preceding program (in class <tt>Loop</tt>), 
+what happens if the statement
+<tt>a[4] = "Epsilon";</tt> is added to the line marked <tt>// init</tt>?
+Give your answer in one sentence.
+<br><br><br><br>
+</li>
+
+<li>
+<p>This program is compiled and run</p>
+<pre>
+class Thing {
+    int x;
+    public Thing(int i) { x = i; }
+    public void speak() { System.out.print(x); }
+}
+
+public class ThingDemo {
+    public static void main(String[] argv) {
+	Thing a, b;
+	a = new Thing(1); 
+	b = a;
+	System.out.print("a "); a.speak(); System.out.print("  b "); b.speak();
+ 	System.out.println();
+	b.x = 2;
+	System.out.print("a "); a.speak(); System.out.print("  b "); b.speak();
+	System.out.println();
+    }
+}
+
+</pre>
+<p>
+What output does this program produce?
+</p>
+<br><br><br><br>
+</li>
+
+<li>
+<p>
+Answer the following questions accurately but briefly.
+There is a correct one word answer to each question.
+</p>
+
+<ol type=a>
+<li>
+<tt>System.out.println</tt> is the name of a thing in the Java platform.
+Which Java language construct is this thing an example of?
+<br><br>
+</li>
+<li>
+<tt>System.out</tt> is the name of a thing in the Java platform.
+Which Java language construct is this thing an example of?
+<br><br>
+</li>
+<li>
+<tt>System</tt> is the name of a thing in the Java platform.
+Which Java language construct is this thing an example of?
+<br><br>
+</li>
+<li>
+What package is <tt>System</tt> in?
+<br><br>
+</li>
+</li>
+
+</ol>
+
+</body>
+</html>
+
+
+
+
+
+

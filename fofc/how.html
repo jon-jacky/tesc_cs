@@ -1,0 +1,205 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>How Computers Work</title>
+</head>
+
+<body>
+
+<h2>How Computers Work</h2>
+
+
+<h3>Jon Jacky</h3>
+
+<p>
+Here are some concepts and vocabulary that every programmer should know.
+</p>
+
+<hr>
+
+<h3>Data Representation</h3>
+
+<p>
+Computers are built from physical devices that have two easily distinguishable
+states: current/no current, light/dark, magnet polarized up/down.  These two states
+are used to represent the two <dfn>binary digits</dfn> or <dfn>bits</dfn> 0 and 1.
+</p>
+
+<p>
+Any number can be represented by a sequence of bits, using a
+positional notation in base two similar to our usual notation in base
+10.  For example eleven is coded as the four digit binary number 1011:
+</p>
+
+<pre>
+   +------ Eights position (8 = 2*2*2 = 2^3)
+   |+----- Fours position  (4 =   2*2 = 2^2)
+   ||+---- Twos position   (2 =     2 = 2^1)
+   |||+--- Ones position   (1 =     1 = 2^0)
+   ||||
+   1011 = 1*8 + 0*4 + 1*2 + 1*1 = 11
+</pre>
+
+<p>
+With numbers we can encode any other data.  For example, the ASCII
+code assigns a number to each character on the typewriter keyboard.
+The numbers are chosen so that letters are encoded in alphabetical order:
+the code for <tt>a</tt> is 97, <tt>b</tt> is 98 etc.
+</p>
+
+<p>
+ASCII defines codes for 255 characters (including many special symbols
+and non-English characters).  This requires eight bits.  An eight bit
+unit is called a <dfn>byte</dfn>.
+</p>
+ 
+<h3>Computer Memory</h3>
+
+<p>
+Programs and data are stored in computer memory.  Computer memory is a
+sequence of bytes.  Each byte stores <dfn>contents</dfn>: an ASCII
+character, for example.
+</p>
+
+<p>
+Each byte has an <dfn>address</dfn>.
+The address of each byte in memory is simply its number in the
+sequence order: the address of the first byte is zero, the address of
+the next is one etc.  
+</p>
+
+<p>
+A byte or sequence of bytes in memory is called a <dfn>memory location</dfn>
+or just a <dfn>location</dfn>.   Each location can be identified by its address
+and length.
+</p>
+
+<p>
+The contents of a memory location is sometimes called a <dfn>value</dfn> or
+an <dfn>object</dfn>.
+</p>
+
+<p>
+The contents of one address can be another address.  A memory location
+that stores the address of another location is called a
+<em>pointer</em>, and is said to point to the location whose
+address it holds.
+</p>
+
+<h3>Computer Programs</h3>
+
+<p>
+Computers are useful because memory contents can be changed under program control.
+</p>
+
+<p> A computer is can only execute programs that are written in its
+native <dfn>machine language</dfn>.  Machine language programs are
+sequences of encoded <dfn>instructions</dfn>.  
+</p>
+
+<p>
+Machine language programs are stored in memory, just like any other
+data.
+</p>
+
+<p>
+Some typical instructions say, in effect: "Store these contents at this address",
+"Copy the contents of this address into that address", "Add the contents of this
+address to the contents of that address and store the result in this other address",
+and "Execute the sequence of instructions beginning at this address."
+</p>
+
+<p>
+Programmers rarely write machine language programs.  Instead they write
+in <dfn>high-level languages</dfn> such as Scheme or Java.  Then the high-level
+language program is translated to a machine language program by another program
+called an <dfn>interpreter</dfn> or a <dfn>compiler</dfn>.
+</p>
+
+<h3>Data Types</h3>
+
+<p>
+Each object in memory has an intended interpretation: it is intended
+to represent a number, or a character, or an instruction, etc.  This
+intended interpretation is called its <dfn>type</dfn>.
+</p>
+
+<p>
+All memory contents look the same --- they are just bits.  It is
+necessary to keep track of the type of each object so that programs
+can process them correctly. There are two ways to accomplish this.
+The translator that writes the machine language program can
+keep a record of the type stored at each location (C compilers usually
+use this method). Or, the translator can provide each object with a
+<dfn>tag</dfn> that identifies its type (Lisp translators usually use this method).
+</p>
+
+<h3>Example: Binding Symbols and Values</h3>
+
+<p>
+This Scheme definition
+</p>
+
+<pre>
+   (define x 3)
+</pre>
+
+<p>
+defines a variable: a symbol named <code>x</code> with the value 3
+bound to it.  When the Scheme interpreter executes this definition it
+creates an object of type symbol that contains the name <code>x</code>
+and a pointer to an object of type number that contains 3.  This
+diagram shows a possible configuration of computer memory
+after the definition is executed:
+</p>
+
+<pre>
+    Address       Contents
+    -------       --------
+
+          .              .
+          .              .
+   22378946         Symbol   (tag to indicate this object is a symbol)
+   22378947              x   (first character of symbol name)
+   22378948              0   (end-of-name marker)
+   22378949       39621564   (pointer to value)
+          .              .
+          .              .
+          .              .
+   39621564         Number   (tag to indicate this object is a number)
+   39621565              3   (the number itself)
+          .              .
+          .              .           
+</pre>                     
+
+<p>
+The actual addresses don't matter, both objects might be anywhere in memory.
+The only important thing is that the pointer in the symbol object points to the
+number object.  That can be expressed by a more abstract diagram:
+<p>
+
+<pre>
+
+          x  ------->  3
+
+</pre>
+
+<h3>Example: Lists</h3>
+
+<p>
+(I explained <code>cons</code> cells, dotted pairs, and lists, 
+referring to diagrams like Figs. 3.1 --  3.3 on pages 32 -- 33
+and Figs. 3.10 -- 3.11 on pages 49 -- 50 in
+<a href="http://www.paulgraham.com/acl.html">Graham's Common Lisp textbook</a>.)
+</p>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</dfn>
+
+</body>
+</html>
+
+
+
+

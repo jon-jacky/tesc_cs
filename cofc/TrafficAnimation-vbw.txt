@@ -1,0 +1,1 @@
+frmTrafficAnimation = 31, 30, 685, 590, , 6, 107, 539, 555, C

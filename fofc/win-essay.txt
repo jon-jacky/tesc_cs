@@ -1,0 +1,155 @@
+windows.txt
+
+A Newcomer's Introduction to Windows
+
+This is a quick tutorial on using the Microsoft Windows operating
+system.  It assumes no prior Windows experience and should be
+suitable for computer novices.  It is also for people who have already
+used a Windows PC but have avoided learning the details, and Unix and
+Macintosh users who have to get some work done on a Windows PC.  
+
+There is much about Windows that is not obvious.  It is fairly easy to
+get started pointing and clicking, but to use Windows effectively you
+need to know the information provided here.
+
+Not everyone uses Windows and it is now common to exchange email and
+files with them.  Windows can make this difficult because many of its
+files appear as gibberish anywhere else.  This tutorial explains how
+to make sure your work will be usable on other operating systems.
+
+Basic Concepts and Vocabulary
+
+A file is a piece of permanent storage in a computer.  Data files
+contain information such as documents or pictures.  Program files
+contain instructions for the computer.  You activate (run or execute)
+a program to make the computer do something.
+
+An operating system is a collection of programs used to manage files
+and run programs. You cannot use a computer until it has an operating
+system installed on it.  The most essential operating system programs
+run when you turn on (boot) the computer.  
+
+An operating system must provide some way for you to tell the computer
+what you want to do.  Most modern operating systems provide a
+graphical user interface (GUI) where you use a pointing device
+(usually a mouse, sometimes a trackball) to position a pointer
+(cursor) on a display (desktop) that shows pictures (icons), panels
+(windows), and lists of commands (menus).  Most operating systems also
+provide an alternative to the GUI called the command line, so you can
+type commands at the keyboard.
+
+A PC is a computer that contains an X86 or Pentium compatible
+microprocessor (usually from Intel, but also from AMD, Cyrix or other
+manufacturers) or an Alpha microprocessor (from Compaq, formerly
+Digital).  The first PCs were built by IBM, now they are available
+from many manufactures.  Windows is the most popular operating system
+for PCs.  Windows usually comes already installed on a PC when it is
+purchased.  There are other PC operating systems, for example Linux
+(based on Unix, long popular with scientists and engineers).  Not all
+personal computers are PCs; Macintosh computers are not PCs and do not
+run Windows (they are based on the 68XXX or Power PC microprocessors from 
+Motorola and run the MacOS operating system).
+
+An application program ...
+
+
+Windows versions
+
+Several different Microsoft operating systems have been named Windows.
+This tutorial covers features common to Windows 98, Windows 95,
+Windows NT and Windows 2000.
+
+Windows 98 and its predecessor Windows 95 are the most common PC
+operating systems.  Windows 98 is not much different from Windows 95,
+and many Windows 95 users see no reason to bother installing the newer
+product.  Almost anything you find in the Windows 95 how-to books
+applies as well to Windows 98, although the reverse might not always
+be true.  Windows 95 was hugely different from its predecessor Windows
+3.1, which is now obsolete and has mostly disappeared.  Windows 98, 95
+and 3.1 are all descendents of the original (1981) PC operating
+system, called MS-DOS or just DOS.  There are traces of DOS all over
+Windows 98.
+
+Windows NT is a different product line which is usually found in
+corporations, universities, and other institutions that maintain large
+installations of networked computers.  Windows NT has a different
+ancestry (it is not based on DOS) but Microsoft has tried to make it
+appear similar to Windows 95 and 98 to the typical user.  Much of the
+Windows 95/98 how-to literature (including this essay) applies to
+Windows NT as well.  However NT appears quite different to the system
+administrator.  Windows 2000 is the latest version.  Windows NT 4.0
+was the version before that; it was current for several years and will
+probably survive for quite a while.
+
+Files
+
+Files are the basic units of permanent storage in a computer.  If you
+want something to persist after you turn the power off you have to
+save it in a file.  Both programs and data are files: a web page is a
+file, and so is the web browser; a Word document is a file, and so is
+the Word program itself.
+
+File names
+
+Files are identified by name.  The name usually consists of the name
+proper, a dot, and the extension (also called the file type):
+index.html, explorer.exe, script.doc.  The extension indicates the
+purpose or role of the file: for example an .html file is a web page,
+.exe is a program and .doc is a document created with the Word or
+WordPad programs.  There are dozens of standard extensions like these.
+Windows programs use the extension to determine how to process the
+file.  Often the extension is created automatically by the program
+that creates the file.  If you change the extension or assign the
+wrong one, programs may not be able to recognize the file or process
+it properly.
+
+File Names can contain letters, numbers and most punctuation marks.
+They can even contain spaces, as in Formal Announcement.html.  A few
+punctuation marks cannot appear in file names because they have special
+uses (described below): the asterisk * and the question mark ?  are
+used as wildcards in searches, slashes / and \ are used in directory
+paths, and the arrows < > and vertical bar | are used in DOS command
+lines.
+
+To make sure your file names will be intelligible to other operating
+systems, limit them to letters, numbers, the hyphen - and the
+underscore _.  In particular, spaces in file names can cause all kinds
+of problems; use hyphens or underscores instead.
+
+Windows file names are case-insensitive (it doesn't matter whether you
+use upper or lower case letters): explorer.exe, EXPLORER.EXE and
+Explorer.exe are the same name and all indicate the same file.
+However you can type file names with mixed upper- and lowercase
+letters and usually Windows will display them that way.  This can be
+confusing because it appears Windows file names are case-sensitive,
+but in fact they are not.  File names in some other operating systems
+are case sensitive.  You need to be aware of this if you move files
+across systems: SAMPLE.TXT and sample.txt are two different files in Unix,
+but if you try to copy both to a Windows system you will only get one.
+
+Before Windows 95 (in DOS and Windows 3.1) file names were limited to
+eight characters and extensions to three characters.  Many file names
+still have the old DOS 8+3 format; web pages on Windows systems (but
+nowhere else) often have the extension .htm, not .html.  To provide
+backward compatibility (to enable old programs to use new files)
+Windows always generates and recognizes a unique alternate name in DOS
+format: Formal Announcement.html becomes FORMAL~1.HTM.  Usually you do
+not need to be aware of this.
+
+Folders
+
+A typical Windows PC stores thousands of files.  To make this
+manageable, Windows provides a special kind of file called a folder
+(also called a directory). ... folder can also contain other folders,
+which can contain more files and folders, and so on.
+
+Disks
+ Names: A: C: etc.
+
+
+Text files
+ What are they
+ Compare appearance of *.txt to *.doc
+ One of the few kinds of files that are portable to non-Windows systems.  
+  e.g. web pages must be processed by non-MS browsers.
+ WordPad Save As ... Save as type: Text Document

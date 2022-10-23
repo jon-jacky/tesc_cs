@@ -1,0 +1,402 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Foundations of Computing -- Winter 2001</title>
+</head>
+
+<body>
+
+<h2>Foundations of Computing -- Winter 2001</h2>
+
+<h2>Jon Jacky</h2>
+
+<p>
+Winter quarter we will study systems composed of many programs, 
+including operating systems and networked applications.  
+</p>
+
+<p>
+<a href="#languages">Languages</a><br>
+<a href="#os">Operating Systems</a><br>
+<a href="#net">Networked Applications</a><br>
+<a href="#textbooks">Textbooks</a><br>
+<a href="#other">Other books</a><br>
+<a href="#software">Software</a><br>
+<a href="#seminar">Lectures and Seminars</a><br>
+<a href="#labs">Laboratories</a><br>
+</p>
+
+<p>
+Last revised March 29, 2001.  Use your browser's <b>Reload</b> or <b>Refresh</b>
+button to get the latest version.
+</p>
+
+<p>
+Check here for recent <a href="fofc-announcements.html">announcements</a>
+</p>
+
+<p>
+Back to <a href="fofc.html">course page</a>.
+</p>
+
+<hr>
+
+<h3><a name="languages">Languages</a></h3>
+
+<p>
+We will continue our study of problem-solving in contrasting programming 
+languages.  Fall quarter we studied Scheme.  This quarter we will add Awk and Java.
+</p>
+
+
+<p>
+<b>Awk</b> is a scripting language, intended to help programmers write
+small but effective programs quickly.  It is particularly well-suited
+for processing text patterns (in email messages, web pages, and other
+network traffic) and tabular data (from spreadsheets, databases, and
+other computer output).  Other popular scripting languages are Perl,
+Python and Tcl, but Awk has a cleaner design and is easier
+to learn.  It is excellent preparation for learning Perl which is similar but
+much hairier.  Awk also has the same expression syntax (appearance and grammar
+rules) as C, C++, Java, and Javascript and is good preparation for learning any of these.
+</p>
+
+<p>
+<b>Java</b> is ... oh, you've heard of it? What matters for our
+purposes is that it is representative of the most popular
+general-purpose languages.  It has much in common with the older
+workhorses C and C++ but is simpler and more reliable.
+</b>
+
+<hr>
+
+<h3><a name="os">Operating Systems</a></h3>
+
+<p>
+An <em>operating system</em> is a collection of programs that work
+together to provide the services of a computer in a convenient form to
+users and programmers.
+</p>
+
+<p>
+In Fall term, we will have become familiar with the ubiquitous
+<b>Windows</b> operating system.  In Winter, we will learn and use
+<b>Linux</b>, a popular modern version of the vastly influential
+<b>Unix</b> operating system.
+</p>
+
+<p>
+In addition to using Windows and Linux,
+we will study the strategies their designers adopted for organizing
+large software systems.
+</p>
+
+<p>
+As we learn the Unix operating system, we will learn the Awk programming language.
+</p>
+
+<p>
+Here is page of links on Unix and Linux including tutorials, command
+summaries, history, humor, etc.:
+</p>
+
+<ul>
+<li><a href="unix-links.html">Unix and Linux links</a></li>
+</ul>
+
+<hr>
+
+<h3><a name="net">Networked Applications</a></h3>
+
+<p>
+When you use a computer these days, it is likely that you are actually
+working with several different computers that communicate 
+over a network.  For example, when you use a web browser your computer
+communicates with remote server computers that send the content 
+you see in the web pages.
+</p>
+
+<p>
+We will study how networked applications are constructed and experiment 
+with building some ourselves.
+</p>
+
+
+<p>
+We will use the Java programming language to experiment with networked applications.
+</p>
+
+
+<hr>
+
+<h3><a name="textbooks">Textbooks</a></h3>
+
+<p>
+We will use the 
+<a href="http://cm.bell-labs.com/cm/cs/awkbook/">Awk book</a> 
+and the 
+<a href="http://www.ascent.com/books/#OnToJava">Java book</a>
+that were required <a href="fofc-fall.html#textbooks">Fall Quarter</a>.
+</p>
+
+<p>
+These new books are also required:
+</p>
+
+<p>
+<a href="http://www.mcp.com/sams/detail_sams.cfm?item=0672315246">
+<b>Sams Teach Yourself Linux in 10 Minutes</b></a>, John R. Ray, 
+ISBN 0-672-31524-6, 
+Sams Publishing (MacMillan Publishing Company), 1999, 212 pages.  
+About $13.
+</p>
+
+<p>
+<a href="http://www.oreilly.com/catalog/linuxnut3/">
+<b>Linux in a Nutshell: A Desktop Quick Reference</b></a>, 
+Third Edition, Ellen Siever, Jessica P. Hekman, Stephen Figgins, Stephen Spainhour,
+ISBN 0-59600-025-1, O'Reilly and Associates, 2000, 797 pages, about
+$35
+</p>
+
+
+<p>
+<a href="http://www.oreilly.com/catalog/javanp2/">
+<b>Java Network Programming</b></a>, 
+Second edition, Elliotte Rusty Harold
+ISBN 1-56592-870-9, O'Reilly and Associates, 2000, 731 pages, about
+$40
+</p>
+
+<hr>
+
+<h3><a name="other">Other books</a></h3>
+
+<p>
+Here are some helpful Unix/Linux books.  They provide explanation and
+motivation that is missing from reference books like <b>... 10 Minutes</b> and
+<b>... Nutshell</b>.
+</p>
+
+<p>
+<a href="http://cm.bell-labs.com/cm/cs/upe/">
+<b>The Unix Programming Environment</b></a>, Brian W. Kernighan and
+Rob Pike, ISBN 0-13-937681-X (paperback), 0-13-937699-2 (hardback),
+Prentice-Hall, 1984, about $35 (paper). An early classic.  The first
+four chapters on the file system, filters and pipes are superb and
+suitable for beginners.  The rest of the book is for serious Unix C
+programmers.  Nothing on networks or graphics.
+</p>
+
+<p>
+<a href="http://www.tux.org/~lasser/think-unix/">
+<b>Think Unix</b></a>, Jon Lasser, ISBN 0-7897-2376-x, Que, 2000,
+about $30.  Good explanations of the Unix philosophy, covers many
+topics including networks and graphics.  Not comprehensive but complements
+the reference books nicely.
+</p>
+
+<p>
+Here are some other network books I considered before I chose <b>Java
+Network Programming</b>.  They provide some useful material but aren't
+very technical and don't have any programming examples.  
+</p>
+
+<p>
+<a href="http://www.mkp.com/books_catalog/catalog.asp?ISBN=1-55860-536-3">
+<b>Networked Applications: A Guide to the New Computing Infrastructure</b></a>, 
+David G. Messerschmitt, 1999, Morgan Kaufmann,
+About $40. Good topic coverage but no technical examples, exercises or projects.
+</p>
+
+<p>
+<a href="http://www.sunsite.ee/books/books/vanderLinden3/vanderLinden3.html">
+<b>Not Just Java</b></a>, 
+Peter Van der Linden, About $40.  Covers many
+of the same topics as Messerschmitt, very heavy on the pro-Java,
+anti-Microsoft advocacy, a few light technical examples but no
+exercises or projects.
+</p>
+
+<p>
+<a href="http://www.amazon.com/exec/obidos/ASIN/1852330112/baobabcomputing/002-9088369-1609625">
+<b>Middleware</b></a>, 
+Daniel Serain (translated by Iain Craig), ISBN 1-85233-011-2,
+Springer UK, 1999, about 250 pages.  Good but very brief coverage of many
+topics, but no exercises or projects.
+</p>
+
+
+<hr>
+
+<h3><a name="software">Software</a></h3>
+
+<p>
+There is a staggering amount of information about Linux online, as well as
+the software itself.  A good starting point is <a href="http://www.linux.org">
+www.linux.org</a>.   The Linux distribution on the ACC lab computers
+is from <a href="http://www.redhat.com">Red Hat</a>.
+</p>
+
+<p>
+<b>Awk</b> comes included with Linux (where it is called gawk).
+You can download Awk for Windows 
+<a href="http://cm.bell-labs.com/cs/awkbook/">here</a>.
+There is information about Awk for Macintosh 
+<a href="http://www.faqs.org/faqs/computer-lang/awk/faq/">here</a>.
+You can download the example programs from <b>The Awk Programming Language</b>
+<a href="http://cm.bell-labs.com/cs/awkbook/">here</a>.
+</p>
+
+<p>
+Sun's <b>Java</b> site is <a href="http://java.sun.com/">here</a>.
+The latest version of the language and development environment is
+called the Java 2 SDK, version 1.3.  You can download it for Windows
+or Linux <a href="http://java.sun.com/j2se/1.3/">here</a> (be warned,
+it's huge - not practical to download without a cable modem or DSL).
+There is an article about Java on Macintosh <a
+href="http://www.rainwatersoft.com/java4u/java_savvy_mac_8_9/">here</a>.
+Apple's own Java site is <a
+href="http://developer.apple.com/java/index.html">here</a>.
+</p>
+
+<hr>
+
+<h3><a name="seminar">Lectures and Seminars</a></h3>
+
+<p>
+Bring a short reading report to each meeting (starting Thursday
+January 11).  Use the same <a
+href="seminar-assign-fall.html">three-sentence report format</a> we
+used in the Fall.
+</p>
+
+<ul>
+<li><a href="seminar-sched-w.html">Winter 2001 Lecture and Seminar schedule</a></li>
+</ul>
+
+<hr>
+
+<h3><a name="labs">Laboratories</a></h3>
+
+<ul>
+<li><a href="lab-sched-w.html">
+Winter 2001 Laboratory schedule and reading assignments</a></li>
+</ul>
+
+<p>
+Handouts and links:
+</p>
+
+<ul>
+<li>
+Week 1 Tu: Introduction to <a href="emacs-intro.html">Emacs</a> and
+ <a href="http://faculty.washington.edu/~mudrock/wkshop-tags.html">HTML</a>
+</li>
+<li>
+Week 1 Th: <a href="unix-files.html">Unix file system</a>
+</li>
+<li>
+Week 2 Tu: <a href="telnet.html">Using Linux over Telnet</a>
+</li>
+<li>
+Week 4 Th: <a href="shell.html">Unix shell programming</a>
+</li>
+</ul>
+
+<p>
+Spelling checker example:
+</p>
+
+<ul>
+<li>There is a dictionary on grace (and most Linux systems) at
+<tt>/usr/dict/words</tt></li> 
+<li>Our sample text (Canto I from
+Dante's Divine Comedy) is on grace at
+<tt>/usr/users4/fofc/spell/dante.txt</tt> Like many classics, it is
+available from <a href="http://www.Gutenberg.net/">Project
+Gutenberg</a>
+</li> <li>Here is our version of the <a
+href="spell.txt">simple spelling checker</a> described in the Bentley
+paper.</li>
+</ul>
+
+<p>
+Assignments:
+</p>
+   
+<ul>
+<li>
+Week 1 Tu: <a href="linux-intro.html">Your first Linux session</a>
+</li>
+<li>
+Week 3 Tu: <a href="z2html-ex.html">Creating web pages by running programs</a>
+</li>
+<li>
+Week 4 Th: <a href="shell-ex.html">Creating a web site with shell scripts</a>
+</li>
+<li>
+Week 7 Tu: <a href="sed-ex.html">Translating to Pig Latin with sed</a>
+</li>
+<li>
+Week 9 Tu: <a href="afile-ex.html">Checking file type with awk</a>
+</li>
+</ul>
+
+
+
+<p>
+Worksheets and quizzes:
+</p>
+ 
+<ul>
+<li>
+Week 2 Th: <a href="ws-w2th.html">Unix file system questions</a>
+</li>
+<li>
+Week 4 Tu: <a href="ws-w2th.html">More Unix questions</a>
+</li>
+<li>
+Week 10 Th: <a href="percent.html">Awk array and loop quiz</a>
+</li>
+</ul>
+
+
+<p>
+Example programs:
+</p>
+ 
+<ul>
+<li>
+Week 5 Tu: <a href="dirlist.txt"><tt>dirlist</tt></a> directory lister
+</li>
+<li>
+Week 5 Tu: <a href="dirlist-if.txt"><tt>dirlist-if</tt></a> directory lister with if
+</li>
+<li>
+Week 5 Tu: <a href="dirlist-redir.txt"><tt>dirlist-redir</tt></a> directory lister with input redirection in body of loop
+</li>
+<li>
+Week 5 Tu: <a href="demo-script.txt"><tt>demo-script</tt></a> web page generator
+</li>
+<li>
+Week 10 Tu: <a href="scores.txt"><tt>scores</tt></a> Awk array and loop demo
+</li>
+</ul>
+
+<p>
+Solutions:
+</p>
+
+<ul>
+<li>Awk file type assignment <a href="afile-soln.html">solution</a></li>
+<li>Awk quiz <a href="percent.html#soln">solution</a></li>
+<li>Awk quiz <a href="percent-comment.html">scoring</a> and comments</li>
+</ul>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

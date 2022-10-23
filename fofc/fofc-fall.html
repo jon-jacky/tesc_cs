@@ -1,0 +1,531 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Foundations of Computing -- Fall 2000</title>
+</head>
+
+<body>
+
+<h2>Foundations of Computing -- Fall 2000</h2>
+
+<h2>Jon Jacky</h2>
+
+<p>
+In this program we will examine problem-solving in three contrasting
+programming languages.  
+</p>
+
+<p>
+<a href="#languages">Languages</a><br>
+<a href="#textbooks">Textbooks</a><br>
+<a href="#software">Software</a><br>
+<a href="#labs">Laboratories</a><br>
+<a href="#seminar">Seminars</a><br>
+</p>
+
+<p>
+<a href="#quiz">Quizzes</a><br>
+<a href="#exercise">Exercises</a><br>
+</p>
+
+<p>
+<a href="#recursion">Recursion examples</a><br>
+<a href="#sort">Sorting examples</a><br>
+</p>
+
+<p>
+<a href="#truth">The Truth about Lists</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="how.html">How computers work</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="eval.html">Scheme in Scheme</a><br>
+</p>
+
+<p>
+<a href="#review">Scheme Retrospective</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="learned.html">What have we learned?</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="scheme.html">Scheme and functional programming</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="bfs.html">Finding the shortest path by breadth-first search</a><br>
+</p>
+
+<p>
+We never got to this, interesting anyway:
+</p>
+
+<p>
+<a href="#graphics">Graphics and Graphical User Interfaces</a><br>
+</p>
+
+<p>
+Last revised December 21, 2000.  
+Use your browser's <b>Reload</b> or <b>Refresh</b>
+button to get the latest version.
+</p>
+
+<p>
+Back to <a href="fofc.html">course page</a>.
+</p>
+
+<hr>
+
+<h3><a name="languages">Languages</a></h3>
+
+<p>
+Programmers and other computer
+specialists typically work in several languages, not just one.  The
+differences are not merely superficial.  The languages have different
+purposes, and each expresses a different notion of computation.
+</p>
+
+<p>
+Fall quarter we will study Scheme.  Winter quarter we will add Awk and Java.
+</p>
+
+<p>
+<b>Scheme</b> is a dialect of Lisp, one of the oldest and most
+influential programming languages.  It was invented to support
+research in artificial intelligence and programming language design,
+but is also useful for general purpose programming 
+(for example see this <a href="http://www.cs.utah.edu/plt/develop/">cool stuff</a>
+and this <a href="http://www.cs.indiana.edu/scheme-repository/code.misc.html">
+esoteric stuff</a>).
+Its simplicity and power make it an excellent
+vehicle for learning programming.  
+</p>
+
+
+<p>
+Here is a quick "Nutshell"-style tutorial that contrasts Scheme 
+with other programming languages:
+</p>
+
+<ul>
+<li>
+<a href="http://www.adelphi.edu/~sbloch/class/272/scheme.shtml">The Scheme Language</a>
+</li>
+</ul>
+
+<p>
+Here is another course page with a brief Scheme tutorial and other links.
+The sections on 
+<a href="http://www.cs.washington.edu/education/courses/341/98au/scheme/basics.html">basics</a> and
+<a href="http://www.cs.washington.edu/education/courses/341/98au/scheme/recursion.html">recursion</a> provide another view of material we covered.
+The section on 
+<a href="http://www.cs.washington.edu/education/courses/341/98au/scheme/eval-apply.html"><code>eval</code> and <code>apply</code></a> provides additional
+explanation on material
+from our last lecture.
+</p>
+
+<ul>
+<li>
+<a href="http://www.cs.washington.edu/education/courses/341/98au/scheme/">
+Scheme Notes and Other Resources</a>
+</a>
+</li>
+</ul>
+
+
+<p>
+Here is the complete text of a classic Scheme textbook for advanced students:
+</p>
+
+
+<ul>
+<li>
+<a href="http://sicp.arsdigita.org/text/sicp/">
+Structure and Interpretation of Computer Programs</a>
+</li>
+</ul>
+
+
+<p>
+There is much more about Scheme 
+<a href="http://www.schemers.org">here</a>.
+</p>
+
+<p>
+The other important Lisp dialect is Common Lisp, which is more complex
+than Scheme but is probably used more in industry.  Here is
+information about an excellent
+<a href="http://www.paulgraham.com/acl.html">Common Lisp textbook</a>.
+</p>
+
+<p>
+<b>Awk</b> is a scripting language, intended to help programmers write
+small but effective programs quickly.  It is particularly well-suited
+for processing text patterns (in email messages, web pages, and other
+network traffic) and tabular data (from spreadsheets, databases, and
+other computer output).  Other popular scripting languages are Perl,
+Python and Tcl, but Awk has a cleaner design and is easier
+to learn.  It is excellent preparation for learning Perl which is similar but
+much hairier.  Awk also has the same expression syntax (appearance and grammar
+rules) as C, C++, Java, and Javascript and is good preparation for learning any of these.
+</p>
+
+<p>
+<b>Java</b> is ... oh, you've heard of it? What matters for our
+purposes is that it is representative of the most popular
+general-purpose languages.  It has much in common with the older
+workhorses C and C++ but is simpler and more reliable.
+</b>
+
+<hr>
+
+<h3><a name="textbooks">Textbooks</a></h3>
+
+<p>
+One of the goals of this course is to teach you to select and use computer
+books effectively.
+</p>
+
+<p>
+The Scheme book provides detailed explanations for beginners.  The Awk book
+moves more quickly.  The Java book is terse, almost telegraphic.  After you have
+learned these, you will be prepared to use reference manuals and "Nutshell"-style books.
+</p>
+
+<p>
+Required:
+</p>
+
+<p>
+<a href="http://www.cs.berkeley.edu/~bh/simply-toc.html">
+<b>Simply Scheme: Introducing Computer Science</b></a>, 
+2nd edition, Brian Harvey
+and Matthew Wright, ISBN 0262082810, MIT Press, 1999, 612 pages.
+About $60.
+</p>
+
+<p>
+<a href="http://cm.bell-labs.com/cm/cs/awkbook/">
+<b>The Awk Programming Language</b></a>, 
+1st edition, Alfred V. Aho, Brian
+W. Kernighan, Peter J. Weinberger, ISBN 020107981X, Addison-Wesley,
+1988, 210 pages.  About $41.
+</p>
+
+<p>
+<a href="http://www.ascent.com/books/#OnToJava">
+<b>On to Java</b></a>, 
+2nd edition, Patrick Henry Winston and Sundar Narasimhan,
+ISBN 0201385988, Addison-Wesley, 1998, 379 pages.  About $25.
+</p>
+
+<p>
+Also recommended:
+</p>
+
+<p>
+<a href="http://www.cs.rice.edu/~matthias/TLS/">
+<b>The Little Schemer</b></a> 
+(earlier editions were called <b>The Little
+LISPer</b>), Daniel P. Friedman and Matthias Felleisen, MIT Press
+(very early editions were from Science Research Associates), in print
+since 1974.  About 180 pages (but mostly whitespace).  An introduction
+to Lisp/Scheme presented in an unusual question/answer
+format.
+</p>
+
+<hr>
+
+<h3><a name="software">Software</a></h3>
+
+<p>
+The programming languages and tools for this course are installed on the 
+computers at the 
+<a href="http://192.211.16.12/user/computing/academic/home.htm">ACC lab</a>.  
+During Fall term, we will be using <a href="win-howto.txt">Windows</a>.
+During the rest of the year, we will also use Linux.
+</p>
+
+<p>
+All of the programming languages and tools for this course are available for
+free, and most run on several kinds of computers.  This makes it reasonable
+for students to install and use the software at home if they wish.
+</p>
+
+<p>
+We will use the <b>DrScheme</b> environment for programming in Scheme.
+You can download DrScheme software and manuals for Windows, Linux, Macintosh and several
+other platforms <a
+href="http://www.cs.rice.edu/CS/PLT/packages/drscheme/">here</a>.  You
+can download the example programs from <b>Simply Scheme</b> <a
+href="ftp://anarres.cs.berkeley.edu/pub/scheme">here</a>.  Here you
+can download the <b>DrScheme</b> teachpack for <b>Simply Scheme</b>,
+named
+<a href="simply-teachpack.scm"><code>simply-teachpack.scm</code></a>.
+To do the examples in <b>Simply Scheme</b>, you must load this
+teachpack into <b>DrScheme</b> by selecting the <b>Language</b> menu,
+then selecting <b>Add Teachpack</b> and navigating to
+<code>simply-teachpack.scm</code> (in whatever folder you saved
+it).
+</p>
+
+<p>
+Here is on online manual for using <b>DrScheme</b> that summarizes some
+of the material in the official manual:
+</p>
+
+<ul>
+<li>
+<a href="http://www.ugrad.cs.ubc.ca/spider/cs124/drscheme.html">
+Dr Scheme: A User Manual</a>
+</li>
+</ul>
+
+<p>
+Here are some online Scheme tutorials that take a different approach than our textbook:
+</p>
+
+<ul>
+<li>
+<a href="http://www.cs.rice.edu/CS/PLT/Teaching/Lectures/Released/">How to Design Programs</a>
+</li>
+<li>
+<a href="http://www.cs.rice.edu/~dorai/t-y-scheme/t-y-scheme.html">
+Teach Yourself Scheme in Fixnum Days</a>
+</li>
+</ul>
+
+
+<p>
+You can download <b>Awk</b> for Windows 
+<a href="http://cm.bell-labs.com/cs/awkbook/">here</a>.
+Awk comes included with Linux (where it is called gawk).
+There is information about Awk for Macintosh 
+<a href="http://www.faqs.org/faqs/computer-lang/awk/faq/">here</a>.
+You can download the example programs from <b>The Awk Programming Language</b>
+<a href="http://cm.bell-labs.com/cs/awkbook/">here</a>.
+</p>
+
+<p>
+Sun's <b>Java</b> site is
+<a href="http://java.sun.com/">here</a>.  The software we need must be
+in there somewhere.  Watch this space for advice on what to 
+download.
+</p>
+
+<hr>
+
+
+<h3><a name="labs">Laboratories</a></h3>
+
+Laboratory work will develop technical skills.  
+
+
+<ul>
+<li><a href="lab-assign-fall.html">Fall 2000 Laboratory assignments</a></li>
+<li><a href="lab-sched-fall.html">Fall 2000 Laboratory schedule</a></li>
+</ul>
+
+
+<p>
+Here are some notes on using the lab software.
+</p>
+
+<ul>
+<li><a href="drscheme-notes.html">DrScheme notes</a><br></li>
+</ul>
+
+
+<hr>
+
+<h3><a name="seminar">Seminars</a></h3>
+
+<p>
+Readings and seminars will develop presentation skills, design sense, and critical
+judgment.
+</p>
+
+<ul>
+<li><a href="seminar-assign-fall.html">Fall 2000 Seminar assignments</a></li>
+<li><a href="seminar-sched-fall.html">Fall 2000 Seminar schedule</a></li>
+</ul>
+
+<p>
+Here are the full references for the seminar readings, with URL's if availble.
+</p>
+
+<ul>
+<li><a href="seminar-refs-fall.html">Fall 2000 Seminar readings</a></li>
+</ul>
+
+<hr>
+
+<h3><a name="quiz">Quizzes</a></h3>
+
+<p>
+Here are the weekly quizzes and solutions.
+</p>
+
+<ul>
+<li>Week 2 <a href="quiz-w2.html">Quiz</a>,
+ <a href="soln-w2.html">Solutions</a><br>
+<li>Week 3 <a href="quiz-w3.html">Quiz</a>,
+ <a href="soln-w3.html">Solutions</a><br>
+<li>Week 4 Tu <a href="quiz-w4tu.html">Quiz</a>,
+ <a href="soln-w4tu.html">Solutions</a><br>
+<li>Week 4 Th <a href="quiz-w4th.html">Quiz</a>,
+ <a href="soln-w4th.html">Solutions</a><br>
+<li>Week 5 Tu <a href="quiz-w5tu.html">Quiz</a>,
+ <a href="soln-w5tu.html">Solutions</a><br>
+<li>Week 6 Th <a href="quiz-w6th.html">Quiz</a>,
+ <a href="soln-w6th.html">Solutions</a><br>
+<li>Week 7 Tu <a href="quiz-w7tu.html">Quiz</a>,
+ <a href="soln-w7tu.html">Solutions</a><br>
+<li>Week 7 Th <a href="quiz-w7th.html">Quiz</a>,
+ <a href="soln-w7th.html">Solutions</a><br>
+<li>Week 8 Tu <a href="quiz-w8tu.html">Quiz</a>,
+ <a href="soln-w8tu.html">Solutions</a><br>
+<li>Week 9 Tu <a href="quiz-w9tu.html">Quiz</a>,
+ <a href="soln-w9tu.html">Solutions</a><br>
+</ul>
+
+<ul>
+<li>Final <a href="final.html">Quiz</a>,
+ <a href="soln.html">Solutions</a><br>
+</ul>
+
+
+<hr>
+
+<h3><a name="exercise">Exercises</a></h3>
+
+<p>
+Here are some exercise solutions we discussed in class.
+</p>
+
+<ul>
+<li><a href="scheme-solns.html">Solutions</a> to selected exercises</li>
+</ul>
+
+<hr>
+
+<h3><a name="recursion">Recursion Examples</a></h3>
+
+<p>
+Here are some recursion examples we discussed in class.
+</p>
+
+
+<ul>
+<li><a href="recurse.html">Recursion</a></li>
+</ul>
+
+
+<hr>
+
+<h3><a name="sort">Sorting Examples</a></h3>
+
+<p>
+Here are some sorting examples from Brian Harvey, 
+co-author of our textook <b>Simply Scheme</b>.
+Shows four surprising and beautiful applications of recursion.
+</p>
+
+
+<ul>
+<li><a href="sort.html">Sorting</a></li>
+</ul>
+
+
+<hr>
+
+<h3><a name="truth">The Truth About Lists</a></h3>
+
+<p>
+Handouts for the November 30 lecture.
+</p>
+
+<ul>
+<li><a href="how.html">How computers work</a></li>
+<li><a href="eval.html">Scheme in Scheme</a></li>
+</ul>
+
+<p>
+I also handed out some diagrams showing how lists are implemented by
+<code>cons</code>cells and pointers: Figs. 3.1, 3.2, 3.3,
+and 3.8 from pages 32, 33 and 38 of Paul Graham, ANSI COMMON LISP,
+Prentice Hall 1996.
+</p>
+
+<hr>
+
+<h3><a name="review">Scheme Retrospective</a></h3>
+
+<p>
+Handouts from the December 5 lecture.
+</p>
+
+
+<ul
+<li><a href="learned.html">What have we learned?</a></li>
+<li><a href="scheme.html">Scheme and functional programming</a></li>
+</ul>
+
+<p>
+Here is the code for the example we discussed in class.  This little
+example illustrates the power of functional programming and
+demonstrates almost every Scheme programming technique we discussed
+all quarter.
+</p>
+
+<ul>
+<li><a href="bfs.html">Finding the shortest path by breadth-first search</a></li>
+</ul>
+
+<hr>
+
+<h3><a name="graphics">Graphics and Graphical User Interfaces</a></h3>
+
+<p>
+Here are some links on doing graphics and graphical user interfaces in DrScheme.
+</p>
+
+
+<h4>Graphics</h4>
+
+<ul>
+  <li>DrScheme Help Desk, Position Operations: <code>make-posn</code></li>
+  <li>DrScheme Help Desk, Simple Drawing Exercises: <code>draw.ss</code></li>
+  <li>How To Design Programs, 
+     <a href="http://www.cs.rice.edu/CS/PLT/Teaching/Lectures/Released/Book/node30.htm">
+     Node 30</a>: Drawing Simple Pictures</li>
+</ul>
+
+<p>
+To find the Help Desk entries, in DrScheme select <code>Help > Help Desk</code>, then
+in <code>Find docs for:</code> type the topic, such as <code>make-posn</code>, then
+select the entry, such as <code>Position Operations</code>.
+</p>
+
+<p>
+To use <code>draw.ss</code>, you must set the language level to 
+<code>Advanced Student</code> and load the <code>draw.ss</code> teachpack.
+See <a href="drscheme-notes.html">DrScheme notes</a></li>.
+</p>
+
+<h4>Fractals</h4>
+
+<ul>
+   <li>How To Design Programs,
+     <a href="http://www.cs.rice.edu/CS/PLT/Teaching/Lectures/Released/Book/node145.htm">
+     Node 145</a>: Fractals</li>
+</ul>
+
+
+<h4>Graphical User Interface</h4>
+
+<ul>
+  <li>DrScheme Help Desk, GUI: <code>gui.ss</code></li>
+  <li>How To Design Programs, 
+     <a href="http://www.cs.rice.edu/CS/PLT/Teaching/Lectures/Released/Book/node123.htm">
+     Node 123</a>: A First Look at Graphical User Interfaces</li>
+</ul>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+
+

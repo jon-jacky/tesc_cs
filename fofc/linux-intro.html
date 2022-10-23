@@ -1,0 +1,143 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab 1: Linux introduction</title>
+</head>
+
+<body>
+
+<h4>Lab 1: Your first Linux session</h4>
+
+<p>
+Revised January 11, 2001.  Press your browser's <b>Reload</b> or
+<b>Refresh</b> button to get the latest version.
+</p>
+
+<hr>
+
+<p>
+If the computer is still running Windows, you must boot Linux:
+</p>
+
+<ol>
+<li>Press <tt>Ctrl-Alt-Del</tt> to bring up the Windows login dialog</li> 
+<li>Select Restart (if Restart is not shown, select Shutdown first)</li> 
+<li>Eventually the Windows graphic screen disappears, the screen goes black, then a crude menu in typewriter font appears.  Use the arrow keys to move the
+highlight over Red Hat 6.2 and press the Enter key. 
+Many messages scroll by.  Eventually the Red Hat login screen appears.</li>
+</ol>
+
+<p>
+If the Linux login screen (with the Red Hat logo) is visible you can log in:
+</p>
+
+<ol>
+<li>Select the Session menu, I recommend KDE.  
+You must do this each time you log in.<br>
+(If you already know and like Gnome, go ahead and use that instead)</li>
+<li>Type your username into the text box, then press RETURN</li>
+<li>Type your password into the text box, then press RETURN.
+If you typed your username and password correctly, the KDE desktop appears.</li>
+</ol>
+
+<p>
+Open a terminal window:
+</p>
+
+<ol>
+<li>On the KDE desktop, 
+click on the K logo (usually in the lower left corner of the screen)
+to bring up the KDE menu</li>
+<li>Move the cursor over <b>Utilities</b></li>
+<li>Click on <b>Konsole</b>.  The terminal window appears.</li>
+<li>You can use the Options menu to customize the terminal window appearance.
+I like Font: Huge, Size: 80x24 (vt100), Schema: System Colors</li>.  Then
+select Save Options.</li>
+<li>From now on you can open new terminal windows by typing <tt>konsole &</tt>
+at the command prompt in any terminal window (you don't have to use the
+K menu).</li>
+</ol>
+
+<p>
+Your assigned password could be guessed by someone else.  The first
+time you log in, you should change your password:
+</p>
+
+<ol>
+<li>Type the command <tt>yppasswd</tt> (not just <tt>passwd</tt>) and
+follow the prompts.</li>
+</ol>
+
+<p>
+Get oriented:
+</p>
+
+<ol>
+<li>Type the command to show your home directory: <tt>pwd</tt><br>
+(The colon <tt>:</tt> is not part of the command, just type <tt>pwd</tt>)
+</li>
+<li>Type the command to list information about your own account: <tt>finger</tt> <em>username</em></li>
+<li>List information about your own account, and possibly others: <tt>finger</tt> <em>firstname</em></li>
+<li>List the files in your current directory: <tt>ls</tt>
+<li>List all the files in your current directory,
+including the hidden dot files: <tt>ls -a</tt></li>
+<li>List all your files, with additional information: 
+<tt>ls -aF</tt></li>
+<li>Change to the parent directory: <tt>cd ..</tt>
+<li>Type the command to show your new current directory.</li>
+<li>List the files in the current directory.</li>
+<li>Page through the list of files: <tt>ls | more</tt><br>
+Press the space bar to get the next page.<br>
+Press <tt>Ctrl-c</tt> to interrupt the command 
+(hold down <tt>Ctrl</tt>, press <tt>c</tt> at the same time).</li>
+<li>Change back to your home directory: <tt>cd</tt>.</li>
+<li>Repeatedly move up to parent directories, listing files in each directory,
+until you reach root. Return to your home directory.</li>
+</ol>
+
+<p>Make a web page:</p>
+
+<ol>
+<li>Confirm you are in your home directory.</li>
+<li>Copy the web page template into your home directory : <tt>cp ~jackyj/fofc-lab.html .</tt><br>
+(be sure to type the period at the end, it is part of the command)</li>
+<li>List the files in your directory to confirm you have the template.</li>
+<li>Edit the web page: <tt>emacs fofc-lab.html</tt><br>
+(edit in emacs, then exit)<br>
+(If you already know and like <tt>vi</tt> or some other editor,
+go head and use that instead)</li>
+<li>Display the web page: <tt>more fofc-lab.html</tt></li>
+<li>Create a directory for your web page: <tt>mkdir web</tt><br>
+(If you already have a <tt>web</tt> directory, that's fine, 
+you needn't create a new one)</li>
+<li>Move the web page page into your web directory: <tt>mv fofc-lab.html web</tt>
+<li>List the files in your directory to confirm the web page has moved.</li>
+<li>Change into your web directory: <tt>cd web</tt></li>
+<li>List the files to confirm the web page is there.</li>
+<li>View the web page in a browser.  The URL should be
+<tt>http://grace.evergreen.edu/<em>~username&nbsp;</em>/fofc-lab.html</tt><br>
+(substitute your username after the tilde)
+</li>
+</ol>
+
+<p>
+Log out:
+</p>
+
+<ol>
+<li>Click the K logo to bring up the menu, click Logout at the bottom of the menu.  The login screen reappears.</li>
+</ol>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+
+
+
+
+
+
+

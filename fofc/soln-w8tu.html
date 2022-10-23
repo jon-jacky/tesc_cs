@@ -1,0 +1,57 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz Solution, Foundations of Computing, Week 8 -- Tues Nov 14 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz Solution, Foundations of Computing, Week 8 -- Tues Nov 14 2000</h4> 
+
+<p>
+This diagram represents the geographic relation of some cities in the
+Puget Sound region of Washington state.  A line (possibly a crooked line)
+connecting two cities means you can reach one from the other without
+passing through any of the other cities.
+</p>
+
+<pre>
+         Bremerton ------------- Seattle
+             |                     |
+             |                     |
+             |                     |
+             |                     |
+         Gig Harbor -------------Tacoma
+             |                     |
+             |                     |
+             |                     |
+             +------ Olympia ------+
+</pre>
+
+<p>
+Define a Scheme variable named <code>puget-routes</code> to encode
+this diagram.  Represent city names by (double-quoted) strings so we
+can easily represent cities whose names have more than one word:
+"Seattle", "Gig Harbor" etc.  Represent the diagram as a list of
+lists. The <code>car</code> of each list is the name of a city and the
+<code>cdr</code> of each list is a list of all the cities that
+can be reached from the first city.
+</p>
+
+<pre>
+(define puget-cities
+  '(("Bremerton" "Seattle" "Gig Harbor")
+    ("Gig Harbor" "Bremerton" "Tacoma" "Olympia")
+    ("Olympia" "Gig Harbor" "Tacoma")
+    ("Tacoma" "Olympia" "Gig Harbor" "Seattle")
+    ("Seattle" "Bremerton" "Tacoma")))
+</pre>
+
+</body>
+</html>
+
+
+
+
+
+

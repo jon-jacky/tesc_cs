@@ -1,0 +1,134 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Worksheet, Foundations of Computing, Week 4 -- Jan 30, 2001</title>
+</head>
+
+<body>
+
+<h4>Lab Worksheet, Foundations of Computing, Week 4 -- Jan 30, 2001</h4>
+
+<ol>
+
+<li>
+<p>
+A user creates (or obtains) a file of shell commands named <tt>cmds</tt>
+and puts it in the working directory.  The user attempts to execute the 
+file, but gets an error message:
+</p>
+
+<pre>
+   $ cmds
+   bash: cmds: command not found 
+</pre>
+
+<ol type=a>
+<li>What's wrong?<br><br></li>
+<li>What command can the user type instead of <tt>cmds</tt> 
+to avoid this problem?<br><br></li>
+</ol>
+</li>
+
+<li>
+<p>
+The user types the corrected command, but this time gets another error
+message that ends <tt>permission denied</tt>.
+</p>
+
+<ol type=a>
+<li>What's wrong now?<br><br></li>
+<li>What command can the user type to 
+fix this problem?<br><br></li>
+</ol>
+</li>
+
+<li>
+<p>
+The script <tt>cmds</tt> reads from the standard input and writes to the 
+standard output.  What command should the user type to run <tt>cmds</tt>,
+to read from and write to the specified locations:
+</p>
+
+<ol type=a>
+<li>Read from the keyboard, write to the screen<br><br></li>
+<li>Read from file <tt>infile</tt>, write to the screen<br><br></li>
+<li>Read from the keyboard, write to the new file <tt>outfile</tt><br><br></li>
+<li>Read from file <tt>infile</tt>, write to the new file <tt>outfile</tt><br><br></li>
+<li>Read from the keyboard, write to the end of the old file <tt>logfile</tt><br><br></li>
+</ol>
+</li>
+
+
+
+<li>
+<p>
+The Unix command <tt>cat</tt> simply copies its input to the standard output.
+It may take its input from the standard input, or it may take its input
+from all the files provided as command line arguments.  What is the effect 
+of each of these commands?
+</p>
+
+<ol type=a>
+<li><tt>cat foo</tt><br><br></li>
+<li><tt>cat < foo</tt><br><br></li>
+<li><tt>cat > foo</tt><br><br></li>
+<li><tt>cat * > foo</tt><br><br></li>
+<li><tt>cat foo > bar</tt><br><br></li>
+<li><tt>cat foo bar | wc</tt><br><br></li>
+</ol>
+</li>
+
+<li>
+<p>
+There is a sorted dictionary of words (one word per line) in <tt>/usr/dict/words</tt>.  Some of the words in the dictionary are capitalized.
+</p>
+
+<ol type=a>
+<li>What command shows the number of words in the dictionary?<br><br></li>
+<li>What command shows the words in the dictionary that
+contain the lowercase letter <tt>x</tt>?<br><br></li>
+<li>What command shows the number of words in the dictionary that
+contain the lowercase letter <tt>x</tt>?<br><br></li>
+<li>What command shows the words in the dictionary that
+begin with the letter <tt>x</tt>, lowercase or upper case?<br><br></li>
+<li>What command shows the number of four-letter words in the dictionary?<br><br></li>
+</ol>
+</li>
+
+<li>
+<p>
+Say you wish to prevent other users from seeing what files you have
+and from reading most of your files, but you want to allow them to
+copy one file named <tt>pub</tt> in your home directory.  However you
+do not want to allow them to change this file.
+</p>
+
+<ol type=a>
+<li>What command shows the protection on your home directory?<br><br></li>
+<li>Say you execute this command and it shows <tt>drwxr-xr-x</tt>.
+Can other users see what files you have?  Explain your answer.
+<br><br><br></li>
+<li>What command can you use to prevent other users from seeing what
+files you have, but will still allow them to copy your <tt>pub</tt> file?
+<br><br><br></li>
+<li>What command shows the protection on your <tt>pub</tt> file?<br><br></li>
+<li>Say you execute this command and it shows <tt>drwxrwxr-x</tt>.
+Can other users copy this file?  Explain your answer.
+<br><br><br></li>
+<li>Can other users change your <tt>pub</tt> file?  Explain your answer.
+<br><br><br></li>
+<li>What command can you use to prevent other users from changing
+your <tt>pub</tt> file, but still allow them to copy it?
+<br><br><br></li>
+</ol>
+</li>
+
+<li>
+What is the value of the binary number <tt>101</tt> in decimal?  In octal?
+<br><br></li>
+
+</ol>
+
+</body>
+</html>
+

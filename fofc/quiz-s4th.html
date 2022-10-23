@@ -1,0 +1,75 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz, Foundations of Computing, Spring, Week 4 -- Thurs Apr 26 2001</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz, Foundations of Computing, Spring, Week 4 -- Thurs Apr 26 2001</h4> 
+
+Name:<br><br><br>
+
+<p>
+Two files contain the following Java code (exactly as it appears
+here, there is nothing else in the files).  The files are compiled
+by the Java compiler and the resulting Java program is run.
+</p>
+
+<pre>
+// Ticket.java
+public class Ticket {
+    static int n = 0;
+
+    public static void total() { 
+	System.out.println(n + " tickets have been issued");
+    }
+
+    int ticket;
+
+    public Ticket() {
+	ticket = n;
+	n++;
+    }
+
+    public void speak() {
+	System.out.println("I have ticket " + ticket);
+    }
+}
+
+// TicketDemo.java
+public class TicketDemo {
+    public static void main(String[] args) {
+	Ticket a, b, c;
+	Ticket.total();
+	a = new Ticket(); a.speak(); Ticket.total();
+	b = new Ticket(); b.speak(); Ticket.total();
+	c = new Ticket(); c.speak(); Ticket.total();
+    }
+}
+</pre>
+
+<ol>
+<li>
+What is (are) the class variable(s) in the Ticket class?
+<br><br>
+</li>
+<li>
+What is (are) the instance variable(s) in the Ticket class?
+<br><br>
+</li>
+<li>
+What is (are) the class method(s) in the Ticket class?
+<br><br>
+</li>
+<li>
+What is (are) the instance method(s) in the Ticket class?
+<br><br>
+</li>
+<li>
+What output does the program produce?
+</li>
+</ol>
+
+</body>
+</html>

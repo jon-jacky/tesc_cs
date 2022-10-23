@@ -1,0 +1,507 @@
+win-howto.txt
+
+Jon Jacky, last revised October 15 2000
+
+I plan to turn this to HTML and add some additional introductory material someday. 
+Meanwhile, I add items frequently as I think of them.  - JJ
+
+Using Windows
+ (But not configuring Windows, installing Windows software etc.)
+
+Concepts and vocabulary
+
+GUI
+
+ In general, they have tried to make the same actions cause the same effects
+ (or similar effects) in different contexts: on the desktop, in Windows utilities
+ programs like Windows Explorer and Notepad, and in application programs.
+ However this is not always the case and some programs (browsers for example) 
+  may have their own conventions which are different from the Windows conventions.
+
+ Mouse
+  Two button mouse (not one button like Mac or three-button like Unix/Linux).
+
+  "Left click" means click left button once. "Right click" means click right button once.
+  "Click" means left-click.
+  "Double click" means left-click twice, rapidly.
+  Double click is different from click, then click again -- speed matters
+  On the desktop and in many programs, single click usually selects an item for some 
+   subsequent operation (such as rename or copy, selected item usually turns blue)
+   while double click activates the item (opens the file or starts the program).
+  However in some contexts single click activates the item:
+   in browser, click on link goes to that link.
+
+  Right click on icon or item to bring up "context menu" of additional options 
+   Usually context menu has Properties entry that brings up useful information
+  
+  Often just resting cursor on icon for a moment (without click) causes useful 
+   description to appear.
+
+ Desktop 
+  The Desktop is the entire Windows screen
+  Large windows on the desktop represent running programs or open documents
+   (these come and go)
+  Smaller icons on the screen remain "behind" the windows (these persist)
+  Icons represent programs (double-click to start), folders (double-click to 
+   display contents) or files (double-click to open)
+  Right click on desktop background for menu: "Arrange Icons" etc.
+
+  Collection of icons on desktop is arbitrary - most programs, files do
+   not have icons on the desktop and most computers have different icons on the desktop.
+   You can add/remove icons from desktop yourself (see customization, below)
+ %  Most computers come with many icons that are advertising for Microsoft
+ %   and its minions; you can safely get rid of these (see below)
+
+ Taskbar
+  Taskbar is usually at bottom edge of screen, but you can drag it to top or sides 
+   if you prefer (easy to do by mistake -- why is this provided?)
+  Taskbar has a button for each window (running program or open document) on desktop
+   may be additional buttons for windows that were minimized
+   click button once to bring its window to the top or un-minimize it.
+  Start button at left (or top) - brings up cascading menus to start some programs
+  Right of start button (left end of taskbar) are small icons for a few commonly 
+   used programs (IE etc.), click *once* to start (instead of usual double click)
+   (This is called the Channel Bar (?) Windows 98 "feature" (?))
+  Right end of taskbar shows System Tray: status indicators for some programs
+   right click for information, double-click to start interaction
+  Clock is at right end of System Tray
+   rest cursor over to see date also
+   Double-click to reset date, time (also to see calendar and analog wall-clock display)
+  Somehow taskbar can move offscreen. How to get it back!?
+
+ Start button
+  Brings up cascading menus to start some commonly used programs
+  List of programs on Start menus is somewhat arbitrary - many programs are not listed
+   start menus on different computers contain different items (another customization)
+  Start -> Run brings up dialog box where you can type name of any program to start
+   including those not listed on start menus
+
+ Windows
+  Each window represents a running program or open document
+  For each window, there is a button on the taskbar
+  Title bar 
+   At top edge of window 
+   Shows name of program and/or file, sometimes other information as well
+   Minimize, Maximize/Restore, Close buttons in title bar upper right corner [_|-|X]
+    Minimize causes window to disappear from desktop but 
+     it is still running (or open) and its button remains on the taskbar.
+    Maximize expands window to fill entire screen, then Restore shrinks it back down
+    Close stops program or closes file, window disappears from desktop, 
+      button disappears from task bar
+     alternative to File -> Close (see menus, below)
+     unsaved work will be lost, most programs warn about saving changes
+   System menu button (usually a little folder icon) in title bar upper left corner,
+    menu entries just provide alternative to Min, Max, Close buttons 
+    (why do they call it system menu when it only applies to one window?)
+
+  Menu bar (File, Edit, View etc.)
+   Below title bar at top of window
+   File Edit View etc.
+   Left click menu name on menu bar to show menu
+   Left click menu entry to activate operation
+   Left click anywhere outside menu to make menu disappear
+   Menu path notation used here and in many books:
+    "File -> Save As..."  means click "File" on menu bar, 
+      then click "Save As..." on File menu
+   Menu entries (from menu bar)
+    Grayed-out ("shadow") indicates operation is not enabled at this time
+    Little arrow on right edge means resting cursor on entry will pop up a cascaded menu
+    Three dots ("Save Project As...") indicates selection will pop up a dialog box
+
+   View menu options usually provide useful customization or configuration
+    they generally persist (they are the same the next time you 
+    run the program, they needn't be selected each time)
+
+  Toolbar (shortcuts to menu items)
+   Below menu bar
+   Row of icons (little pictures): open folder, floppy disk etc.
+   Icons are just shortcuts for menu paths: VB open folder icon is shortcut for 
+     File -> Open Project etc.
+   Place cursor over icon for a moment (without clicking) to see spelled-out 
+    name of operation  
+   Click icon to perform operation
+
+  Status bar
+    At bottom edge of window 
+    Often shows useful information
+    If you don't see status bar, try View -> Status Bar
+
+  Usually Toolbar and Status bar can be customized from View menu to reduce clutter
+
+ Drag-and-drop
+  Drag file icon into open program window to open that file in that program:
+   drag .txt file into Notepad, drag .html, .txt, .gif, .jpeg file into IE etc.
+
+ Keyboard shortcuts or "accelerators" 
+  Especially useful on notebook computers with no mouse
+  
+  Desktop								
+   Alt-Esc brings the next window to the top (current window goes to bottom of pile)
+    (also cycles through buttons on task bar - Enter to open)
+   Alt-Tab brings up row of icons for open windows (including minimized windows)
+    sort of a keyboard alternative to the task bar
+    Tab to select next icon
+    release Alt to bring selected window to top
+   Ctrl-Alt-Del brings up Close Program dialog with task list (for shutting down 
+    unresponive program)
+    Ctrl-Alt-Del again to reboot
+   (Is there any way to select icons on desktop without using mouse "My Computer" etc.?)
+   Window-M - Minimize all open windows (so you can see all desktop icons)
+   Shift-Window-M - Restore all previously open windows
+
+  Start 
+   Windows-logo key (usually left of space bar) brings up Start menu
+    (when you release it)
+   Ctrl-Esc brings up Start menu just like Windows key
+   (Ctrl-Esc is *not* a general-purpose equivalent to Windows key -- is there one?)
+
+  Window
+   PgUp, PgDn scrolls window contents - usually much more convenient than mouse, 
+    scroll bar
+   up, down arrows also scroll but with finer control - usually easier than mouse
+   Home - top of document, page, list ...
+   End - end of ...
+   (Is there any way to select toolbar items without using the mouse?)
+   Tab moves to next field (pane in Explorer, link in browser, button in dailog box, etc.) 
+    Shift-Tab moves backward
+   Arrow keys move among items within a field (file icons in Explorer, menu items, etc.)
+   Enter selects item (like click)
+   Backspace backs up in hierarchy (return to parent folder in Explorer, 
+    previous page in IE, etc.)
+   Space bar toggles check box
+   Alt-F4 closes window (exits program)
+
+  Menus
+   Alt by itself when no menu displayed selects menu bar (but does not open any menu) 
+    so arrows can select (but not open) menus
+   Alt-(letter) brings up menu from menu bar (Alt-F file menu, Alt-E edit, Alt-V view etc.)
+   Alt-space brings up system menu (Minimize, Maximize, Restore, Close)
+   Alt by itself when menu displayed dismisses menu (all cascaded menus)
+    without making selection
+   Up/down arrow keys move among menu items (like mouse)
+   Enter selects item (like click)
+    or just type underlined letter that appears in menu item to select that time
+     (C for Copy or P for Paste, less obviously T for Cut, R for Properties)
+
+  Selections (icons on desktop, but also file icons or filenames in My Computer, 
+    Explorer, Find)
+   Shift-F10 - Display context menu of selected item
+   Alt-Enter - Display properties of selected item
+
+  Find
+    Ctrl-F - Brings up text search (IE) or file all files (Explorer)
+
+  Start particular programs (alternatives to finding Icon or Start Menu entry)
+    Window-E Windows Explorer
+    Window-F Find All Files 
+    Window-R Run dialog box
+   
+  There are even more of these keyboard shortcuts, but who can remember them all?
+
+Typing and Editing text
+  In Notepad editor, but also other MS programs: IE browser address box, 
+   names under file icons, Outlook/Exchange mail, VB code etc.
+  However not all of these work in all programs, it's hit or miss, just try it
+
+ Entering text
+  To insert characters just type
+  To delete before cursor press Backspace key
+  To delete after cursor press Delete key
+  Insert key toggles between insert/overstrike modes 
+   (insert or overstrike mode sometimes selected or toggled implicitly by programs)
+
+ Cursor movement
+  arrow keys: one character or line at a time
+  Ctrl-arrow (left, right): one word at a time (Notepad and most other contexts)
+  Ctrl-arrow (left, right): next (previous) slash or dot in URL etc. (IE address box)
+  Ctrl-arrow (up, down): one paragraph at a time 
+  Pg Up, Pg Dn: larger vertical movements (screenful)
+  Home, End: start, end of current line
+  Ctrl-Home, Ctrl-End: start, end of document
+  Can also move cursor with mouse but sometimes click selects instead of positions 
+
+ Selecting text
+  Blue background, white letters indicate selected text
+  Click on text selects it - selected text turns blue
+  Shift while moving cursor (see above) selects traversed text
+   newly selected text turns blue
+  Unselecting selected text: move cursor back while Shift *not* pressed - blue disappears
+  Click again on selected text often unselects it, places cursor at click point
+ 
+ Processing selected text
+  Del Delete
+  Ctrl-Z Undo (restores deleted text)
+  Ctrl-X Cut (removes text from file, puts it in paste buffer)
+  Shift-Del Cut also
+  Enter Cut also (some contexts)
+  Ctrl-C Copy (copies text to paste buffer but does not remove it from original location)
+  Ctrl-V Paste (inserts contents of paste buffer back into file, cut or copied)
+  Shift-Insert Paste also
+  also available on Edit menu (Edit -> Copy etc.) but menu is usually more cumbersome
+
+ Moving text between windows, programs (from IE Address box to Notepad etc.)
+  You can Copy or Cut from one program, Paste to another (see above for Copy, Cut, Paste)
+
+Utilities
+
+My Computer and Windows Explorer (file utilites)
+ Two similar utilities for displaying and manipulating folders and files
+   nearly identical menu bars and menu options
+ Work best with these View options checked (almost useless without them, in fact):
+  View -> Folder Options -> View
+   check "Display the full path in title bar" (otherwise you just see current folder name)
+   check "Show pop-up description for desktop and folder items"
+   *un*check "Hide file extensions for known file types" -- you need to see .txt, 
+    .html etc.
+   Hidden files: check "Show all files"
+  View -> Status bar: checked (bar at bottom of window shows number of items and size)
+  Other View options control appearance, order of file icons (see under My Computer
+   and Windows Explorer below)
+
+ My Computer and Explorer both show one folder (directory) at a time 
+  Shows files (including folders and programs) as icons
+   icon appearance is determined by file extension, indicates type of file
+  Shows all files (programs etc.) in folder, not just a few (like on desktop)
+ Double-click on icon to start program or open file/folder
+ Can create new folders and files in currently selected folder by Edit -> New
+ Can rename, move, copy files and folders by menus or drag-and-drop BUT
+  this is sometimes hard to understand and can require very accurate mouse positioning.
+  Often easier to use command line for rename, copy, move, also new (see below)
+ If you must drag and drop, best way is:
+  Open *two* "My Computer" windows, one for source folder and one for destination folder
+  Right-drag (hold down right mouse button) file icon from source to destination
+  Release right mouse button in destination
+  Menu appears. Select Copy Here, Move Here, or Cancel
+ Also edit menu copy-and-paste to copy, cut-and-paste to move file
+
+ Keyboard shortcuts, My Computer and Windows Explorer
+  Selecting files (in Explorer this also shows information about the selected file)
+   arrow keys - select next file icon in that direction
+   letter keys - select file that begins with that letter
+   Home, End - select first, last file
+   PageUp, PageDn - select item at top (bottom) of page
+  Shift-F10 - Display context menu of selected file
+  Enter - open or start selected file
+  Backspace - back up to parent directory
+  Tab (Explorer only) - move from directory tree window to detail window
+  Ctrl-F - Find all files, starting in current folder
+  Also keyboard copy-and-paste to copy, cut-and-paste to move file
+
+My Computer (file utility)
+ Simpler than Windows Explorer, does not show directory tree structure, 
+  just current folder contents
+ Works best with these View options checked to keep it simple, use Explorer for more info
+  View -> Large Icons to make it easy to read
+  View -> Arrange Icons -> By Name to sort icons in alphabetic order
+ To prevent wild proliferation of My Computer windows:
+  View -> Folder Options -> General 
+   check "Custom...", click Settings
+    under "Browse folders as follows" 
+     click "Open each folder in same window" (not "own window" -- opens too many windows!)
+
+Windows Explorer (file utility)
+ Windows-E starts it
+ Not to be confused with Internet Explorer (browser) or explorer.exe (shell)
+ Usually just called "Explorer"
+ More complex alternative to "My Computer", shows directory tree structure 
+  in left panel, shows currently selected folder contents in right panel
+ Works best with these View options checked to show more detail than My Computer 
+  View -> Small Icons (so more can fit in the panel at one time)
+  View -> List (arrange files in one vertical column, not rows and columns)
+  View -> Details (show name, type, size, modified date)
+ To sort file list in right panel
+  View -> Arrange Icons -> By Name, or By Size, Type, Date 
+  Alternatively, in right panel just click on column headings Name, Size, Type,
+   Modified (date) to sort, click again to reverse sort order
+ Select file icon in right panel to show additional information about it
+  shows subset of File icon's Context menu -> Properties information
+  If file is HTML or graphic, also shows thumbnail picture of contents (may need to 
+   wait a moment for graphic to appear if large graphic file)
+   (Windows 98 only feature?)
+
+Find (find and search utility)
+  Find files by name or contents; limit search by dates, file size
+   (find those files you misplaced by inaccurate drag-and-drop)
+  Start -> Find
+  Windows-F
+  In Explorer: Tools -> Find
+  In Explorer or My Computer: Ctrl-F
+  Name & Location tab for selecting disk, file name, search text in file
+  Date tab for selecting range of dates to search (easy to select "today")
+   and type of access: Modified, Created, Last Accessed
+  Search results appear in scrolling list at bottom of Find window
+   This scrolling list works like mini-Explorer file viewer window
+    View menu selects detail view or...
+    Click on column headings to sort etc.  Click on Modified column heading
+     to sort in reverse chronological order, see most recent files at the top
+   Find window default size is so small that Modified column in search results 
+    is not visible - must make window larger on the right side to see it
+   Path to file often too long to fit in narrow little "In Folder" column 
+     (indicated by ... at right end of path) so you must:
+    Right-click on file icon or file name to get context menu, select Properties
+     on Properties display, Location: gives full path to file
+    (Alternatively, use shortcut: select file icon, Alt-Enter brings up properties)
+   File icons in search results can be selected, opened, dragged etc. just like
+    in file viewer windows
+   
+Internet Explorer (web browser)
+ Not to be confused with Windows Explorer (file utility) or explorer.exe (shell)
+ Often just called "IE"
+
+ URL: Address bar or textbox
+  arrow on right: drop-down list of recently-visited URL's
+  URL abbreviations
+   foo instead of http://www.foo.com often works
+  to edit, move cursor into URL textbox - cursor turns to vertical line
+  click in URL textbox - selects URL text, background turns blue,
+     manipulate like any selected text (see above) 
+   to clear URL and start over, press Delete key
+   to edit URL from keyboard click in blue: puts text cursor (vertical line) 
+     at mouse pointer, blue goes away.  Now you are in editing mode
+   to move text cursor in URL use arrow keys or move mouse and click again
+   to move text cursor in URL to next (previous) dot or slash use Ctrl-arrow
+   to quit editing mode click outside URL textbox, vertical line cursor disappears
+  autocomplete (or whatever they call it)
+   adds text to URL to anticipate text you are typing 
+    mixed blessing, can drive you nuts
+    To turn off: (how?)
+   autocompleted text appears in blue - it's selected, manipulate like any selected text
+    to accept, press End (key) *or* (left) click - cursor moves to end
+    to get rid of autocompleted text, type Delete (key)
+    to override, just keep typing - it will disappear
+  Can type ordinary Windows path (C:\... etc) into address textbox (need not type 
+   file URL) - IE will browse local file system much like My Computer 
+
+ View
+   View -> Toolbars: *Uncheck* Links to get rid of space-wasting row of advertising links
+   View -> Status Bar: *Check* this for useful info at the bottom
+   View -> Explorer Bar: divides browser window into two panels,  
+    links appear in bar at left, check *History* sometimes useful, shows recent URL's
+      sorted by date, uncheck History again to restore single-panel browser window
+
+ Viewing files
+  Drag file icon (from Explorer or My Computer or ...) into IE to open and view file:
+   works with .txt, .html, .gif, .jpeg files
+
+ Saving 
+  Right-click on link or other page contents to bring up context menu with Save entry
+   Alternative to Save As...
+   Right-click on inline image brings up Save Picture As...
+
+ Keyboard shortcuts
+  Home: top of page
+  End: bottom of page
+  PgUp, PgDn: scroll through page (much easier than mouse, scroll bar)
+  up, down arrows: scroll through page (finer control)
+  Tab: move focus forward to next link (like moving cursor to link with mouse) 
+  Shift-Tab: move focus backward to previous link
+  Enter: go to link (like clicking mouse)
+  Ctrl-F: bring up Find (search for text) dialog
+
+Notepad (text editor)
+ File -> Open ...
+  Open dialog box to select file, folder etc.
+  Files of type: 
+   click arrow on right of box for drop-down list
+   select "All Files (*.*)" to list, open any file, for example .html files
+   if select "Text Documents", can only list, open .txt files
+ Alternatively can just drag file icon into notepad window to open it!
+ File -> Save As ...
+  ditto, same as Open
+ Title bar only shows file name, not full path.  There is no Status Bar or other View menu entry to fix this!
+  Only way to see where you are is to select File -> Open or Save As...
+   then if you rest the cursor over folder icon or folder name Save in... textbox it shows path to folder
+ Editing text in Notepad - see Editing text, above
+ Lots of limitations: only one window, only one file at a time, only small files...
+ Emacs for windows is available from (this URL)
+
+Command Line/MS-DOS prompt
+ Indispensable for Real Programmers or power users, but useful for everyone else too
+  often the easiest and most efficient way to something done
+  by far the best way to rename, copy, move files and folders
+ Getting to MS-DOS prompt
+  Double-click MS-DOS icon on desktop
+  Start -> Run -> command
+  The two methods bring up slightly different versions or configurations. Weird.
+    Start -> Run -> command version is fixed 24 lines, 80 columns; no scroll bars
+    MS-DOS icon version can be resized in usual way, has scroll bars
+ Resizing MS-DOS command window
+  grabbing sides or corners may or may not work (see above)
+  change window size by changing font size from toolbar
+  Alt-Enter toggles between windowed and full-screen MS-DOS prompt 
+   (it's the *only* escape when MS-DOS prompt is full-screen)
+ Command prompt shows current default directory (folder), for example:
+  C:\Program Files\PLT\collects>
+ Command format: command /option1 /option2 .. file1 file2 ..., for example:
+  ...
+  command is usually the name of a program (.exe or .com) or batch (.bat) file
+   some commands are built into the command interpreter itself (they're not files)
+   pathname issue...
+  forward slashes indicate options that can modify command behavior
+  command /? describes options for command
+  file names indicates files, folders that command acts on
+ dir and cd
+ type and more
+ Wildcards * and ? - what makes command line better than GUI
+   *: match any group of zero or more characters in filename
+       *.txt matches notes.txt, essay.txt etc.
+       notes.* matches notes.txt, notes.html, notes.doc etc.
+   ?: match any one character in filename
+      notes.??? matches notes.txt, notes.doc and notes.htm but not notes.html
+ Copying and moving files - can use wildcards to handle groups of files
+ Long filenames
+  examples: "C:\Program Files"
+  more "..." vs. type "..." | more
+ redirection and pipes - even more power than GUI
+ Other commands
+ running programs
+  path
+   setting the path in autoexec.bat (or however)
+  start ...
+ doskey
+  command history, command editing
+  how to install
+
+Coping with problems
+ Program unresponsive or won't go away
+  Ctrl-Alt-Del brings up Close Program dialog box, select task from list, End Task
+   (careful, do *not* end task "Explorer" which is explorer.exe, the whole desktop! 
+    Task "Exploring" is the Windows Explorer file utility)
+  Task Manager (Taskman.exe) 
+   (differs from Close Program how?)
+ Program takes over whole screen, covering all icons and buttons
+  Press "Window" key or Ctrl-Esc to restore task bar and start menu
+  MS-DOS command prompt covers screen - Alt-Enter shrinks it back to window
+
+Customizing Windows
+ Desktop icons, Start menu contents different on every system
+ In a pinch you can get to programs you need from Start -> Run
+ Installing program often adds Start menu entry, desktop icon
+ Desktop icons/shorcuts - getting rid of (many are just advertising)
+ Desktop icons/shortcuts - adding
+
+Local Area Network (using, not setting up or configuring)
+ Network neighborhood
+ (Linking network drives and folders so they appear locally)
+ Sharing (little hand icon) - security issues
+
+Internet 
+ FTP and Telnet clients are built in (yay!) 
+  use Start -> Run or command line
+ FTP and Telnet servers are *not* provided, not even with NT (boo! hiss!)
+
+Other resources
+ Books (all O'Reilly)
+  Windows 95 in a Nutshell
+  Windows 98 in a Nutshell
+  Windows Annoyances
+  Windows 98 Annoyances
+ Programs not built in, but very useful
+  Emacs
+  Ghostview (GSVIEW32)
+  Acrobat reader
+  Tex/LaTeX
+  AWK
+  ssh
+
+Jon Jacky, last revised October 15 2000

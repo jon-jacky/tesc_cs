@@ -1,0 +1,476 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Unix Shell Programming</title>
+</head>
+
+<body>
+
+<h3>Unix Shell Programming</h3>
+
+<p>
+Revised February 3, 2001.  Press your browser's <b>Reload</b> or
+<b>Refresh</b> button to get the latest version.
+</p>
+
+<hr>
+
+<h4>What is a shell?</h4>
+
+<p>
+A <em>shell</em> is an operating system command interpreter.  A Unix
+shell is also a programming language for manipulating files and
+programs.  You can put shell commands in a file called a <em>shell
+script</em> and then run the script just like any other program.
+</p>
+
+<h4>Why write shell scripts?</h4>
+
+<p>
+Shell scripts are useful for automating repetitive operations, such 
+as running a program on a large collection of input files.  You can use 
+shell scripts as "wrappers" to adapt and customize compute-intensive programs
+(in C, Lisp, ...) for the local file system.  Shell scripts start up and
+configure Unix itself when you turn on the computer; other shell scripts
+configure your session when you log in.
+</p>
+
+
+<h4>Which shell?</h4>
+
+<p>
+There are several Unix shells: <tt>sh</tt> came first, <tt>csh</tt>
+and then <tt>tcsh</tt> were popular for a time, now <tt>bash</tt> is
+the default login shell in most Linux installations, including the ACC
+lab machines at Evergreen.  I strongly recommend <tt>bash</tt> for
+shell programming as well.  It is like <tt>sh</tt> but also includes
+many conveniences inspired by <tt>csh</tt> and <tt>tcsh</tt>.  And, if 
+you use the same shell for programming and interactive use, you can
+try out each command in your program just by typing at the command prompt.
+</p>
+
+<p>
+The <tt>sh/bash</tt> command prompt is usually a dollar sign <tt>$</tt>
+while the <tt>csh/tcsh</tt> prompt is usually a percent sign <tt>%</tt>.
+</p>
+
+<p>
+The chapter on shell programming (lesson 14) in the <b>Ten Minutes</b>
+textbook inexplicably uses <tt>csh</tt>/<tt>tcsh</tt> not
+<tt>sh</tt>/<tt>bash</tt>.  Ignore that chapter and use the
+<b>Nutshell</b> book instead (chapters 6 and 7 are on <tt>bash</tt>).
+</p>
+
+<h4>Ordinary commands and built-in commands</h4>
+
+<p>
+There are two kinds of shell commands, which are described in two
+different places.
+</p>
+
+<p>
+Most shell commands, for example <tt>ls</tt>, <tt>cat</tt>,
+</tt>more</tt> etc., etc. are just programs in some system
+directory such as <tt>/bin</tt> or <tt>/usr/bin</tt>.  These work the
+same way in any shell.  There is an alphabetic listing in chapter 3 in
+the <b>Nutshell</b> book and you can get on-line information using
+<tt>man ls</tt> etc.
+</p>
+
+<p>
+Other shell commands, for example <tt>cd</tt> and <tt>pwd</tt>, are
+built into the shell program itself.  Some of these built-ins only
+exist in some shells, or work differently in different shells.  There
+is an alphabetic listing of the built-in commands for <tt>bash</tt> in
+chapter 7 in the <b>Nutshell</b> book; to get on-line information you
+must use <tt>man bash</tt>.
+</p>
+
+<h4>Evaluation and echo</h4>
+
+<p>
+The shell evaluates some command arguments before passing them to the
+command.  For example, it expands the asterisk or star <tt>*</tt> to a
+list of the files in the current working directory.  The <tt>echo</tt>
+command simply evaluates its arguments. Use it to see the effects of
+evaluation.  For example:
+</p>
+
+<pre>
+   $ echo hello
+   hello
+   $ echo *
+   #shell.html# emacs-intro-dl.html emacs-intro.html emacs-intro.html~
+   emacs-telnet files-outtakes.html fofc-announcements.html ...
+</pre>
+
+<h4>Variables and substitution</h4>
+
+<p>
+Create and assign variables using the equal sign <tt>=</tt> (with no
+spaces around it).  To <em>substitute</em> a variable (obtain its value),
+you must precede it with the dollar sign <tt>$</tt>.
+
+<pre>
+   $ x=3
+   $ echo x
+   x
+   $ echo $x
+   3
+</pre>
+
+<h4>Environment variables</h4>
+
+<p>
+Ordinary variables are like local variables: they are only recognized
+in the script where they are defined (more accurately, they are only
+recognized in the <em>process</em> where they are defined; usually
+each script and program executes in its own process).
+<em>Environment variables</em> are like global variables: they are recognized
+in other processes (scripts and programs) as well.  Use the <tt>export</tt>
+command to make environment variables.
+</p>
+
+<pre>
+   export y=4
+</pre>
+
+<p>
+Unix provides a set of built-in environment variables that define the
+configuration for your session: your home directory, your path etc.
+These variables are spelled in all capital letters.  Use the <tt>printenv</tt>
+command to display your environment (no <tt>$</tt>'s needed, omit the argument
+to see all environment variables).
+</p>
+
+<pre>
+   $ printenv y
+   4
+   $ printenv PATH
+   /usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/home/jon/bin  
+   $ printenv
+   ...
+   y=4
+   PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/home/jon/bin
+   HOME=/home/jon
+   SHELL=/bin/bash         
+   ...
+</pre>
+
+<h4>Quotes and escapes</h4>
+
+<p>
+Sometimes you need to suppress evaluation by the shell so you can use
+a string that contains special characters as an argument to a command.
+Use single quotes <tt>'...'</tt> to suppress all evaluation by the
+shell.  Use double quotes <tt>"..."</tt> to suppress most evaluation
+including wildcard expansion but allow variable substitution.  Use
+backslash <tt>\</tt> to suppress ("escape") interpretation of
+individual characters.
+</p>
+
+<pre>
+   $ echo The value of x in *.1 is $x
+   The value of x in script.1 is 3
+   $ echo 'The value of x *.1 is $x'
+   The value of x in *.1 is $x
+   $ echo "The value of x in *.1 is $x"
+   The value of x in *.1 is 3
+   $ echo "He said "The value of x in *.1 is $x""
+   He said The value of x in script.1 is 3
+   $ echo "He said \"The value of x in *.1 is $x\""
+   He said "The value of x in *.1 is 3"       
+</pre>
+
+<h4>Command interpolation and backquotes</h4>
+
+<p>
+Use backquotes <tt>`...`</tt> to interpolate the output from one command
+into another command.
+</p>
+
+<pre>
+   $ date
+   Sat Feb  3 12:12:02 PST 2001
+   $ echo Now it is `date`
+   Now it is Sat Feb 3 12:12:28 PST 2001
+</pre>
+
+<h4>Command editing, command history, and multi-line commands</h4>
+
+<p>
+When using <tt>bash</tt> interactively, you can edit the command line
+using arrow keys, backspace, delete, and emacs-style commands (C-a to
+move to the beginning of the line, C-e to the end, C-k to cut, C-y to
+paste or "yank").  Use the up-arrow key to retrieve the previous command
+for execution or editing, use the up- and down- arrow keys to
+scroll throught the history of recent commands.
+</p>
+
+<p>
+Use the backslash character at the end of the line to create long commands
+that extend over more than one line (this just uses backslash to escape
+the usual interpretation of the newline as a signal to execute the command). 
+The shell prints a different prompt character (usually <tt>></tt>) to
+indicate continuation lines.</p>
+
+<pre>
+   $ echo This command \
+   > extends over \
+   > several lines
+   This command extends over several lines      
+</pre>
+
+<h4>Return status</h4>
+
+<p>
+In addition to producing output, all commands return a status value,
+where 0 indicates success and any nonzero value indicates failure.
+The shell does not normally display the status value but the status
+returned by the last command is also the value of the variable <tt>$?</tt>.
+Status values are used to control the execution of shell scripts.
+</p>
+
+<pre>
+  $ ls index.html
+  index.html
+  $ echo $?
+  0
+  $ ls nowhere
+  ls: nowhere: No such file or directory
+  $ echo $?
+  1                          
+</pre>
+
+<h4>Conditional execution</h4>
+
+<p>
+The conditional operators are <tt>&&</tt> (and) and <tt>||</tt> (or)
+test command status to determine whether to execute the next
+command. In <tt><em>cmd1</em> && <em>cmd2</em></tt>, <tt><em>cmd2</em></tt>
+executes only if <tt><em>cmd1</em></tt> succeeds.  In <tt><em>cmd1</em> ||
+<em>cmd2</em></tt>, <tt><em>cmd2</em></tt> executes only if 
+<tt><em>cmd1</em></tt> fails.  In <tt><em>cmd1</em> && <em>cmd2</em></tt> 
+|| <tt><em>cmd3</em></tt>, <tt><em>cmd2</em></tt>
+executes if <tt><em>cmd1</em></tt> succeeds and 
+<tt><em>cmd3</em></tt> executes if it fails.
+</p>
+
+<pre>
+   $ file=index.html
+   $ ls $file && echo All is well || echo Something is wrong
+   index.html
+   All is well
+   $ file=nowhere.html
+   $ ls $file && echo All is well || echo Something is wrong
+   ls: nowhere.html: No such file or directory
+   Something is wrong      
+</pre>
+
+<h4>Test command</h4>
+
+<p>
+The <tt>test</tt> command is used to control execution of shell
+scripts.  It computes and returns a status value but produces no
+output.  Use command options to select the condition to test. For
+example the <tt>-a</tt> option tests if a file exists.
+</p>
+
+<p>
+The command <tt>test <em>condition</em></tt> can be abbreviated
+<tt>[ <em>condition</em> ]</tt>
+</p>
+
+<pre>
+   $ file=index.html
+   $ test -a $file && echo $file exists || echo $file does not exist
+   index.html exists
+   $ file=nowhere.html
+   $ [ -a $file ] && echo $file exists || echo $file does not exist
+   nowhere.html does not exist      
+</pre>
+
+<h4>If command</h4>
+
+<p>
+The <tt>if</tt> command provides another way to provide conditional
+execution.  You can put many commands in each block (after the
+<tt>then</tt> or after the <tt>else</tt>).  The shell can tell when
+commands like this are incomplete so you needn't put backslashes at
+the end of lines (however, these commands do seem to be sensitive to
+where you put the linebreaks).
+</p>
+
+
+<pre>
+  $ if [ -a $file ]
+  > then
+  >    echo $file exists
+  > else
+  >    echo $file does not exist
+  > fi
+  nowhere.html does not exist  
+</pre>
+
+<h4>Writing shell scripts</h4>
+
+<p>
+To write a shell script, just put commands in a file (using
+some text editor such as emacs).  There are several shells so the
+first line in the file should identify the shell language you use in 
+your script.  For bash, the line is
+</p>
+
+<pre>
+   #!/bin/bash
+</pre>
+
+<p>
+After the first line, the pound sign <tt>#</tt> indicates a comment.  
+The shell ignores
+everything starting at the pound sign through the end of the line.
+</p>
+
+<p>
+Usually, shell script files do not have any extension (any dot etc.) at the 
+end of the name.
+</p>
+
+<h4>Running shell scripts</h4>
+
+<p>
+There are two ways to run shell scripts.  
+</p>
+
+<p>
+The easiest way is to <em>source</em> the script.  Just execute the
+command <tt>source <em>file</em></tt> (or just
+<tt>. <em>file</em></tt>).  You can type this command in your
+interactive session or put this command in another script.  This
+causes the shell to execute the commands in <tt><em>file</em></tt> in
+the current process, just as if you had typed them then and there, so
+ordinary (un-exported) variables defined in the script can be used by
+subsequent commands in the same process.  You only need read
+permission for <tt><em>file</em></tt> (you don't need execute
+permission) and <tt><em>file</em></tt> need not be in a directory that
+is in your path.
+</p>
+
+<p>
+Another way is to treat the script as a full-fledged Unix command.
+Just execute the command <tt><em>file</em></tt>.  This causes
+Unix to execute <tt><em>file</em></tt> in its own process, so
+unexported variables cannot be used by subsequent commands in the
+process where the command was issued.  You must have execute
+permission for <tt><em>file</em></tt>, and <tt><em>file</em></tt> must
+be in a directory that is in your path.
+</p>
+
+<p>
+In most Linux setups, your working directory <tt>.</tt> is usually not
+in your path (there are security reasons for this), but your own 
+<tt>~/bin</tt> directory is in your path.  This is a good place to 
+put your shell scripts once you've got them working the way you want.
+</p>
+
+<h4>For command</h4>
+
+<p>
+The <tt>for</tt> command enables you to repeat a sequence of commands
+for each item in some collection.  
+</p>
+
+<pre>
+  $ for i in 1 2 3
+  > do
+  >   echo $i
+  > done
+  1
+  2
+  3                            
+</pre>
+
+<p>
+You can use <tt>for</tt> to perform sn operation on every file
+in some collection by using the file glob character star <tt>*</tt>.
+</p>
+
+<pre>
+   $ for file in *.html
+   > do
+   >  echo The file is $file
+   > done    
+   This is file emacs-intro-dl.html
+   This is file emacs-intro.html
+   This is file files-outtakes.html
+   ...
+</pre>
+
+<h4>Command arguments</h4>
+
+<p>
+You can invoke scripts with arguments.
+The special variables <tt>$1</tt>, <tt>$2</tt>, <tt>$3</tt>, etc.
+are the first, second, third etc. command line arguments.
+</p>
+
+<h4>Working with filenames: dirname and basename</h4>
+
+<p>
+You often need to take apart and create filenames in scripts.  The
+<tt>dirname</tt> command outputs the directory part.  The 
+<tt>basename</tt> basename command outputs the filename part, and
+takes an optional argument that can remove the extension.
+</p>
+
+<pre>
+  $ file=/usr/users4/fofc/z2html/tex/dcs.tex
+  $ dirname $file
+  /usr/users4/fofc/z2html/tex             
+  $ basename $file   
+  dcs.tex
+  $ basename $file .tex
+  dcs
+</pre>
+
+<p>
+These commands are often used with backquote to create new filenames.
+</p>
+
+<pre>
+  $ echo We have `basename $file` but we want `basename $file .tex`.html
+  We have dcs.tex but we want dcs.html   
+</pre>
+
+<h4>Other commands: read, while, etc.</h4>
+
+<p>
+The <tt>read</tt> command reads one line from the standard input and
+assigns its contents to variables.  The <tt>read</tt> command returns
+0 (success) until it reaches end of file, so it can be used with the
+<tt>while</tt> command to read files one line at a time.
+</p>
+
+<p>
+There are other control structures including <tt>case</tt> and 
+<tt>until</tt>.
+</p>
+
+<h4>Other pages</h4>
+
+<p>
+
+<ul>
+<li><a href="http://www.faqs.org/faqs/unix-faq/shell/">
+Unix Frequently Asked Questions: Shell</a></li>
+</ul>
+
+</p>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+

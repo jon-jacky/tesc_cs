@@ -1,0 +1,93 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz, Foundations of Computing, Week 9 -- Tues Nov 28 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz, Foundations of Computing, Week 9 -- Tues Nov 28 2000</h4> 
+
+Name:<br><br><br>
+
+<ol>
+<li>
+<p>
+The expression <code>(read)</code> reads one Scheme expression from
+the terminal and returns that expression (it does not evaluate the
+expression).  What does <code>(read)</code> return when you type 
+each of the following inputs?
+</p>
+<ol type=a>
+<li><code>x</code><br><br><br></li>
+<li><code>(x)</code><br><br><br></li>
+<li><code>x y z</code><br><br><br></li>
+<li><code>"x y z"</code><br><br><br></li>
+<li><code>(x y z)</code><br><br><br></li>
+<li><code>(x) (y) (z)</code><br><br><br></li>
+<li><code>(x y<br>
+z)</code><br><br><br></li>
+<li><code>"x y<br>
+z"</code><br><br><br></li>
+<li><code>(x (y (z)))</code><br><br><br></li>
+<li><code>(x (y (z))))</code><br><br><br></li>
+</ol>
+</li>
+
+<li>
+<p>
+Given these definitions:
+<p>
+
+<pre>
+(define (read-three)
+  (read) (read) (read))
+
+(define (read-xyz)
+  (let ((x (read)))
+    (let ((y (read)))
+      (let ((z (read)))
+        (list x y z)))))
+
+(define (read-list)
+  (list (read) (read) (read)))
+</pre>
+
+<ol type=a>
+
+<li>
+<p>
+What does <code>(read-three)</code> return when you type this input?<br>
+<code>x y z</code>
+</p><br><br>
+</li>
+
+<li>
+<p>
+What does <code>(read-xyz)</code> return when you type this input?<br>
+<code>x y z</code>
+</p><br><br>
+</li>
+
+
+<li>
+<p>
+What might <code>(read-list)</code> return when you type this input?  
+Give two different correct answers.<br>
+<code>x y z</code>
+</p><br><br>
+</li>
+
+</ol>
+
+</li>
+</ol>
+
+</body>
+</html>
+
+
+
+
+
+

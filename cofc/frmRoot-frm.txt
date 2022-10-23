@@ -1,0 +1,285 @@
+VERSION 5.00
+Begin VB.Form frmRoot 
+   Caption         =   "Root"
+   ClientHeight    =   6825
+   ClientLeft      =   60
+   ClientTop       =   345
+   ClientWidth     =   5115
+   LinkTopic       =   "Form1"
+   ScaleHeight     =   6825
+   ScaleWidth      =   5115
+   StartUpPosition =   3  'Windows Default
+   Begin VB.TextBox txtTolerance 
+      Alignment       =   1  'Right Justify
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   2520
+      TabIndex        =   2
+      Text            =   "0.01"
+      Top             =   1440
+      Width           =   2055
+   End
+   Begin VB.TextBox txtNumber 
+      Alignment       =   1  'Right Justify
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   2520
+      TabIndex        =   0
+      Text            =   "1.0"
+      Top             =   480
+      Width           =   2055
+   End
+   Begin VB.CommandButton cmdCompute 
+      Caption         =   "Compute"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   735
+      Left            =   2520
+      TabIndex        =   8
+      Top             =   5640
+      Width           =   2055
+   End
+   Begin VB.Label lblProduct 
+      Alignment       =   1  'Right Justify
+      BackColor       =   &H00FFFFFF&
+      Caption         =   "1.0"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   2520
+      TabIndex        =   10
+      Top             =   3720
+      Width           =   2055
+   End
+   Begin VB.Label lblProductLabel 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Root*Root"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   240
+      TabIndex        =   9
+      Top             =   3720
+      Width           =   2055
+   End
+   Begin VB.Label lblIter 
+      Alignment       =   1  'Right Justify
+      BackColor       =   &H00FFFFFF&
+      Caption         =   "0"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   2520
+      TabIndex        =   7
+      Top             =   4560
+      Width           =   2055
+   End
+   Begin VB.Label lblIterLabel 
+      Alignment       =   1  'Right Justify
+      BackColor       =   &H00C0C0C0&
+      Caption         =   "Iterations"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   360
+      TabIndex        =   6
+      Top             =   4560
+      Width           =   1935
+   End
+   Begin VB.Label lblRoot 
+      Alignment       =   1  'Right Justify
+      BackColor       =   &H00FFFFFF&
+      Caption         =   "1.0"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   2520
+      TabIndex        =   5
+      Top             =   2760
+      Width           =   2055
+   End
+   Begin VB.Label lblRootLabel 
+      Alignment       =   1  'Right Justify
+      BackColor       =   &H00C0C0C0&
+      Caption         =   "Root"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   240
+      TabIndex        =   4
+      Top             =   2760
+      Width           =   1935
+   End
+   Begin VB.Label lblTolerance 
+      Alignment       =   1  'Right Justify
+      BackColor       =   &H00C0C0C0&
+      Caption         =   "Tolerance"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   240
+      TabIndex        =   3
+      Top             =   1440
+      Width           =   1935
+   End
+   Begin VB.Label lblNumber 
+      Alignment       =   1  'Right Justify
+      BackColor       =   &H00C0C0C0&
+      Caption         =   "Number"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   240
+      TabIndex        =   1
+      Top             =   480
+      Width           =   1935
+   End
+End
+Attribute VB_Name = "frmRoot"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+' Root - Simple square root finder, demonstrate loop
+'
+'  9-May-2000  J. Jacky  Begun
+
+Option Explicit ' require variable declarations
+
+Dim x As Single ' The number whose root to find
+Dim r As Single ' r for root, the square root of x
+Dim e As Single ' e for epsilon, the tolerance: abs(r*r) < e
+Dim n As Integer ' n, the number of iterations
+
+' Root - returned value is square root
+'  a - argument, input, by value
+'  t - tolerance, input, by value
+'  i - number of iterations, by reference
+Private Function Root(ByVal a As Single, ByVal t As Single, _
+                        ByRef i As Integer) As Single
+
+    ' Local variables
+    Dim d As Single ' d for difference
+    Dim x As Single ' current approximation to root
+    Dim y As Single ' adjustment to current approximation
+    
+    ' Initialize
+    i = 0 ' number of iterations
+    x = 1 ' initial guess for root
+    
+    ' Improve approximation in loop
+    Do
+        x = (x + a / x) / 2# ' improve the approximation
+        d = x * x - a ' calculate difference
+        i = i + 1 ' count this iteration
+        Debug.Print "i "; i; "  guess "; x; "  diff "; d
+    Loop Until Abs(d) < t
+  
+    ' Return final approximation
+    Root = x
+End Function
+' Run root computation and update labels with results
+Private Sub cmdCompute_Click()
+    Debug.Print ' make some space to separate out this run
+    Debug.Print
+    
+    r = Root(x, e, n)
+    lblRoot.Caption = r
+    lblProduct.Caption = r * r
+    lblIter.Caption = n
+End Sub
+' Initial values from control properties set at design time
+Private Sub Form_Load()
+    x = txtNumber.Text
+    e = txtTolerance.Text
+    r = lblRoot.Caption
+    n = lblIter.Caption
+End Sub
+' Just load the new number into x
+' Really ought to check that Text here is a number
+Private Sub txtNumber_Change()
+    x = txtNumber.Text
+End Sub
+' Load tolerance into e, ought to check text is a number
+Private Sub txtTolerance_Change()
+    e = txtTolerance.Text
+End Sub

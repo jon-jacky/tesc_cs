@@ -1,0 +1,463 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Data Structures and Algorithms</title>
+</head>
+
+<body>
+
+<h2>Data Structures and Algorithms</h2>
+
+<h2>Fall 2001</h2>
+
+<h2>Jon Jacky</h2>
+
+<p>
+<b>Reference #:</b> 10260
+</p>
+
+<p>
+<b>8 quarter hours.</b>
+Upper division credit will be awarded in computer science.
+</p>
+
+<p>
+<b>Prerequisites:</b> Foundations of Computing or equivalent.
+Instructor's permission required.
+</p>
+
+<p>
+<b>Lecture and seminar:</b> Tuesdays and Thursdays 5:30 -- 7:00 pm, 
+L1612
+</p>
+
+<p>
+<b>Laboratory:</b> Tuesdays and Thursdays 7:30 -- 9:30 pm, ACC lab
+(L2610 in the 
+<a href="http://192.211.16.12/user/computing/academic/home.htm">Computer Center</a>).
+</p>
+
+
+<p>
+Check here for recent <a href="dsa-announcements.html">announcements</a>
+</p>
+
+<p>
+<a href="dsa-sched.html">Schedule</a><br>
+</p>
+
+<p>
+<a href="#descrip">Description</a><br>
+<a href="#readings">Readings</a><br>
+<a href="#assign">Assignments</a><br>
+<a href="#bentley">Bentley experiment</a><br>
+<a href="#projects">Projects</a><br>
+<a href="dsa-resources.html">Resources</a><br>
+</p>
+
+<p>
+<a href="#samples">Handouts, sample programs, etc.</a><br>
+<a href="#quizzes">Quizzes and solutions</a><br>
+<a href="#tips">Tips, notes, useful links</a><br>
+</p>
+
+<p>
+Last revised October 17, 2001.  Use your browser's <b>Reload</b> or
+<b>Refresh</b> button to get the latest version.
+</p>
+
+
+
+<hr>
+
+<h3><a name="sched">Schedule</a></h3>
+
+<p>
+Here is a week-by-week 
+<a href="dsa-sched.html">schedule</a>.
+</p>
+
+<hr>
+
+<h3><a name="descrip">Description</a></h3>
+
+<p>
+<b>Data Structures and Algorithms</b> is an intensive one-quarter
+immersion in some of the classic problems and techniques of computer
+science, intended for strongly motivated students with programming experience.
+We will hone programming skills, develop design judgment, learn to assess
+correctness, and estimate resource requirements.  Students will make oral
+presentations on computer science literature and on their own work.
+</p>
+
+
+<p>
+This program teaches many facts and techniques which are useful in
+their own right, but the program contents were chosen to impart some
+larger lessons.  Some of these concern the technical content.
+</p>
+
+<ul>
+
+<!--
+<li>
+An algorithm is method for solving a problem, with or without a
+computer.  
+</li>
+-->
+
+<li>
+The distinction between a problem (requirements or specification)
+and a particular method for solving that problem (algorithm).
+There can be different algorithms that solve the same problem.
+</li>
+
+<li>
+The distinction between an algorithm and its realization in one
+particular programming language.  (We'll use Java, but this is not
+a Java programming course.  We'll look at other languages too).
+</li>
+
+<li>
+Working from specifications and designs expressed in natural language,
+pseudocode, or diagrams.
+</li>
+
+<li>
+Different algorithms (that solve the same problem) can have wildly
+different performances.
+</li>
+
+<li>
+Analysis of performance (using counting).  The role of analysis versus
+experiment (testing).
+</li>
+
+<li>
+Quantification of performance: Big-O notation, the function concept,
+sums, powers, logs, growth of functions.
+</li>
+
+<li>
+Analysis of correctness (using assertions).  Analysis versus testing again.
+</li>
+
+<li>
+References (pointers) and dynamic data structures.
+</li>
+
+<li>
+Some useful examples of data structures and algorithms: sorting and searching,
+arrays, lists and trees.
+</li>
+
+<li>
+The distinction between an abstract data structure (such as
+sequence) and its implementation in the constructs provided by
+the programming language (such as arrays or linked lists).
+</li>
+
+<li>
+The concepts abstract and concrete, specification
+and implementation, as these concepts are used in computing.
+</li>
+
+<li>
+The same algorithm (or data structure) can be useful in different contexts.
+</li>
+
+<li>
+Design: the distinction between the core algorithms and data structures,
+and the driver (main program).  Modularity, reuse, libraries.
+</li>
+
+<li>
+Programming language support for data structures, including built-in
+support (arrays in all languages, lists in Lisp, tables in Awk/Perl),
+and libraries (the Collection class in Java).
+</li>
+
+<li>
+Computability, intractability.
+</li>
+
+<li>
+History and literature.  People have been at this for a long time.
+Don't try to reinvent the wheel.
+</li>
+
+<li>
+New directions: computing with DNA, quantum effects.
+</li>
+
+</ul>
+
+<p>
+Other lessons concern practice and methodology.
+<p>
+
+<ul>
+<li>
+Working from real-life sources (instead of being spoon-fed from textbooks).
+<li>
+Producing something presentable, a project or a product (not
+just an exercise to be graded).
+</li>
+<li>
+Working in groups, project management.
+</li>
+<li>
+Presenting your work, explaining technical material.
+</li>
+</ul>
+
+<p>
+This all builds on <a href="../fofc/learned.html">what we learned</a>
+in earlier courses.
+</p>
+
+<hr>
+
+<h3><a name="readings">Readings</a></h3>
+
+<p>
+There is no textbook for this course.  Instead, our required readings
+will be from notes and reprints handed out in class or downloaded from the web.
+</p>
+
+<p>
+For the first several weeks we will work from some of Jon Bentley's
+<em>Programming Pearls</em> columns, which were originally published in
+a journal, <b>Communications of the ACM</b>.  The columns
+were also published in two books, 
+<a href="http://www.programmingpearls.com/"><b>Programming Pearls</b></a>
+(1986, 2000) and <b>More Programming Pearls</b> (1988), but you do not need
+to purchase them -- we'll hand out copies in class (the ACM grants
+permission to copy this material without a fee).
+</p>
+
+<p>
+The following table shows the Bentley articles we will study.  The
+first column in the table gives the title of the article.  The next
+columns give the volume, number, pages, month and year of the original
+article in <b>Communications</b>, and the chapter numbers in the first
+(1986, 1e) and second (2000, 2e) editions of the <b>Pearls</b> or
+<b>More Pearls</b> books.
+</p>
+
+<p>
+The current edition (2e) of <b>Pearls</b> is similar to the articles
+we'll hand out.  The main difference is that he changed the pseudocode
+in the program samples from Pascal-like to C-like, so in the papers
+and 1e arrays range from <code>1..N</code> but in 2e they range from
+<code>0..n-1</code>.
+</p>
+
+<p>
+We'll begin with the <em>Algorithm Design Techniques</em> article.
+We'll hand out copies at the first class.  I expect we'll spend at
+least two weeks on it. I'm not sure about the schedule or the order of
+the articles after that.  We may not even do all of them.
+</p>
+
+<p>
+There will be other required readings, besides the Bentley articles.
+I will announce them later.
+</p>
+
+<p>
+Here are some <a href="dsa-resources.html">other resources</a> 
+pertinent to this course.
+</p>
+
+<table border cellpadding=10>
+<tr><td>Title</td>
+<td>Vol(N)</td><td>Pages</td><td>Mo Year</td><td>1e</td><td>2e</td>
+<td>More</td></tr>
+<tr><td>Algorithm Design Techniques</td>
+<td>27(9)</td><td>865 - 871</td><td>Sep 1984</td><td>7</td><td>8</td>
+<td>-</td></tr>
+<td>Aha! Algorithms</td>
+<td>26(9)</td><td>623 - 628</td><td>Sep 1983</td><td>2</td><td>2</td>
+<td>-</td></tr>
+<tr><td>Writing Correct Programs</td>
+<td>26(12)</td><td>1040 - 1045</td><td>Dec 1983</td><td>4</td><td>4</td>
+<td>-</td></tr>
+<tr><td>Sorting</td>
+<td>27(4)</td><td>287 - 291</td><td>Apr 1984</td><td>10</td><td>11</td>
+<td>-</td></tr>
+<td>Searching (actually Random Selection)</td>
+<td>27(12)</td><td>1179 - 1182</td><td>Dec 1984</td><td>11</td><td>12,13</td>
+<td>-</td></tr>
+<tr><td>Heaps</td>
+<td>28(3)</td><td>245 - 250</td><td>Mar 1985</td><td>12</td><td>14</td>
+<td>-</td></tr>
+<td>Confessions of a Coder (Testing)</td>
+<td>28(7)</td><td>671 - 679</td><td>Jul 1985</td><td>-</td><td>-</td>
+<td>3,A</td></tr>
+<td>Associative Arrays</td>
+<td>28(6)</td><td>570 - 575</td><td>Jul 1985</td><td>-</td><td>-</td>
+<td>2</td></tr>
+</table>
+
+<hr>
+
+
+<h3><a name="assign">Assignments</a></h3>
+
+<p>
+The first assignments will include some programming in Java.  There is
+no required Java textbook.  If you have a Java book you like, bring it
+to class.  There are links to many Java resources on this page from <a
+href="../fofc/fofc-spring.html">another course</a>. The assignments
+won't get into any Java arcana so if you know some other
+block-structured imperative programming language you should be alright
+(C, C++, Perl, Pascal, Basic, ...)
+</p>
+
+<ul>
+<li>
+<a href="dsa-assign1.txt">Java programming review</a>
+</li>
+<li>
+<a href="dsa-assign2.txt">Bentley experiment</a>
+</li>
+</ul>
+
+<hr>
+
+<h3><a name="bentley">Bentley experiment</a></h3>
+
+<p>
+Here is the code that all the groups created for the 
+<a href="dsa-assign2.txt">Bentley experiment</a> assignment.
+</p>
+
+<p>
+On grace you can copy these files from the directories under
+<a href="bentley-dir"><tt>/usr/users4/dsa/bentley</tt></a>.  
+Or, you can save them from this web page
+(the files are named <tt>.txt</tt> here - you'll have to rename them 
+to <tt>.java</tt>).
+</p>
+
+<ul>
+<li><a href="Algorithm1.txt">Algorithm1</a></li>
+<li><a href="CubicAlgorithm.txt">CubicAlgorithm</a></li>
+</ul>
+
+<ul>
+<li><a href="Algorithm2.txt">Algorithm2</a></li>
+<li><a href="MakeArray.txt">MakeArray</a>,
+<a href="TestMakeArray.txt">TestMakeArray</a></li>
+</ul>
+
+<ul>
+<li><a href="Algorithmtwobe.txt">Algorithmtwobe</a></li>
+<li><a href="LoadArray.txt">LoadArray</a>,
+<a href="AlgorithmtwobeDemo.txt">AlgorithmtwobeDemo</a></li>
+</ul>
+
+<ul>
+<li><a href="Algorithm3.txt">Algorithm3</a></li>
+<li><a href="Algorithm3Driver.txt">Algorithm3Driver</a></li>
+</ul>
+
+
+<ul>
+<li><a href="Algorithm4.txt">Algorithm4</a></li>
+<li><a href="README4.txt">README4.txt</a>,
+<a href="Driver4.txt">Driver4</a></li>
+</ul>
+
+<hr>
+
+<h3><a name="projects">Projects</a></h3>
+
+<p>
+After one or more short Java programming assignments, there will be
+one or more projects which are up to you to choose.  Your project might
+involve writing a program, analyzing an existing program or doing a
+research paper.  For the projects you may use any programming
+language you wish.  Projects will include a presentation to the
+class.  Even the short assignments might include a brief oral
+report.
+</p>
+
+<hr>
+
+<h3><a name="samples">Handouts, sample programs, etc.</a></h3>
+
+<p>
+On grace you can copy these programs from the directories under
+<a href="java-dir"><tt>/usr/users4/dsa</tt></a>.  
+Or, you can save them from this web page
+(the files are named <tt>.txt</tt> here - you'll have to rename them 
+to <tt>.java</tt>).
+</p>
+
+<ul>
+<li>
+<a href="ArraySumDemo-anno.txt">ArraySum, ArraySumDemo</a>, 
+Annotated versions, Sept 25 handout
+</li>
+<li>
+<a href="ArraySum.txt">ArraySum</a>, 
+<a href="ArraySumDemo.txt">ArraySumDemo</a>.
+With <tt>signed_array_sum</tt>, solution to homework due Oct 2
+</li>
+<li>
+<a href="PosArraySum.txt">PosArraySum</a>, 
+<a href="PosArraySumDemo.txt">PosArraySumDemo</a>,
+Solution to Oct 4 quiz
+</li>
+</ul>
+
+<hr>
+
+<h3><a name="quizzes">Quizzes and solutions</a></h3>
+
+<p>
+There will be (nearly) weekly quizzes on the technical material.
+</p>
+
+<ul>
+<li>
+Week 2, Th <a href="quiz-dsa-w2th.html">Quiz</a>,
+<a href="soln-dsa-w2th.html">Solutions</a>
+</li>
+<li>
+Week 4, Tu <a href="quiz-dsa-w4tu.html">Quiz</a>,
+<a href="soln-dsa-w4tu.html">Solutions</a>
+</li>
+</ul>
+
+
+<hr>
+
+<h3><a name="tips">Tips, notes, useful links</a></h3>
+
+<ul>
+<li>
+<a href="../fofc/fofc-spring.html#software">Java software</a>
+</li>
+<li>
+<a href="../fofc/fofc-spring.html#online">Java tutorials</a>
+</li>
+<li>
+<a href="../fofc/telnet.html">Using the ACC lab machines from home via telnet</a>
+</li>
+<li>
+<a href="../fofc/fofc-winter.html#labs">Using Linux at the ACC lab</a>
+</li>
+<li>
+<a href="../fofc/unix-links.html">Linux and Unix links</a>
+</li>
+</ul>
+
+<hr>
+
+<a href="../index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

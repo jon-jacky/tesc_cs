@@ -1,0 +1,84 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz, Foundations of Computing, Spring, Week 2 -- Thurs Apr 12 2001</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz, Foundations of Computing, Spring, Week 2 -- Thurs Apr 12 2001</h4> 
+
+Name:<br><br><br>
+
+<p>
+A single file contains the following Java code (exactly as it appears
+here, there is nothing else in the file).  The is compiled
+by the Java compiler and the resulting Java program is run.
+</p>
+
+<pre>
+public class Alpha {
+    static boolean p = false;
+
+    public static void main(String args[]) {
+	logic(p);          
+	Beta.logic(p);     
+	logic(Beta.p);     
+	Beta.logic(Beta.p);
+    }
+
+    public static void logic(boolean p) {
+	boolean q = false;
+	System.out.println(" p " + p + "   q " + q
+			   + "    p && q  " + (p && q) 
+			   + "    p || q  " + (p || q));
+    }
+}
+
+class Beta {
+    static boolean p = true;
+
+    public static void logic(boolean p) {
+	boolean q = true;
+	System.out.println(" p " + p + "   q " + q
+			   + "    p && q  " + (p && q) 
+			   + "    p || q  " + (p || q));
+    }
+}
+</pre>
+
+<ol>
+<li>
+What is the name of this file?
+<br><br>
+</li>
+<li>
+What is the command to compile this file with the Java compiler?
+<br><br>
+<li>
+What is the name of the file that the Java compiler produces?
+<br><br>
+<li>
+What does that file contain?
+<br><br>
+</li>
+<li>
+What is the command to run the program?
+<br><br>
+</li>
+<li>
+What output does the program produce?  (Don't worry about getting 
+the exact number of spaces or lining up the columns exactly  -- just
+write the output reasonably neatly.)
+<br><br>
+</li>
+</ol>
+
+</body>
+</html>
+
+
+
+
+
+

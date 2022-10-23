@@ -1,0 +1,67 @@
+<!--
+
+This is ~jackyj/web/fofc/index.html
+
+It is almost like ~jacky/web/index.html except it links to other pages
+in the same directory rather than the fofc subdirectory of this directory.
+
+This version is necessary because the links to "Jon Jacky" at the bottom
+of each page in this directory point to index.html in the same directory, 
+not the directory above.  In other words, they point to this page.
+
+-->
+
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Jon Jacky</title>
+</head>
+
+<body>
+<h2>Jon Jacky</h2>
+ 
+<p>
+This is my page at <a href="http://www.evergreen.edu/user/home.htm">
+The Evergreen State College</a>.
+I also have a <a href="http://www.radonc.washington.edu/prostaff/jon/">page</a>
+at the University of Washington.
+</p>
+
+<hr>
+
+<p>
+In the Fall 2000 -- Spring 2001 academic year I am teaching <a
+href="fofc.html">Foundations of Computing</a> in the 
+<a href="http://www.evergreen.edu/user/PTS/home.htm">Part-Time Studies</a>
+program.
+</p>
+
+<p>
+I am rarely on the Evergreen campus, except when I am teaching a
+class, so it's no use trying to reach me at my on-campus office or
+telephone.  Instead, send me email (address below).  I try to check
+email most weekdays.
+</p>
+
+<p>
+The lecture/seminar classroom for Spring Quarter is <b>Library 1612</b>,
+same as Winter.  The first class of the quarter will meet there
+at <b>5:30 pm, Tuesday April 3</b>.  We will continue in the ACC lab at 7:30.
+</p>
+
+<p>
+In Spring 2000 I taught <a href="../cofc/cofcii.html">Concepts of Computing</a>.
+</p>
+
+
+<hr>
+
+<p>
+Last revised March 29, 2001.  Use your browser's <b>Reload</b> or
+<b>Refresh</b> button to get the latest version.
+</p>
+
+Jon Jacky, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

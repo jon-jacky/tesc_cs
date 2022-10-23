@@ -1,0 +1,183 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Java Quiz Solutions, Foundations of Computing, Spring</title>
+</head>
+
+<body>
+
+<h4>Java Quiz Solutions, Foundations of Computing, Spring</h4> 
+
+<ol type=1>
+
+<li>
+
+<p>
+A single file contains the following Java code (exactly as it appears
+here, there is nothing else in the file).  The file is compiled
+by the Java compiler and the resulting Java program is run.
+</p>
+
+<pre>
+class Foo {
+    public static void println() {
+	System.out.println("Foo");
+    }
+}
+
+public class FooDemo {
+    public static void main(String[] argv) {
+	System.out.println("FooDemo");
+	Foo.println();
+    }
+}
+</pre>
+
+<ol type=a>
+<li>
+What is the name of this file?
+&nbsp; &nbsp; <tt>FooDemo.java</tt>
+<br><br>
+</li>
+<li>
+What is the command to compile this file with the Java compiler?
+ &nbsp; &nbsp; <tt>javac FooDemo.java</tt>
+<br><br>
+<li>
+What is (are) the name(s) of the file(s) that the Java compiler produces?
+ &nbsp; &nbsp; <tt>FooDemo.class  Foo.class</tt>
+<br><br>
+<li>
+What do(es) the file(s) contain?
+ &nbsp; &nbsp; <tt>Java bytecodes</tt>
+<br><br>
+</li>
+<li>
+What is the command to run the program?
+ &nbsp; &nbsp; <tt>java FooDemo</tt>
+<br><br>
+</li>
+<li>
+What output does the program produce?
+<br>
+<pre>
+FooDemo
+Foo
+</pre>
+</li>
+</ol>
+</li>
+
+<li>
+
+<p>
+A single file contains the following Java code (exactly as it appears
+here, there is nothing else in the file).  The file is compiled
+by the Java compiler and the resulting Java program is run.
+</p>
+
+<pre>
+public class Loop {
+    public static void main(String[] argv) {
+	String a[] = new String[4];
+	a[0] = "Alpha"; a[1] = "Beta"; a[2] = "Delta"; a[3] = "Gamma"; // init
+	for (int i = 0; i < 4; i++) {
+	    System.out.println((i+1) + ".  " + a[i]);
+	}
+    }
+}
+</pre>
+<p>What output does the program produce?</p>
+<pre>
+1.  Alpha
+2.  Beta
+3.  Delta
+4.  Gamma     
+</pre>
+</li>
+
+<li>
+In the preceding program (in class <tt>Loop</tt>), 
+what happens if the statement
+<tt>a[4] = "Epsilon";</tt> is added to the line marked <tt>// init</tt>?
+Give your answer in one sentence.
+<br><br>
+When the interpreter reaches this statement, the program will
+throw an <tt>ArrayIndexOutOfBoundsException</tt> and stop running.
+<br><br>
+</li>
+
+<li>
+<p>This program is compiled and run</p>
+<pre>
+class Thing {
+    int x;
+    public Thing(int i) { x = i; }
+    public void speak() { System.out.print(x); }
+}
+
+public class ThingDemo {
+    public static void main(String[] argv) {
+	Thing a, b;
+	a = new Thing(1); 
+	b = a;
+	System.out.print("a "); a.speak(); System.out.print("  b "); b.speak();
+ 	System.out.println();
+	b.x = 2;
+	System.out.print("a "); a.speak(); System.out.print("  b "); b.speak();
+	System.out.println();
+    }
+}
+
+</pre>
+<p>
+What output does this program produce?
+</p>
+<pre>
+a 1  b 1
+a 2  b 2        
+</pre>
+</li>
+
+<li>
+<p>
+Answer the following questions accurately but briefly.
+There is a correct one word answer to each question.
+</p>
+
+<ol type=a>
+<li>
+<tt>System.out.println</tt> is the name of a thing in the Java platform.
+Which Java language construct is this thing an example of?
+ &nbsp; &nbsp; <tt>Method</tt>
+<br><br>
+</li>
+<li>
+<tt>System.out</tt> is the name of a thing in the Java platform.
+Which Java language construct is this thing an example of?
+ &nbsp; &nbsp; <tt>variable (or object or PrintStream or ...)</tt>
+<br><br>
+</li>
+<li>
+<tt>System</tt> is the name of a thing in the Java platform.
+Which Java language construct is this thing an example of?
+ &nbsp; &nbsp; <tt>Class</tt>
+<br><br>
+</li>
+<li>
+What package is <tt>System</tt> in?
+ &nbsp; &nbsp; <tt>java.lang</tt>
+<br><br>
+</li>
+</li>
+
+</ol>
+
+</body>
+</html>
+
+
+
+
+
+

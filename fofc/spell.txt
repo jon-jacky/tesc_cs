@@ -1,0 +1,6 @@
+# Spell pipeline - Linux version of Bentley "pearl" CACM 28(5) May 1985 p. 457
+tr '[A-Z]' '[a-z]' |         # map upper to lower case
+ tr -c '[a-z]' '\n' |        # change punctuation and spaces to linebreaks
+   sort |                    # put words in alphabetic order
+     uniq |                  # remove duplicate lines (or use sort -u above)
+       comm - -23 /usr/dict/words # report words not in dictionary

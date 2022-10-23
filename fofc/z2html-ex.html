@@ -1,0 +1,136 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Assignment, Foundations of Computing</title>
+</head>
+
+<body>
+
+<h4>Lab Assignment, Foundations of Computing</h4>
+
+<p>
+<a href="#hints">Hints</a> added January 24 2001.  Click your
+browser's <b>Reload</b> or <b>Refresh</b> button to get the latest
+version.
+</p>
+
+<hr>
+
+<p>
+Construct a web page by putting a file named <tt>z-test.html</tt>
+in the <tt>web</tt> subdirectory of your login directory. 
+This page will be available on the web at 
+<tt>http://grace.evergreen.edu/~username/z-test.html</tt>. Prepare the
+file and make it display properly, following these instructions:
+</p>
+
+<p>
+Start with the TeX file with your last name in the
+<tt>/usr/users4/fofc/z2html/tex</tt> directory.  For example the
+instructor's TeX file is <tt>jacky.tex</tt>.
+</p>
+
+<p>
+Create your HTML file by using programs in the
+<tt>/usr/users4/fofc/z2html/bin</tt> directory.  The sed
+program <tt>z2html.sed</tt> performs most of the processing, reading
+TeX from the standard input and writing HTML to the standard output.
+The awk program <tt>paragraph.awk</tt> does some post-processing,
+reading HTML from the input and writing HTML to the output.
+</p>
+
+<p>
+The <tt>z2html-cmd</tt> script in the <tt>z2html/bin</tt> directory
+shows one way to coordinate the programs.  It takes the name of the 
+TeX file as its only argument and writes the HTML to standard output.
+However it only works when the script, the sed program, and the awk
+program are all in the working directory.
+</p>
+
+<p>
+When you have an HTML file, edit it to add a horizontal rule and
+your name at the bottom.  See 
+<tt>http://grace.evergreen.edu/~jackyj/z-test.html</tt>
+</p>
+
+<p>
+The HTML file will only display properly if there is a subdirectory
+named <tt>zimg</tt> in your <tt>web</tt> subdirectory, containing all
+the GIF's mentioned in the HTML file.  There is an example at
+<tt>/usr/users4/fofc/z2html/zimg</tt>
+</p>
+
+<p>
+The HTML file will only display properly in some browsers if there
+is a <tt>zed.css</tt> file in your <tt>web</tt> subdirectory.  There
+is an example at <tt>/usr/users4/fofc/z2html/html/zed.css</tt>
+</p>
+
+<p>
+(The TeX files are excerpted from these
+<a href="http://www.radonc.washington.edu/prostaff/jon/z/z-examples.html">
+Z notation examples</a>.  The programs and GIFs are from the 
+<a href="http://www.radonc.washington.edu/prostaff/jon/z/z2html/z2html.html">
+<b>Z2HTML</b> translator</a>.)
+
+<h4><a name=hints>Hints</a></h4>
+
+<p>
+The <tt>z2html-cmd</tt> script takes one argument on the command line:
+the name of the TeX file to translate.  It writes the translated HTML output
+to the standard output.  To see the script in action, translating
+<tt>jacky.tex</tt> and writing the HTML to your screen, <tt>cd</tt>
+into the <tt>/usr/users4/fofc/z2html/bin</tt> directory and execute this
+command:
+</p>
+
+<pre>
+   ./z2html-cmd jacky.tex
+</pre>
+
+<p>
+You may have to put <tt>./</tt> in front of <tt>z2html-cmd</tt> (with
+no spaces) to force the shell to execute the command because the
+working directory <tt>.</tt> (dot) may not be in your path when you
+log in on a machine in the ACC lab. (It seems the working directory is
+in your path when you log in using telnet --- another one of those
+little wrinkles.)
+</p>
+
+<p>
+Each commands in the pipeline in <tt>z2html-cmd</tt> has options and
+arguments.  The whole pipeline is
+
+<pre>
+   cat $1 | sed -f z2html.sed | awk -f paragraph.awk
+</pre>
+
+The meaning of each command in the pipeline is
+
+<dl>
+<dt><tt>cat $1</tt>
+<dd>
+Read the file named in the first command line argument and write
+it to standard output (the next program in the pipeline).
+<br>
+</dd>
+<dt><tt>sed -f z2html.sed</tt>
+<dd>
+Run the <tt>sed</tt> language interpreter, taking instructions from
+the script in the file <tt>z2html.sed</tt> in the working directory.
+Read text from standard input and write translated text to standard output.
+<br>
+</dd>
+<dt><tt>awk -f paragraph.awk</tt>
+<dd>
+Run the <tt>awk</tt> language interpreter, taking instructions from
+the script in the file <tt>paragraph.awk</tt> in the working
+directory.  Read text from standard input and write translated text to
+standard output.
+<br>
+</dd>
+</tt>
+
+</body>
+</html>
+

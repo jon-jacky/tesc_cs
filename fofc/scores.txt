@@ -1,0 +1,32 @@
+# Print a message before starting to read input
+BEGIN { print "Enter a list of names and scores: "; print "" }
+
+      # At each line of input, assign array elements
+      # NR is current line number, $1 is first field on line, $2 is second ...
+      { name[NR] = $1; score[NR] = $2 }
+
+# After input finished (type ctrl-D), print out arrays and calculate average
+END { print "" # print a blank line
+      for (i = 1; i <= NR ; i = i+1) { # i is array index, NR is n of lines
+	  sum = sum + score[i]  # sum is initally zero, like all Awk variables
+	  print "Name: " name[i] " Score: " score[i] " Running sum: " sum
+	}
+	average = sum / NR # NR is total number of lines in file
+        print ""
+	print "average score " average
+     }
+
+Here is a sample program run:
+
+$ awk -f scores
+Enter a list of names and scores:
+
+Jack 90
+Jill 100
+Jane 110
+ 
+Name: Jack Score: 90 Running sum: 90
+Name: Jill Score: 100 Running sum: 190
+Name: Jane Score: 110 Running sum: 300
+ 
+average score 100                 

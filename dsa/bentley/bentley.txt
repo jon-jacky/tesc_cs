@@ -1,0 +1,32 @@
+Data Structures and Algorithms - Second programming assignment
+
+We'll reproduce the experiment described in Bentley's "Algorithm
+Design Techniques", CACM 27(9), Sep 1984, 865-871 (also in his book
+Programming Pearls, chapter 7 in the 1st edition, chapter 8 in the 2nd).
+
+We'll divide up into groups.  Each group will implement one of the
+algorithms, write a test driver for their algorithm, and execute their
+algorithm.  Part of the assignment is to create meaningful test data
+that checks both the correctness and performance of the implementation.
+
+After each group has tested its own algorithm, it will then test all the
+other group's algorithms.  Part of the assignment is to come up with an
+approach for representing the drivers, test data, and algorithms that makes
+it easy to do this.
+
+We will all use the Java programming language for this assignment.
+
+The first milestone is Thursday Oct 4.  Each group will give a brief oral
+report on how their algorithm works and how they will implement it in Java.
+It is not required to have a working Java implementation by this point,
+but you should at least have a sketch, or an idea, or have identified some
+important problems and issues.  You should also have a suggestion for how
+the groups can make their implementations available to each other.
+
+The groups are:
+
+Algorithm 1 (p. 865)         Algorithm 2 (p. 866)     Algorithm 2b (p. 866)
+--------------------         --------------------     ---------------------
+
+Algorithm 3 (p. 867)          Algorithm 4 (p. 867)
+--------------------          --------------------

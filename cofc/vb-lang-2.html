@@ -1,0 +1,297 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Visual Basic Language II</title>
+</head>
+<body>
+<h2>Concepts of Computing, Section II</h2>
+
+<h2>Visual Basic Language II</h2>
+
+<ul>
+<li><a href="#data">Data types</a></li>
+<li><a href="#array">Array declaration</a></li>
+<li><a href="#ref">Array reference</a></li>
+<li><a href="#function">Function definition</a></li>
+<li><a href="#fcall">Function call</a></li>
+<li><a href="#do-while">Do While loop</a></li>
+<li><a href="#do-until">Do Until loop</a></li>
+<li><a href="#for">For loop</a></li>
+<li><a href="#files">File operations: Open, Close, Input, Line, Output</a></li>
+<li><a href="#print">Print and Format</a></li>
+</ul>
+
+<ul>
+<li><a href="#other">Other web pages</a></li>
+</ul>
+
+<p>
+Back to <a href="cofcii.html">course page</a>.
+</p>
+
+<hr>
+
+<h3><a name="data">Data types</a></h3>
+
+<pre>
+    Integer
+    Single
+    Double
+    String
+</pre>
+
+<p>Use in declarations</p>
+
+<pre>
+    Dim <em>variable</em> As <em>Type</em>
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    Dim x As Double
+</pre>
+
+
+<hr>
+
+<h3><a name="array">Array declaration</a></h3>
+
+<pre>
+    Dim <em>var</em>(<em>size</em>) As <em>Type</em>
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    Dim list(10) As Integer ' a list of 10 numbers
+</pre>
+
+
+<hr>
+
+<h3><a name="ref">Array reference</a></h3>
+
+<pre>
+    <em>var</em>(<em>index</em>)
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    list(i)
+</pre>
+
+<hr>
+
+<h3><a name="function">Function definition</a></h3>
+
+<p><code>ByRef</code> is the default parameter passing mechanism.</p>
+
+<pre>
+    Private Function <em>Name</em>(ByVal <em>var</em> As <em>Type</em>, ByRef <em>var</em> As <em>Type</em>, ...) As <em>Type</em>
+        ...
+        <em>statements</em>
+	...
+        <em>Name</em> = <em>var</em>
+    End Function
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    Private Function Root(ByVal a As Single, ByVal t As Single, _
+                        ByRef i As Integer) As Single
+        ...			
+        <em>statements</em>
+	...	
+        Root = x
+    End Function
+</pre>
+
+
+<hr>
+
+<h3><a name="fcall">Function call</a></h3>
+
+<pre>
+    <em>var</em> = <em>Name</em>(<em>var</em>, <em>var</em>, ...)
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    r = Root(x, e, n)
+</pre>
+
+<hr>
+
+
+
+<h3><a name="do-while">Do While loop</a></h3>
+
+<pre>
+    Do While <em>condition</em>
+        ...
+	<em>statements</em>
+	...
+    Loop
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    Do While Not EOF(1) And nlines < 20 ' don't overrun array
+        nlines = nlines + 1
+        Line Input #1, lines(nlines)
+	...
+        Debug.Print nlines; lines(nlines)
+    Loop
+</pre>
+<hr>
+
+<h3><a name="do-until">Do Until loop</a></h3>
+
+<pre>
+    Do
+        ...
+	<em>statements</em>
+	...
+    Loop Until <em>condition</em>
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    Do
+        x = (x + a / x) / 2# ' improve the approximation
+        d = x * x - a ' calculate difference
+        i = i + 1 ' count this iteration
+        Debug.Print "i "; i; "  guess "; x; "  diff "; d
+    Loop Until Abs(d) < t
+</pre>
+
+<p>also <code>Do Until ... Loop</code> and <code>Do ... Loop While ...</code></p>
+
+<hr>
+
+<h3><a name="for">For loop</a></h3>
+
+<pre>
+    For <em>index</em> = <em>start</em> To <em>end</em>
+        ...
+	<em>statements</em>
+	...
+    Next <em>index</em>
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    For i = 1 To 10
+        list(i) = Int(100 * Rnd())
+        If list(i) > max Then max = list(i)
+        frmMaximum.Print "   i "; i; "  list(i) "; list(i)
+    Next i
+</pre>
+
+<hr>
+
+<h3><a name="files">File operations: Open, Close, Input, Line, Output</a></h3>
+
+<p>File numbers do not require declarations</p>
+
+<pre>
+    Open <em>filename</em> For Input As #<em>file number</em>
+</pre>
+
+<pre>
+    Line Input #<em>file number</em>, <em>variable or array reference</em>
+</pre>
+
+<pre>
+    Close #<em>file number</em>
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    Open infile For Input As #1
+    nlines = 0
+    Do While Not EOF(1) And nlines < 20 ' don't overrun array
+        nlines = nlines + 1
+        Line Input #1, lines(nlines)
+	...
+    Loop
+    Close #1
+</pre>
+
+<p>also</p>
+
+<pre>
+    Open <em>filename</em> For Output As #<em>file number</em>
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    Open outfile For Output As #2
+    For i = 1 To nlines
+        Print #2, lines(i)
+    Next i
+    Close #2
+</pre>
+
+<hr>
+
+
+<h3><a name="print">Print and Format</a></h3>
+
+<p>Semicolons separate arguments in <code>Print</code>.  Arguments
+can be quoted strings, string-valued expressions, or variables.  
+Variable values of numeric types etc. are converted to strings.</p>
+
+<pre>
+    <em>Destination</em>.Print <em>arg</em>; <em>arg</em>; ...
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    Debug.Print nlines; lines(nlines)
+</pre>
+
+<p><code>Format</code> does formatted output.  For example
+<code>"####.#"</code> represent formatted (right justified) numbers.</p>
+
+<pre>
+    Format(<em>expression</em>, "<em>format string</em>")
+</pre>
+
+<p><code>Format</code> calls often appear in <code>Print</code> arguments</p>
+ 
+<p>Example:</p>
+
+<pre>
+    Debug.Print " xo "; Format(xo, "#####"); "  yo "; Format(yo, "#####"); _
+        "  xi "; Format(xi, "#####"); "  yi "; Format(yi, "#####");
+</pre>
+
+<hr>
+
+<h3><a name="other">Other web pages</a></h3>
+
+<ul>
+<li>VB Information Center tutorial and reference<br>
+<a href="http://www.vbinformation.com/tutor.htm">
+http://www.vbinformation.com/tutor.htm</a></li>
+</ul>
+
+<p>
+Back to <a href="#top">top</a>
+</p>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

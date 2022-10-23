@@ -1,0 +1,205 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>DrScheme notes, Foundations of Computing -- Fall 2000</title>
+</head>
+
+<body>
+
+<h2>DrScheme notes, Foundations of Computing -- Fall 2000</h2>
+
+
+<p>
+Here are some notes on using the <b>DrScheme</b> installation in the ACC lab.
+If you install DrScheme on your own computer, you will need to do similar procedures
+but the paths may be different.
+</p>
+
+
+<p>
+<a href="#level">Language Level</a><br>
+<a href="#textbooks">Teachpack</a><br>
+<a href="#load">Loading <b>functions.scm</b> and other files</a><br>
+<a href="#break">Break</a><br>
+<a href="#exit">Exit</a><br>
+<a href="#step">Stepper</a><br>
+<a href="#lib">Loading <b>trace</b> and other libraries</a><br>
+</p>
+
+<p>
+Last revised November 2, 2000.  
+Use your browser's <b>Reload</b> or <b>Refresh</b>
+button to get the latest version.
+</p>
+
+<p>
+Back to <a href="lab-sched-fall.html">Fall quarter lab schedule</a> page.
+</p>
+
+<hr>
+
+<a name="level"><h3>Language Level</h3></a>
+
+<p>
+Usually we will want to use the <b>Full Scheme</b> level:
+
+<ol>
+<li>On the DrScheme menu bar, select <b>Language</b></li>
+<li>On the menu, select <b>Choose Language...</b></li>
+<li>In the <b>Language</b> dialog, pull down the <code>Language</code>
+menu and select <b>Full Scheme</b></li>
+<li>In the radio button panel, select <code>Graphical (Mr.Ed)</code></li>
+<li>In the <b>Language</b> dialog, click on <b>OK</b></li>
+<li>Click on the DrScheme <b>Execute</b> button.  This message should appear at the top fof the DrScheme Interactions window:<br>
+<code>Language: Graphical Full Scheme (Mr Ed)</code></li>
+</ol>
+
+
+<p>
+From now on this language level should be selected automatically each
+time you start DrScheme.  You can always confirm this by looking at the top of the 
+interactions window.
+</p>
+
+<p>You can use the same procedure to change the language level at any time.</p>
+
+<a name="teachpack"><h3>Teachpack</h3></a>
+
+<p>
+To run the examples in the textbook <b>Simply Scheme</b>, you must load its teachpack:
+</p>
+
+<ol>
+<li>On the DrScheme menu bar, select <b>Language</b></li>
+<li>On the menu, select <b>Add Teachpack</b></li>
+<li>In the <b>Select a Teachpack</b> dialog, navigate to 
+<code>Q:\FofC\simply-teachpack.scm</code> and select it.</li>
+<li>Now the <b>Language</b> menu should have an entry, 
+<code>Clear simply-teachpack.scm</code></li>
+<li>Click on the DrScheme <b>Execute</b> button. This message should appear at the top fof the DrScheme Interactions window:<br>
+<code>Teachpack: Q:\FofC\simply-teachpack.scm.</code></li>
+</ol>
+
+<p>
+From now on this teachpack should be loaded automatically each time
+you start DrScheme.  You can always confirm this by looking at the top
+of the interactions window, or the <b>Language</b> menu.
+</p>
+
+<p>You can use the same procedure to load other teachpacks.</p>
+
+<p>
+To confirm that you have loaded the teachpack successfully, type this command in the
+DrScheme interactions window:
+</p>
+
+<pre>
+    (word 'comp 'uter)
+</pre>
+
+<p>
+DrScheme should respond
+</p>
+
+<pre>
+    computer
+</pre>
+
+
+<a name="#load"><h3>Loading <b>functions.scm</b> and other files</h3></a>
+
+<p>
+To do the examples in Chapter 2 in <b>Simply Scheme</b> you must load the 
+file <code>functions.scm</code>.
+</p>
+
+<p>
+The command given in the textbook, <code>(load "functions.scm")</code> 
+does not work in the ACC lab.
+</p>
+
+<p>
+Instead you must use this command:
+</p>
+
+<pre>
+    (load "Q:\\FofC\\functions.scm") 
+</pre>
+
+<p>
+Note the double backslashes in the path.
+</p>
+
+<p>
+You can use this same method to load other files.  Remember to put the 
+double backslashes in the path, where normally you would type a single backslash.
+</p>
+
+<p>
+After you have loaded <code>functions.scm</code>, type the command 
+<code>(functions)</code> and then type the <b>Enter</b> key a few times
+to get the program started.
+</p>
+
+<a name="break"><h3>Break</h3></a>
+
+<p>
+Use the DrScheme <b>Break</b> button (the stop sign) to interrupt or exit
+from an executing function (such as <code>(functions)</code>, above).
+</p>
+
+<a name="exit"><h3>Exit</h3></a>
+
+<p>
+The Scheme <code>(exit)</code> function is not useful in DrScheme, 
+use <b>File > Close</b> or <b>File > Exit</b> instead.
+</p>
+
+<a name="step"><h3>Stepper</h3></a>
+
+<p>
+The DrScheme stepper (<b>Step</b> button) only works in the Beginning
+Student and Intermediate Student language levels.
+</p>
+
+<p>
+If you want to use the stepper, choose the Intermediate Student level
+(but some programs will not work at this level).  After you are done
+using the stepper, remember to change back to Full Scheme.
+</p>
+
+<a name="lib"><h3>Loading <b>trace</b> and other libraries</h3><a>
+
+<p>
+To load the <code>trace</code> library you must use this command:
+</p>
+
+<pre>
+    (require-library "trace.ss") 
+</pre>
+
+<p>
+You can use this same method to load other libraries.
+</p>
+
+</p>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

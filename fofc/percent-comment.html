@@ -1,0 +1,77 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Awk Quiz Comments, Foundations of Computing</title>
+</head>
+
+<body>
+
+<h4>Awk Quiz Comments, Foundations of Computing</h4>
+
+<p>
+Revised March 29, use your browsers <b>Reload</b> or <b>Refresh</b>
+button to get the latest version.
+</p>
+
+<hr>
+
+<p>
+Here is the <a href="percent.html">problem statement</a> 
+and a <a href="percent.html#soln">solution</a>
+</p>
+
+<p>
+<h3>Scoring</h3>
+
+<p>
+I awarded up to six points for each solution, one point each for:
+</p>
+
+<ul>
+<li>Read data into array elements</li>
+<li>Loop over array elements</li>
+<li>Calculate total of all elements</li>
+<li>Calculate percent for each element</li>
+<li>Print out results</li>
+<li>Syntax and other details</li>
+</ul>
+
+<h3>Errors</h3>
+
+<p>
+A correct solution must compute the grand total of all the elements before it
+can compute the percent contribution of any element.  In my solution,
+I compute the total as I read in the data, before the END section.  Another
+correct solution uses two for loops in the END section: the first computes
+the total, and the second computes and prints out the percent contributions.
+</p>
+
+<p>
+What does <em>not</em> work is to compute the total and the percent
+contribution in the <em>same</em> loop in the END section.  Quite a
+few students submitted incorrect solutions something like this:
+</p>
+
+<pre>
+       ...
+       # WRONG - computes total in same loop as percent
+       for (i=1; i<=NR; i=i+1) {
+         total = total + num[i]
+         print id[i] " " num[i] ", " 100.0*num[i]/total "%"
+       }  
+       ...                  
+</pre>
+
+<p>
+This is incorrect because it computes the percent from the running
+total, not the grand total.  If you test it you will see it is
+clearly wrong -- most obviously, it always says that the first element
+contributes one hundred percent.
+</p>
+
+</body>
+</html>
+
+
+
+

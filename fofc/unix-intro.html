@@ -1,0 +1,78 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Unix Lab 1</title>
+</head>
+
+<body>
+
+<h4>Unix Lab 1</h4>
+
+<p>
+Get started:
+</p>
+
+<ol>
+<li>Check to see if your computer is runnig Linux.  
+If not, restart and select Linux.</li>
+<li>Log in.</li>
+<li>Open a terminal window.</li>
+</ol>
+
+<p>
+Get oriented:
+</p>
+
+<ol>
+<li>Type the command to show your home directory: <tt>pwd</tt><br>
+<li>Type the command to list information about your own account: <tt>finger</tt> <em>username</em></li>
+<li>List information about your own account, and possibly others: <tt>finger</tt> <em>firstname</em></li>
+<li>List the files in your current directory: <tt>ls</tt>
+<li>List all the files in your current directory,
+including the hidden dot files: <tt>ls -a</tt></li>
+<li>List all your files, with additional information: 
+<tt>ls -aF</tt></li>
+<li>Change to the parent directory: <tt>cd ..</tt>
+<li>Type the command to show your new current directory.</li>
+<li>List the files in the current directory.</li>
+<li>Page through the list of files: <tt>ls | more</tt><br>
+Press the space bar to get the next page.<br>
+Press <tt>Ctrl-c</tt> to interrupt the command 
+(hold down <tt>Ctrl</tt>, press <tt>c</tt> at the same time).</li>
+<li>Change back to your home directory: <tt>cd</tt>.</li>
+<li>Repeatedly move up to parent directories, listing files in each directory,
+until you reach root. Return to your home directory.</li>
+</ol>
+
+<p>Make a web page:</p>
+
+<ol>
+<li>Confirm you are in your home directory.</li>
+<li>Copy the web page template into your home directory : <tt>cp ~jackyj/fofc-lab.html .</tt></li>
+<li>List the files in your directory to confirm you have the template.</li>
+<li>Edit the web page: <tt>emacs fofc-lab.html</tt><br>
+(edit in emacs, then exit)</li>
+<li>Display the web page: <tt>more fofc-lab.html</tt></li>
+<li>Create a directory for your web page: <tt>mkdir web</tt></li>
+<li>Move the web page page into your web directory: <tt>mv fofc-lab.html web</tt>
+<li>List the files in your directory to confirm the web page has moved.</li>
+<li>Change into your web directory: <tt>cd web</tt></li>
+<li>List the files to confirm the web page is there.</li>
+<li>View the web page in a browser.  The URL should be
+<tt>http://grace.evergreen.edu/</tt><em>~username&nbsp;</em><tt>/fofc-lab.html/</tt>
+</li>
+</ol>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+
+
+
+
+
+
+

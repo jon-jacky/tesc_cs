@@ -1,0 +1,63 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz, Foundations of Computing, Spring, Week 5 -- Thurs May 3 2001</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz, Foundations of Computing, Spring, Week 5 -- Thurs May 3 2001</h4> 
+
+Name:<br><br><br>
+
+<p>
+A file contains the following Java code (exactly as it appears
+here, there is nothing else in the file).  The file is compiled
+by the Java compiler and the resulting Java program is run.
+</p>
+
+<pre>
+class Thing {
+    int x;
+    public Thing(int i) { x = i; }
+}
+
+public class CopyDemo {
+    public static void main(String[] argv) {
+	int i = 0, j = 1;
+	System.out.println("1. i is " + i + "  j is " + j);
+	j = i;
+	System.out.println("2. i is " + i + "  j is " + j);
+	i = i + 1;
+	System.out.println("3. i is " + i + "  j is " + j);
+
+	Thing a = new Thing(0); Thing b = new Thing(1);
+	System.out.println("4. a.x is " + a.x + "  b.x is " + b.x);
+	b = a;
+	System.out.println("5. a.x is " + a.x + "  b.x is " + b.x);
+	a.x = a.x + 1;
+	System.out.println("6. a.x is " + a.x + "  b.x is " + b.x);
+    }
+}
+</pre>
+
+<ol>
+<li>
+What is (are) the name(s) of the instance variable(s) in the <tt>Thing</tt> class?
+<br><br>
+</li>
+<li>
+What is (are) the name(s) of the primitive variable(s) in the <tt>main</tt> method?
+<br><br>
+</li>
+<li>
+What is (are) the name(s) of the reference variable(s) in the <tt>main</tt> method?
+<br><br>
+</li>
+<li>
+What output does the program produce?
+</li>
+</ol>
+
+</body>
+</html>

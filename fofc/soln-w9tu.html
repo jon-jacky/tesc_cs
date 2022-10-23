@@ -1,0 +1,132 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz Solutions, Foundations of Computing, Week 9 -- Tues Nov 28 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz Solutions, Foundations of Computing, Week 9 -- Tues Nov 28 2000</h4> 
+
+Name:<br><br><br>
+
+<ol>
+<li>
+<p>
+The expression <code>(read)</code> reads one Scheme expression from
+the terminal and returns that expression (it does not evaluate the
+expression).  What does <code>(read)</code> return when you type 
+each of the following inputs?
+</p>
+<ol type=a>
+<li><code>x</code><br>
+<code>x</code><br><br><br></li>
+<li><code>(x)</code><br>
+<code>(x)</code><br><br><br></li>
+<li><code>x y z</code><br>
+<code>x</code><br>
+Here <code>x</code> is a single expression.<br><br><br></li>
+<li><code>"x y z"</code><br>
+<code>"x y z"</code><br>
+The entire quoted string is a single expression.<br><br><br></li>
+<li><code>(x y z)</code><br>
+<code>(x y z)</code><br><br><br></li>
+<li><code>(x) (y) (z)</code><br>
+<code>(x)</code><br>
+Here <code>(x)</code> is a single expression.<br><br><br></li>
+<li><code>(x y<br>
+z)</code><br>
+<code>(x y z)</code><br>
+Scheme reads past the line break to read the entire expression
+through the closing parenthesis.
+The line break here is not part of the expression, it is merely a separator between
+list elements.<br><br><br></li>
+<li><code>"x y<br>
+z"</code><br>
+<code>"x y<br>
+z"</code><br>
+Scheme reads past the line break to read the entire expression
+through the closing quote.  The line break here is part of the expression,
+a quoted string.<br><br><br></li>
+<li><code>(x (y (z)))</code><br>
+<code>(x (y (z)))</code><br>
+Scheme reads the entire nested expression, including
+all the parentheses.<br><br><br></li>
+<li><code>(x (y (z))))</code><br>
+<code>(x (y (z)))</code><br>
+Scheme reads the entire nested expression, including
+all the parentheses.  The extra parenthesis is not part of the expression so
+Scheme does not read it.<br><br><br></li>
+<br><br></li>
+</ol>
+</li>
+
+<li>
+<p>
+Given these definitions:
+<p>
+
+<pre>
+(define (read-three)
+  (read) (read) (read))
+
+(define (read-xyz)
+  (let ((x (read)))
+    (let ((y (read)))
+      (let ((z (read)))
+        (list x y z)))))
+
+(define (read-list)
+  (list (read) (read) (read)))
+</pre>
+
+<ol type=a>
+
+<li>
+<p>
+What does <code>(read-three)</code> return when you type this input?<br>
+<code>x y z</code><br>
+<code>z</code><br>
+Scheme only returns the value of the last expression in the body 
+of the procedure.  See page 347 in <b>Simply Scheme</b>.
+</p><br><br>
+</li>
+
+<li>
+<p>
+What does <code>(read-xyz)</code> return when you type this input?<br>
+<code>x y z</code><br>
+<code>(x y z)</code><br>
+The nested <code>let</code>s force Scheme to evaluate
+the three <code>read</code>s in order. See page 361 in <b>Simply Scheme</b>.
+</p><br><br>
+</li>
+
+
+<li>
+<p>
+What might <code>(read-list)</code> return when you type this input?  
+Give two different correct answers.<br>
+<code>x y z</code><br>
+<code>(x y z)</code><br>
+If the Scheme implementation evaluates expressions 
+left-to-right.<br>
+<code>(z y x)</code><br>
+If the Scheme implementation evaluates expressions 
+right-to-left. See page 362 in <b>Simply Scheme</b>.<br>
+</p><br><br>
+</li>
+
+</ol>
+
+</li>
+</ol>
+
+</body>
+</html>
+
+
+
+
+
+

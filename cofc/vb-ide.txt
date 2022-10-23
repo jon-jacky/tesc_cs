@@ -1,0 +1,145 @@
+vb-ide.txt
+
+The Visual Basic (VB) Interactive Development Environment (IDE)
+
+VB applications are usually written and debugged in the VB IDE.  The
+IDE appears when you start Visual Basic.  It is the large window (the
+VB window) whose title bar says "Microsoft Visual Basic" (among other
+things).
+
+The IDE is usually configured to show a single large window (the VB
+window) with several other windows inside it.  In this configuration
+the VB window and its contents can be dragged around or minimized as a
+unit.  Like most aspects of the IDE, this behavior can be
+configured from the IDE itself (Tools>Options>Advanced). The usual
+one-big-window configuration is called MDI (multiple document
+interface) style.  In SDI (single document interface) style each
+of the content windows can be moved around independently.
+
+------------------------------------------------------------------------------
+
+VB window 
+
+Title bar
+ At top of VB window
+ Project name and mode (design,run,break)
+
+Menu bar
+ Below title bar
+ File Edit View etc.
+ Left click menu name on menu bar to show menu
+ Left click menu entry to select operation
+ Left click anywhere outside menu to make menu disappear
+ Menu path notation used here and in many books:
+  "File>Save Project As..."  means left click "File" on menu bar, 
+  then left click "Save Project As..." on File menu
+ 
+ Potentially confusing menu behavior:
+ Click on menu name has no effect when a VB dialog box is active
+ Right click on menu name brings up a *different* menu which you generally don't want
+
+Menu entries (from menu bar)
+ Grayed-out ("shadow") indicates operation is not enabled at this time
+ Little arrow on right edge means resting cursor on entry will pop up a cascaded menu
+ Three dots ("Save Project As...") indicates selection will pop up a dialog box
+ 
+Toolbar
+ Below menu bar
+ Row of icons (little pictures): open folder, floppy disk etc.
+ Icons are shortcuts for menu paths: open folder icon is shortcut for File>Open Project
+ Place cursor over icon for a moment to see spelled-out name of operation  
+ Left-click icon to perform operation
+
+---------------------------
+
+Projects
+
+A VB project is a collection of files that contains the source code
+and other configuration information for a VB program.  
+
+You usually create and maintain the files in a project by using the
+IDE.  Project operations are scattered around the IDE in several
+different menus, toolbar icons, dialog boxes and windows.
+
+Each project has one .vbp (Visual Basic Project) file, whose name is the 
+project name (for example MonteCarlo.vbp). The .vbp file ...
+
+
+ Start new project: at VB startup, File>New Project, toolbar tilted window icon
+ 
+The Project window 
+
+Naming the project: Project > <ProjectName> Properties ... then fill in Project Name
+
+Quite a few project-related operations are on the File menu
+
+ Save the project: File>Save Project, File>Save Project As..., toolbar floppy disk icon
+  "Save Project As..." allows you to name/rename project, save in a different directory
+   Warning: usually Save Project *only* saves the .vbp file, *not* the other files.
+
+ Save forms, modules: File>Save Form1.frm, File>Save Form1.frm As...
+   Warning: you must usually save the files *before* you save the project
+   The file menu *only* shows 
+
+ Restore the project: At VB startup, File>Open Project, toolbar open folder icon
+  Open project dialog box 
+
+The only .frm, .bas file that appears on the File menu is the
+currently selected one "on top"
+
+All the files in a project are just ordinary text files so they can be
+examined and manipulated by the usual Windows utilities (Explorer or
+the DOS command prompt): you can list them, rename, move or copy them.
+You can use Notepad or any other text editor to view their contents or
+(if you dare) change them.  If you know what you are doing this can be
+quicker than using the IDE.
+
+----------------
+
+Properties window
+
+Once the focus is in the properties window, can use keyboard shortcuts:
+ PgUp, PgDn, Home, End work as expected
+ up arrow but also left arrow move up one entry
+ down, right arrow move down one entry
+ Tab moves focus from property name to property value.  With focus on value:
+  Text fields (Name, Caption) edited as expected: Del clears value etc.
+  Menu fields (Alignment etc.) arrow keys cycle through selections
+  Enter assigns currently displayed propery value and returns focus to property name
+ 
+
+----------------
+
+Editing code
+
+Editor works like Notepad, but also:
+
+Set font and font size in Tools > Options > Editor Format
+
+Cursor movement
+ Ctrl-Up Arrow, Ctrl-Down arrow move to next subroutine
+ (in Notepad Ctrl-Up,-Down have no effect)
+
+Command completion
+ Space inserts selected completion and puts cursor after
+
+Case is not significant.  The IDE automatically sets VB keywords in
+bicapitalized form right after you type them: ElseIf etc.
+
+Selecting a block of text then pressing Tab automatically indents the text
+
+Tools > Options > Editor Require Variable Declaration  (but this didn't seem to work)
+
+------------------------------
+
+Other sources
+
+Gary Beene's VB information center VB tutorial http://www.vbinformation.com/tutor.htm
+
+
+
+
+
+
+
+

@@ -1,0 +1,169 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Finding the Shortest Path by Breadth-first Search</title>
+</head>
+
+<body>
+
+<h2>Finding the Shortest Path by Breadth-first Search</h2>
+
+<hr>
+
+<p>
+This little program finds the shortest path through a network from one
+node to another.  For example, when the network represents a <a
+href="soln-w8tu.html">map</a>, this program finds the shortest route
+from one city to another.
+</p>
+
+<p>
+This example is based on pps. 51 -- 53 in Paul Graham, 
+<a href="http://www.paulgraham.com/acl.html">ANSI COMMON LISP</a>, Prentice-Hall 1996.  
+The following explanation is paraphrased from Graham.
+</p>
+
+<p>
+A network is represented by an association list, where the first
+element of each sublist is a node and the rest of each sublist
+is the list of nodes which are adjacent to the first node.
+</p>
+
+<p>
+<code>Path-demo</code> is the driver that prompts for the file name
+that contains the network, the starting node, and the ending node.
+</p>
+
+<p>
+<code>Shortest-path</code> takes a start node, a destination node,
+and a network, and returns the shortest path, if there is one.
+</p>
+
+<p>
+The program works by searching the network breadth-first.  You have to
+maintain a queue of unexplored nodes. Each time you get to a node, you
+check to see if it is the one you want.  If not, you append each of
+its neighbors to the end of the queue, then take a node from the front
+of the queue and continue the search there.  
+<p>
+
+<p>
+The code represents a slight complication of this idea.  We don't just
+want to find the destination, but to keep a record of how we got
+there.  So instead of maintaining a queue of nodes, we maintain a
+queue of the paths we've followed.
+</p>
+
+<p>
+The function <code>bfs</code> does the searching.  Initially
+<code>shortest-path</code> calls <code>bfs</code> with one element in
+the queue, a path representing the start node with no history.
+</p>
+
+<p>
+If the queue is empty, <code>bfs</code> returns the empty list to
+indicate that no path could be found.  If there are still nodes to
+search, <code>bfs</code> looks at the element on the front of the
+queue. If the <code>car</code> is the node we're looking for, we've
+found a path and we just return it, reversing it for readability.
+If we haven't found the node we're looking for, we add each of the
+current node's neighbors to the end of the queue.  Then we call
+<code>bfs</code> recursively to continue searching the rest of the queue.
+</p>
+
+<p>
+By always putting deeper nodes at the end of the queue, we ensure
+that the network gets searched one layer at a time.  Because we search
+breadth-first, the first path we find will be the shortest, or one of
+the shortest.
+</p>
+
+<p>
+This is not the fastest way to search a network, but it does
+demonstrate the versatility of lists.  We use a list of nodes to
+represent a path, a list of paths to represent the queue used in the
+search, and an association list to represent the network itself.
+</p>
+
+<p>
+Here is the code. A network follows.
+</p>
+
+<pre>
+(define (path-demo)
+  (display "File name: ")
+  (let ((fname (read-string)))
+    (let ((infile (open-input-file fname)))
+      (let ((routes (read infile)))
+        (display "Start: ")
+        (let ((start (read-string)))
+          (display "Finish: ")
+          (let ((finish (read-string)))
+          (for-each (lambda (x) (display x) (display " "))
+                    (cons "Route:" (shortest-path start finish routes)))))))))
+  
+  (define (shortest-path start end net)
+    (bfs end (list (list start)) net))
+  
+;; Breadth-first search
+  (define (bfs end queue net)
+   (print queue) (newline) (newline) ; entertainment
+    (if (null? queue)
+        '()
+        (let ((path (car queue)))
+          (let ((node (car path)))
+            (if (equal? node end) ;; Graham used CL eql
+                (reverse path)
+                (bfs end 
+                     (append (cdr queue)
+                             (new-paths path node net))
+                     net))))))
+  
+  (define (new-paths path node net)
+    (map (lambda (n) (cons n path)) (cdr (assoc node net))))
+</pre>
+
+<p>
+Here is a sample network that represents a <a
+href="soln-w8tu.html">map</a> of cities around Puget Sound.  On my
+system it is stored in <code>C:\scheme\puget-cities.txt</code>.  Nodes
+are represented by quoted strings to handle cities like Gig Harbor
+whose names include more than one word.
+</p>
+  
+<pre>
+(("Bremerton" "Seattle" "Gig Harbor")
+ ("Gig Harbor" "Bremerton" "Tacoma" "Olympia")
+ ("Olympia" "Gig Harbor" "Tacoma")
+ ("Tacoma" "Olympia" "Gig Harbor" "Seattle")
+ ("Seattle" "Bremerton" "Tacoma"))
+</pre>
+
+<p>
+To run the demo execute <code>(path-demo)</code> then answer the
+prompts asking for the map file name, the starting node and the ending
+node.  
+</p>
+
+<p>
+Here is a sample program run.
+</p>
+
+<pre>
+(path-demo)
+File name: C:\scheme\puget-cities.txt
+Start: Seattle
+Finish: Olympia
+
+ ... intermediate results print out ...
+
+Route: Seattle Tacoma Olympia
+</pre>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+

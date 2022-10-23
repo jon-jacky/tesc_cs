@@ -1,0 +1,223 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Unix File System</title>
+</head>
+
+<body>
+
+<h4>Unix File System</h4>
+
+<p>
+Revised January 14, 2001.  Press your browser's <b>Reload</b> or
+<b>Refresh</b> button to get the latest version.
+</p>
+
+<hr>
+
+<h3>Files and directories</h3>
+
+<p>
+A <em>file</em> is a piece of permanent storage in a computer.  Files
+store documents, images, programs, etc.  Every file has a
+<em>filename</em>.  A <em>directory</em> is a file that contains a list of
+information about other files: their names, locations, sizes, owners,
+etc.  Since a directory is just a kind of file, a directory can list
+other directories.
+</p>
+
+<p>
+Unix users often speak as if directories were containers for files,
+saying a directory "contains" files or a file is "in" a directory.
+This is a bit misleading because directories do not contain the files
+themselves, they merely contain a (short) bit of information about
+each file.  When you move a file from one directory to another, the
+file itself does not move; you merely move the (much shorter) directory
+entry.
+</p>
+
+<p>
+Unix uses a <em>hierarchical directory structure</em> where
+directories are organized into a <em>tree</em>.  The directory at the
+root of the tree is named <em>root</em> and is spelled <tt>/</tt>
+(just a single slash character).  Root lists directories: its
+<em>subdirectories</em>, which have root as their <em>parent
+directory</em>.  Each subdirectory lists its own subdirectories, etc.,
+creating a branching structure as in this <a
+href="http://www.washington.edu/R870/img/V4-dir.gif"> example</a>.
+</p>
+
+<h3>Absolute pathnames</h3>
+
+<p>
+Every file can be identified by a unique <em>absolute pathname</em>
+formed by listing all the directories in order from root, ending with
+the filename.  Absolute pathnames always begin with <tt>/</tt> (root).
+Each directory in the pathname is preceded by its parent and is
+followed by a subdirectory (or the filename).  For example:
+</p>
+
+<pre>
+    /usr/users3/jackyj/web/fofc-lab.html
+</pre>
+
+<p>
+This identifies the file named <tt>fofc-lab.html</tt>, which is listed in
+the directory named <tt>web</tt>, which is a subdirectory of <tt>jackyj</tt>, 
+whose parent is <tt>users3</tt>, in <tt>usr</tt>, in <tt>/</tt> (root).
+</p>
+
+<p>
+Note that this is a different file from 
+</p>
+
+<pre>
+    /usr/users3/jillk/web/fofc-lab.html
+</pre>
+
+<p>
+because one of the directories in the path is different.
+</p>
+
+<h3>Relative pathnames and the working directory</h3>
+
+<p>
+Absolute pathnames can be long and cumbersome to work with.  Unix
+always provides each process (session at the computer) with a
+<em>working directory</em> (also called the <em>current
+directory</em>).  This allows you to use a shorter <em>relative
+pathname</em> that does not begin with root.  When the Unix sees a
+relative pathname, it implicitly prefixes the working directory to
+form an absolute pathname.  When you log in your working directory is
+set to your <em>home directory</em> (also called your <em>login
+directory</em>).  There are commands that change your working directory.
+</p>
+
+<p>
+For example when I log in my working directory is set to
+<p>
+
+<pre>
+    /usr/users3/jackyj
+</pre>
+
+<p>
+When I type the relative pathname
+</p>
+
+<pre>
+    web/fofc-lab.html
+</pre>
+
+<p>
+Unix interprets this to mean the file whose absolute pathname is
+</p>
+
+<pre>
+    /usr/users3/jackyj/web/fofc-lab.html
+</pre>
+
+<p>
+The user <tt>jillk</tt> can type the same relative pathname, but Unix
+interprets this as a different absolute pathname because she has a
+different working directory.
+</p>
+
+<p>
+We often use a geographic metaphor, speaking as if directories were
+places.  We say we are "in" the working directory, we "move to"
+another working directory, we "move up to" the parent directory etc.
+</p>
+
+<h3>Abbreviations</h3>
+
+<p>
+Unix provides some convenient abbreviations for writing pathnames:
+</p>
+
+<table cellpadding=2>
+<tr><td><tt>.</tt></td><td>working directory</td></tr>
+<tr><td><tt>..</tt></td><td>parent directory</td></tr
+<tr><td><tt>~</tt></td><td>Your own login directory</td></tr>
+<tr><td><tt>~<em>user</em></tt></td><td><em>user</em>'s login directory</td></tr>
+</table>
+
+<p>
+I can copy the file <tt>test.txt</tt> from <tt>jillk</tt>'s login directory
+to my own working directory by using this command.
+</p>
+
+<pre>
+    cp ~jillk/test.txt .
+</pre>
+
+<p>
+This command has the same effect "anywhere" (in any working directory)
+because the abbreviations <tt>~jillk</tt> and <tt>.</tt> have the same
+meaning in any working directory.
+</p>
+
+<h3>Basic commands</h3>
+
+<p>
+These are the basic commands for working with files and directories.
+Some commands have different effects when an argument is a directory
+(instead of an ordinary file).  Be warned that some commands are
+destructive -- they can remove or replace existing files without warning.
+</p>
+
+<table cellpadding=5>
+<tr><td valign=top><tt>cat > <em>file</em></tt><br>
+<tt><em>contents</em></tt><br>
+<tt>Ctrl-d</tt></td>
+</td><td valign=top>Create <tt><em>file</em></tt> containing <tt><em>contents</em></tt>.  This is a quick way to create short test files without using an editor.</tr>
+<tr><td valign=top><tt>more <em>file</em></tt></td><td>Display <tt><em>file</em></tt> a page at a time.  Press space bar for next page, <tt>q</tt> to quit.
+Only works on text files, not directories, images etc.</td></tr>
+<tr><td><tt><em>command</em> | more</tt></td><td>Display output from <tt><em>command</em></tt> a page at a time.  Useful for listing long directories etc.</td></tr>
+<tr><td><tt>Ctrl-c</tt></td><td>Quit command, get back to shell prompt
+(hold down <tt>Ctrl</tt> key while pressing <tt>c</tt> key).</td></tr>
+<tr><td><tt>pwd</tt></td><td>print working directory</td></tr>
+<tr><td><tt>mkdir <em>dir</em></tt></td><td>Create directory <tt><em>dir</em></tt></td></tr>
+
+<tr><td><tt>cd <em>dir</em></tt></td><td>Change working directory to <tt><em>dir</em></tt></td></tr>
+<tr><td><tt>cd <em>..</em></tt></td><td>Change working directory to parent directory (move up)</td></tr>
+<tr><td><tt>cd</td><td>Change working directory back to login directory</td></tr>
+<tr><td><tt>ls </tt></td><td>List names of files in working directory</td></tr>
+<tr><td><tt>ls -a</tt></td><td>List files, including hidden dot files.</td></tr>
+<tr><td><tt>ls -F</tt></td><td>List files, using <tt>/</tt> to indicate directories etc. </td></tr>
+<tr><td><tt>ls -l</tt></td><td>List files, long listing with much information</td></tr>
+<tr><td><tt>ls -l <em>dir</em></tt></td><td>Long listing of files in directory <tt><em>dir</em></tt></td></tr>
+<tr><td><tt>ls -l <em>file</em></tt></td><td>Long listing about <tt><em>file</em></tt> only</td></tr>
+<tr><td><tt>ls -ld <em>dir</em></tt></td><td>Long listing about the directory <tt><em>dir</em></tt> only</td></tr>
+<tr><td><tt>mv <em>file1 file2</em></tt></td><td>Rename <tt><em>file1</em></tt> to <tt><em>file2</em></tt>.  If <tt><em>file2</em></tt> already exists, it is destroyed (<em>overwritten</em>).</td></tr>
+<tr><td><tt>mv -i <em>file1 file2</em></tt></td><td>Rename <tt><em>file1</em></tt> to <tt><em>file2</em></tt>.  If <tt><em>file2</em></tt> exists, warn about overwriting.</td></tr>
+<tr><td><tt>mv <em>file dir</em></tt></td><td>Move <tt><em>file</em></tt> into directory <tt><em>dir</em></tt>.</td></tr>
+<tr><td><tt>mv <em>files dir</em></tt></td><td>Move each of 
+<tt><em>files</em></tt> into directory <tt><em>dir</em></tt>.</td></tr>
+<tr><td valign=top><tt>mv <em>dir1 dir2</em></tt></td><td>If directory <tt><em>dir2</em></tt> exists, move
+<tt><em>dir1</em></tt> to be a subdirectory of <tt><em>dir2</em></tt>.<br>
+If <tt><em>dir2</em></tt> does not exist, just rename <tt><em>dir1</em></tt>.
+</td></tr>
+<tr><td><tt>cp <em>file1 file2</em></tt></td><td>Copy <tt><em>file1</em></tt> to <tt><em>file2</em></tt>.  If <tt><em>file2</em></tt> already exists, it is destroyed (<em>overwritten</em>).</td></tr>
+<tr><td><tt>cp -i <em>file1 file2</em></tt></td><td>Copy <tt><em>file1</em></tt> to <tt><em>file2</em></tt>.  If <tt><em>file2</em></tt> exists, warn about overwriting.</td></tr>
+<tr><td><tt>cp <em>file dir</em></tt></td><td>Copy <tt><em>file</em></tt> into <tt><em>dir</em></tt>.</td></tr>
+<tr><td><tt>cp <em>files dir</em></tt></td><td>Copy
+<tt><em>files</em></tt> into <tt><em>dir</em></tt>.</td></tr>
+<tr><td valign=top><tt>cp -r <em>dir1 dir2</em></tt></td>
+<td>Copy <tt><em>dir</em></tt> recursively: copy the directory, its contents, all its subdirectories etc.<br>
+If <tt><em>dir2</em></tt> does not exist, create it. If <tt><em>dir2</em></tt> exists, create a new subdirectory.
+</td></tr>
+<td><tt>rm <em>files</em></tt></td><td>Remove (delete) <tt><em>files</em></tt>.
+Careful, they cannot be restored.</td></tr>
+<td><tt>rm -i <em>files</em></tt></td><td>Remove <tt><em>files</em></tt>, warn first.</td></tr>
+<td><tt>rm -r <em>dir</em></tt></td><td>Remove <tt><em>dir</em></tt> recursively: remove the directory, its contents, all its subdirectories etc.</td></tr>
+<td><tt>rmdir <em>dir</em></tt></td><td>Remove <tt><em>dir</em></tt>.
+The directory must be empty.</td></tr>
+</table>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

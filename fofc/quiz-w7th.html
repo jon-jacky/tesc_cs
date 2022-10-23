@@ -1,0 +1,74 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz, Foundations of Computing, Week 7 -- Thurs Nov 9 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz, Foundations of Computing, Week 7 -- Thurs Nov 9 2000</h4> 
+
+Name:<br><br><br>
+
+<ol>
+<li>
+<p>
+This table shows the number of electoral votes allocated to several states:
+</p>
+
+<table border cellpadding=10>
+<tr><td>Washington</td><td align=right>11</td></tr>
+<tr><td>Oregon</td><td align=right>7</td></tr>
+<tr><td>Iowa</td><td align=right>7</td></tr>
+<tr><td>California</td><td align=right>54</td></tr>
+<tr><td>Florida</td><td align=right>25</td></tr>
+</table>
+
+<p>
+Define a Scheme variable named <code>electoral-votes</code> to encode
+this table.  Represent the table by a list of sublists, one for each
+state, where the <code>car</code> of each sublist is the name of the
+state and the <code>cdr</code> of each sublist is a list whose only
+element is the number of electoral votes for that state.
+</p>
+<br><br><br><br><br><br><br><br>
+<!-- <br><br><br><br><br><br><br><br><br><br><br><br> -->
+</li>
+
+<li>
+<p>
+This tree represents the geographic relation of some states,
+counties and cities in the USA:
+</p>
+
+<pre>
+                       +------------------ USA -------------+
+                       |                                    |
+            +----- Washington -----+                     Florida 
+            |                      |                        |
+    +----- King ----+        +- Thurston -+             +- Dade -+
+    |               |        |            |             |        |
+  Seattle        Bellevue   Olympia     Lacey         Miami   Hialeah
+</pre>
+
+<p>
+Define a Scheme variable named <code>usa-tree</code> to encode this
+tree.  Represent the tree as a list whose <code>car</code> is
+<code>USA</code> and whose <code>cdr</code> is a list of subtrees, one
+for each of the two states.  Continue filling in subtrees until you
+reach the cities.  At each level, the <code>car</code> of the subtree
+holds the data and the <code>cdr</code> of the subtree is a list of subtrees.
+At each city, the <code>cdr</code> of the sublist is the empty list to indicate
+that there are no more subtrees.
+</p>
+</li>
+</ol>
+
+</body>
+</html>
+
+
+
+
+
+

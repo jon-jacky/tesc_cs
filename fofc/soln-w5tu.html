@@ -1,0 +1,50 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz Solutions, Foundations of Computing, Week 5 -- Tues Oct 24 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz Solutions, Foundations of Computing, Week 5 -- Tue Oct 24 2000</h4>
+
+<p>
+For all questions, assume the following definition has been executed:
+</p>
+
+<pre>
+(define wd 'view)
+</pre>
+
+
+<ol>
+
+<li>
+<code>(word 'pre wd)</code><br><br>
+<ol>
+<li>What is the value of <code>wd</code> in this expression?
+-- <code>view</code><br><br></li>
+<li>What is the value of this expression? -- <code>preview</code><br><br></li>
+</ol>
+
+
+<li>
+<code>((lambda (wd) (word 'pre wd)) 'fix)</code><br><br>
+<ol>
+<li>What is the value of <code>wd</code> in this expression? -- <code>fix</code><br><br></li>
+<li>What is the value of this expression? -- <code>prefix</code><br><br></li>
+</ol>
+
+
+<li>
+<code>(every (lambda (wd) (word 'pre wd)) '(view fix tense))</code><br><br>
+<ol>
+<li>What are the values of <code>wd</code> in this expression?
+-- <code>view</code>, <code>fix</code>, and <code>tense</code><br><br></li>
+<li>What is the value of this expression? -- <code>(preview prefix pretense)</code><br><br></li>
+</ol>
+
+</ol>
+
+</body>
+</html>

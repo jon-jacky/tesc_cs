@@ -1,0 +1,162 @@
+VERSION 5.00
+Begin VB.Form frmLines 
+   Caption         =   "Lines"
+   ClientHeight    =   7200
+   ClientLeft      =   60
+   ClientTop       =   345
+   ClientWidth     =   7590
+   BeginProperty Font 
+      Name            =   "MS Sans Serif"
+      Size            =   18
+      Charset         =   0
+      Weight          =   700
+      Underline       =   0   'False
+      Italic          =   0   'False
+      Strikethrough   =   0   'False
+   EndProperty
+   LinkTopic       =   "Form1"
+   ScaleHeight     =   7200
+   ScaleWidth      =   7590
+   StartUpPosition =   3  'Windows Default
+   Begin VB.CommandButton cmdWrite 
+      Caption         =   "Write"
+      Height          =   495
+      Left            =   5400
+      TabIndex        =   6
+      Top             =   1920
+      Width           =   1695
+   End
+   Begin VB.CommandButton cmdProcess 
+      Caption         =   "Process"
+      Height          =   495
+      Left            =   3120
+      TabIndex        =   5
+      Top             =   1920
+      Width           =   1815
+   End
+   Begin VB.CommandButton cmdRead 
+      Caption         =   "Read"
+      Height          =   495
+      Left            =   960
+      TabIndex        =   4
+      Top             =   1920
+      Width           =   1695
+   End
+   Begin VB.TextBox txtOutFile 
+      Height          =   495
+      Left            =   1200
+      TabIndex        =   3
+      Text            =   "C:\cofc-vb\Lines\out.txt"
+      Top             =   1080
+      Width           =   6015
+   End
+   Begin VB.TextBox txtInFile 
+      Height          =   495
+      Left            =   1200
+      TabIndex        =   1
+      Text            =   "C:\cofc-vb\Lines\in.txt"
+      Top             =   120
+      Width           =   6015
+   End
+   Begin VB.Label lblOutFile 
+      Alignment       =   1  'Right Justify
+      Caption         =   "Out:"
+      Height          =   495
+      Left            =   0
+      TabIndex        =   2
+      Top             =   1080
+      Width           =   855
+   End
+   Begin VB.Label lblInFile 
+      Alignment       =   1  'Right Justify
+      Caption         =   "In:"
+      Height          =   495
+      Left            =   120
+      TabIndex        =   0
+      Top             =   120
+      Width           =   735
+   End
+End
+Attribute VB_Name = "frmLines"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+' Files - demonstrate text files, string processing
+'
+'  9-May-2000  J. Jacky  Written
+
+Option Explicit ' require declarations
+
+Dim infile As String
+Dim outfile As String
+Dim lines(20) As String
+Dim nlines As Integer
+
+' Position cursor to print on form
+Private Sub Clear_Form()
+    Dim i As Integer
+    
+    frmLines.Cls ' clear away old stuff
+    frmLines.CurrentY = 0 ' back to top
+    i = 0
+    For i = 1 To 7 ' about right for 18 pt text
+        frmLines.Print ' leave some space
+    Next i
+End Sub
+
+Private Sub cmdProcess_Click()
+    Dim i As Integer
+    
+    Clear_Form
+    For i = 1 To nlines
+        lines(i) = i & " " & lines(i) ' prepend line number
+        If nlines < 6 Then ' don't write past end of form
+            frmLines.Print "        "; lines(i)
+        End If
+    Next i
+End Sub
+' Read infile into lines array and display on form
+Private Sub cmdRead_Click()
+    Clear_Form ' position cursor, call subroutine
+    
+    Open infile For Input As #1
+    nlines = 0
+    Debug.Print ' some separation
+    Do While Not EOF(1) And nlines < 20 ' don't overrun array
+        nlines = nlines + 1
+        Line Input #1, lines(nlines)
+        If nlines < 6 Then ' don't write past end of form
+            frmLines.Print "        "; lines(nlines)
+        End If
+        Debug.Print nlines; lines(nlines)
+    Loop
+    Close #1
+End Sub
+
+Private Sub cmdWrite_Click()
+    Dim i As Integer
+    
+    Open outfile For Output As #2
+    For i = 1 To nlines
+        Print #2, lines(i)
+    Next i
+    
+    Clear_Form
+    frmLines.Print "       "; outfile; " written"
+    Close #2
+End Sub
+
+' Initial values from control properties set at design time
+Private Sub Form_Load()
+    infile = txtInFile.Text
+    outfile = txtOutFile.Text
+End Sub
+' Should check here that infile is a valid filename
+Private Sub txtInFile_Change()
+    infile = txtInFile.Text
+End Sub
+' Should check here that outfile is a valid filename
+Private Sub txtOutFile_Change()
+    outfile = txtOutFile.Text
+End Sub

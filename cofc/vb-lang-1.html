@@ -1,0 +1,275 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Visual Basic Language</title>
+</head>
+<body>
+<h2>Concepts of Computing, Section II</h2>
+
+<h2>Visual Basic Language</h2>
+
+<ul>
+<li><a href="#layout">Layout</a></li>
+<li><a href="#declare">Declarations and variables</a></li>
+<li><a href="#property">Controls and properties</a></li>
+<li><a href="#assignment">Assignment, arithmetic expressions</a></li>
+<li><a href="#function">Function call</a></li>
+<li><a href="#if">If ... Then ... Else</a></li>
+<li><a href="#case">Select Case</a></li>
+<li><a href="#load-sub">Form load subroutine</a></li>
+<li><a href="#event-sub">Event subroutine</a></li>
+</ul>
+
+<ul>
+<li><a href="#other">Other web pages</a></li>
+</ul>
+
+<p>
+Back to <a href="cofcii.html">course page</a>.
+</p>
+
+<hr>
+
+<h3><a name="layout">Layout</a></h3>
+
+<p>
+Comments extend from the quote mark ' to the end of the line.
+</p>
+
+<p>
+Case (upper or lower) is not significant.  As you type the code, the
+VB editor automatically sets keywords in bicapitalized form, changing
+your <code>end if</code> to <code>End If</code> etc.
+</p>
+
+<p>
+Line breaks are significant.  It must be 
+</p>
+
+<pre>
+ If <em>condition</em> Then <em>statement</em>
+</pre>
+
+<p>
+or
+</p>
+
+<pre>
+ If <em>condition</em> Then
+   <em>statements</em>
+ End If
+</pre>
+
+<p>
+but not
+</p>
+
+<pre>
+ If <em>condition</em>
+   Then <em>statement</em>
+</pre>
+
+<p>
+You can break a single statement across lines by putting an underscore
+character _ at the end of the line, like this:
+</p>
+
+<pre>
+ If <em>very long condition</em> _
+ Then
+   <em>statements</em>
+ End If
+</pre>
+
+<hr>
+
+<h3><a name="declare">Declarations and variables</a></h3>
+
+<pre>
+      Dim <em>variable</em> As <em>Type</em>
+</pre>
+
+<p>Example:</p>
+
+<pre>
+      Dim phase As Integer
+</pre>
+
+<hr>
+
+<h3><a name="property">Controls and properties</a></h3>
+
+<pre>
+      <em>ControlName</em>.<em>Property</em>
+</pre>
+
+<p>Example:</p>
+
+<pre>
+      lblTotal.Caption
+</pre>
+
+<hr>
+
+<h3><a name="assignment">Assignment, arithmetic expressions</a></h3>
+
+<pre>
+      <em>variable or property</em> = <em>expression</em>
+</pre>
+
+<p>Example:</p>
+
+<pre>
+      lblTotal.Caption = lblTotal.Caption + 1
+</pre>
+
+<hr>
+
+<h3><a name="function">Function call</a></h3>
+
+<pre>
+      <em>FunctionName</em>(<em>expression</em>)
+</pre>
+
+<p>Example:</p>
+
+<pre>
+      Int(2 * Rnd()) 
+</pre>
+
+<hr>
+
+
+<h3><a name="if">If ... Then ... Else</a></h3>
+
+<pre>
+    If <em>condition</em> Then
+        <em>statements</em>
+    Else
+        <em>statements</em>
+    End If
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    If Int(2 * Rnd()) Then
+        lblHeads.Caption = lblHeads.Caption + 1
+    Else
+        lblTails.Caption = lblTails.Caption + 1
+    End If
+</pre>
+
+<hr>
+
+
+<h3><a name="case">Select Case</a></h3>
+
+<pre>
+    Select Case <em>expression</em>
+        Case <em>expression</em>
+	    <em>statements</em>
+        Case <em>expression</em>
+	    <em>statements</em>
+          .
+          .
+          .
+    End Select
+</pre>
+
+<p>Example:</p>
+
+<pre>
+    Select Case phase
+        Case green
+            phase = yellow
+            shpGreen.FillStyle = transparent
+            shpYellow.FillStyle = solid
+        Case yellow
+            phase = red
+            shpYellow.FillStyle = transparent
+            shpRed.FillStyle = solid
+        Case red
+            phase = green
+            shpRed.FillStyle = transparent
+            shpGreen.FillStyle = solid
+    End Select
+</pre>
+
+<hr>
+
+<h3><a name="load-sub">Form load subroutine</a></h3>
+
+<pre>
+  Private Sub Form_Load()
+      <em>statements</em>
+  End Sub
+</pre>
+
+<p>Example:</p>
+
+<pre>
+Private Sub Form_Load()
+    '
+    ' Define the constants - color coding is arbitrary
+    '
+    green = 0
+    '
+    ' Starting phase
+    '
+    phase = green
+End Sub
+</pre>
+
+<hr>
+
+<h3><a name="event-sub">Event subroutine</a></h3>
+
+<pre>
+  Private Sub <em>ControlName</em>_<em>Event</em>()
+      <em>statements</em>
+  End Sub
+</pre>
+
+<p>Examples:</p>
+
+<pre>
+  Private Sub cmdFlip_Click()
+      lblTotal.Caption = lblTotal.Caption + 1
+      '
+      ' Rnd returns a random number between 0.0 and 1.0
+      ' Int returns the integer portion of a number
+      '
+      If Int(2 * Rnd()) Then
+          lblHeads.Caption = lblHeads.Caption + 1
+      Else
+          lblTails.Caption = lblTails.Caption + 1
+      End If
+  End Sub
+</pre>
+
+<pre>
+  Private Sub cmdExit_Click()
+      End
+  End Sub
+</pre>
+
+<hr>
+
+<h3><a name="other">Other web pages</a></h3>
+
+<ul>
+<li>VB Information Center<a href="http://www.vbinformation.com/tutor.htm">
+tutorial and reference</a></li>
+</ul>
+
+<p>
+Back to <a href="#top">top</a>
+</p>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

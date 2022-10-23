@@ -1,0 +1,80 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz Solutions, Foundations of Computing, Week 4 -- Oct 17, 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz Solutions, Foundations of Computing, Week 4 -- Oct 17, 2000</h4>
+
+<p>
+Given these definitions:
+</p>
+
+<pre>
+(define x 1)
+
+(define (add-x y)
+  (+ x y))
+
+(define (dbl-x x)
+  (+ x x))
+
+(define (add-sum y)
+  (let ((sum (add-x x)))
+    (+ sum y)))
+
+(define (add-list y)
+  (every add-x y))
+</pre>
+
+<p>
+For each of the following expressions, if the expression can be
+evaluated, write its value.  If the expression cannot be evaluated,
+explain why not.
+</p>
+
+<ol>
+<li><code>1</code><br>
+<code>1</code><br><br></li>
+<li><code>x</code><br>
+<code>1</code><br><br></li>
+<li><code>'x</code><br>
+<code>x</code><br><br></li>
+<li><code>y</code><br>
+Can't evaluate, not defined<br><br></li>
+<li><code>'y</code><br>
+<code>y</code><br><br></li>
+<li><code>(x)</code><br>
+Can't evaluate, <code>1</code> is not a procedure<br><br></li>
+<li><code>'(x)</code><br>
+<code>(x)</code><br><br></li>
+<li><code>('x)</code><br>
+Can't evaluate, <code>x</code> is not a procedure<br><br></li>
+<li><code>(add-x 1)</code><br>
+<code>2</code><br><br></li>
+<li><code>(add-x x)</code><br>
+<code>2</code><br><br></li>
+<li><code>(add-x 'x)</code><br>
+Can't evaluate, <code>x</code> is not a number<br><br></li>
+<li><code>(dbl-x 1)</code><br>
+<code>2</code><br><br></li>
+<li><code>(dbl-x x)</code><br>
+<code>2</code> -- Here <code>x</code> is global, bound to <code>1</code><br><br></li>
+<li><code>(dbl-x 2)</code><br>
+<code>4</code> -- Here 2 is bound to the local <code>x</code><br><br></li>
+<li><code>(add-sum 1)</code><br>
+<code>3</code><br><br></li>
+<li><code>(add-list (1 2 3))</code><br>
+Can't evaluate, <code>1</code> is not a procedure<br><br></li>
+<li><code>(add-list '(1 2 3))</code><br>
+<code>(2 3 4)</code><br><br></li>
+<li><code>(add-x '(1 2 3))</code><br>
+Can't evaluate, <code>(1 2 3)</code> is not a number<br><br></li>
+<li><code>(keep even? (add-list '(1 2 3)))</code><br>
+<code>(2 4)</code><br><br></li>  
+</ol>
+
+</body>
+</html>

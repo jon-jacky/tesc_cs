@@ -1,0 +1,78 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz Solutions, Foundations of Computing, Week 3 -- Oct 10, 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz Solutions, Foundations of Computing, Week 3 -- Oct 10, 2000</h4>
+
+
+<ol>
+<li>
+<p>
+Write a procedure named <code>f</code> that, when applied to the
+sample arguments, returns the sample result.  Your procedure may not
+include any quoted data.
+</p>
+
+<pre>
+> (f '(a b c) '(d e f))
+(a d)
+</pre>
+
+<pre>
+(define (f x y)
+  (sentence (first x) (first y)))
+</pre>
+</li>
+
+<li>
+<p>
+Write a procedure named <code>phase</code> that takes a number as an argument.  If
+the number is less than zero, it returns <code>ice</code>.  If the number is
+greater than one hundred, it returns <code>steam</code>.  Otherwise it returns
+<code>water</code>.
+</p>
+
+<pre>
+(define (phase x)
+  (cond ((< x 0) 'ice)
+        ((> x 100) 'steam)
+        (else 'water)))
+</pre>
+</li>
+
+
+<li>
+<p>
+Program A has a running time proportional to the number of items it
+must process --- it's complexity is O(n).  Program B's running time is proportional
+to the square of the number of items -- it is O(n<sup>2</sup>).  
+Both programs process a test set of 100 items in one minute.
+<p>
+
+<p>
+Can program A process 100,000 items a day? 
+</p>
+
+<p>
+Yes. 100,000 items = 1000 x 100 items 
+so running time = 1000 x 1 minute = 1000 minutes<br>
+There are 24 x 60 = 1440 minutes in a day, which is more than 1000.
+
+<p>
+Can program B process 100,000 items a year?
+</p>
+
+<p>
+No.  Running time here is 1000<sup>2</sup> = 1000 x 1000 = 1,000,000
+minutes (a million minutes).<br> There are 1440 x 365 minutes in a
+year, which is less than a million.
+</li>
+
+
+
+</body>
+</html>

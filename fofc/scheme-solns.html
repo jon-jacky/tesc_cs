@@ -1,0 +1,43 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Solutions to selected exercises,  Foundations of Computing, Fall 2000</title>
+</head>
+
+<body>
+
+<h4>Solutions to selected exercises, Foundations of Computing, Fall 2000</h4>
+
+<p>
+Here are some exercise solutions we discussed in class.
+</p>
+
+<hr>
+
+<p>Exercise 8.14, page 125 in <b>Simply Scheme</b></p> 
+
+<p>
+Write a procedure <code>subword</code> that takes three arguments: a word,
+a starting position, and an ending position number.  It should return the
+subword containing only the letters between the specified positions:
+<p>
+
+<pre>
+> (subword 'polythene 5 8)
+THEN
+</pre>
+
+<pre>
+(define (subword wd m n)
+  (let ((mm (- m 1))
+        (kn (- (count wd) n)))
+    ((repeated bl kn)
+     ((repeated bf mm) wd))))
+</pre>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

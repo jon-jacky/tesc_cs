@@ -1,0 +1,115 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Scheme and Functional Programming</title>
+</head>
+
+<body>
+
+<h2>Scheme and Functional Programming</h2>
+
+<p>
+December 5, 2000
+</p>
+
+<hr>
+
+<p>
+In functional programming, you get work done by evaluating expressions
+that return results.  Functional programming is notable for what is
+missing.  There is no assignment: each evaluation returns a new
+object, you never change the value of an existing object.  There is
+(usually) no sequential top-to-bottom or right-to-left evaluation
+order: the order in which subexpressions are evaluated does not
+matter.  Despite these apparent limitations, functional programming is
+surprisingly powerful.  The limitations make make certain programming
+techniques possible, prevent whole classes of errors, and can make
+programs easy to analyze.
+</p>
+
+<p>
+Notable characteristics of functional programming in Scheme are:
+</p>
+
+<ul>
+
+<li>Simple syntax based on lists and prefix operators</li>
+
+<li>
+Programs are composed from self-contained procedures. The behavior
+of a purely functional procedure depends only on it arguments.  There is no dependence
+on some surrounding environment of global variables or any history of past actions.
+This means that each such procedure can be completely understood and thoroughly 
+tested independently of all the others.
+</li>
+
+<li>
+Interactive interpreter including a trace facility makes it easy to experiment
+and create programs piece-by-piece.
+</li>
+
+<li>
+Higher-order functions that generalize patterns with procedure arguments are
+used, instead of code that does one specific task.
+</li>
+
+<li>
+Lambda expressions can define new functions where needed and match
+already defined functions to a particular context.
+</li>
+
+<li>
+Recursive problem solving: break the problem into a base case that
+can be solved easily, and a sub-problem that has the same structure as
+the original, but is smaller.  Recursion also achieves something like 
+scratch memory: the stack of pending recursive calls can store intermediate 
+results temporarily.  Recursion can also be used for repetition.
+</li>
+
+<li>
+A single construct -- the list -- represents many data structures including
+sequences, tables and dictionaries, trees, networks etc.
+</li>
+
+<li>
+List manipulation based on a constructor function <code>cons</code>
+and two selectors <code>car</code> (first element) and <code>cdr</code>
+(rest of the list).
+</li>
+
+<li>
+Built-in input/output procedures can read and write entire lists (that is, complete
+data structures) not just characters, strings and lines.
+</li>
+
+<li>
+Lists can also represent programs.
+</li>
+
+<li>
+The language interpreter is an ordinary procedure that can be called from
+a user's program.  The interpreter is a meta-circular definition of the language.
+</li>
+
+</ul>
+
+<p>
+Most other programming languages provide some of these features, but
+in Scheme (and other Lisp dialects) they are particularly convenient and
+work together most powerfully.
+</p>
+
+<p>
+It is also possible to program write non-functional (not dysfunctional!) programs
+in Scheme.  Scheme provides input-output (side effects), assignment (<code>set!</code>
+etc.), sequence (<code>begin</code> etc.), and even an iteration construct 
+(<code>do</code>).
+</p>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+

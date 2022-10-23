@@ -1,0 +1,119 @@
+/*
+  This is file ArraySum.java
+  Java block comments go between slash-asterisk delimiters
+*/
+
+// This is a Java class - everything in Java is inside some class or another,
+//  class is the outermost construct everywhere
+// Usually put each class in its own file, the file name must be the class name
+// This is a library class - to use it, write a main program in another class
+// Declaring a class public makes it easy to use from anywhere
+// Java one-line comments go from the double slash to the end of the line
+public class ArraySum {
+    // This is a method, like a function or procedure in other languages
+    // public makes it easy to call from anywhere
+    // static methods are not associated with any particular object,
+    //  they are like functions in other (non-object-oriented) languages
+    // this method returns an integer
+    // this method takes a single parameter, an array of integers 
+    //  (of any length), named a
+    public static int array_sum(int a[]) {
+	// This declares a local variable of type integer, named sum
+	//   which is only visible inside this method
+	//  Declarations can also initialize variables, initialize sum to zero
+	int sum = 0;
+	// This is a for loop,
+	//  the usual way to repeat something a predetermined number of times 
+	// The first line of the loop is of the form: for (init.; test; incr.)
+	// where init is executed once before control enters the loop
+	//  init can declare and initialize variables
+	// test is executed each time before control enters body of loop
+	//  if test is true, Java executes statements in body of loop
+	//  a.length is the length of array a
+	// incr is executed each time after Java completes executing the body
+	//  choose incr so it eventually causes test to be false
+	//  i++ means the same thing as i = i + 1, which would also work
+	// Here the for statement is designed to traverse each element of a
+	for (int i = 0; i < a.length; i++) {
+	    // This is the body of the loop (just one statement)
+	    // a[i] is the i'th element of the array a
+	    // In Java, arrays are zero-indexed:in an array of length elements,
+	    //  the first element is a[0] and the last is a[length-1]
+	    // Each trip through the loop adds a[i] to sum
+	    sum = sum + a[i]; // sum += a[i] would also work
+	}
+	// When control exits the loop, sum holds the sum of all elems. of a
+	// sum is the return value promised in the method declaration
+	return sum;
+    }
+    // Other methods in this class would go here ...
+}
+
+
+
+
+
+
+
+
+
+
+/*
+  This is file ArraySumDemo.java
+*/
+
+// This class exercises methods in the ArraySumClass
+// Everything in Java appears inside a class, class is the outermost construct
+public class ArraySumDemo {
+    // Define some test data
+    // Declare an array of integers named "six_ones"
+    // static variables are not associated with any particular object
+    //  they are like global variables in other (non-object-oriented) languages
+    static int[] six_ones = {1,1,1,1,1,1};  // declare and initialize the array
+    // from Bentley's Programming Pearls column,CACM 27(9), Sept 1984, p.865
+    // also Programming Pearls books, 1st edition p. 69, 2nd edition p. 77
+    static int[] bentley = {31, -41, 59, 26, -53, 58, 97, -93, -23, 84};
+    // The main method is the main program
+    //  the main method is the *only* thing you can run from the command line
+    //  always declare it exactly like this - never mind why for now
+    public static void main(String argv[]) {
+	// Print a line of output
+	// "..." is a literal string, is printed out exactly as it appears
+	//  here + is the string concatenation operator - it joins strings
+	//  ArraySum.array_sum(six_ones) calls the array_sum method in the 
+	//   ArraySum class, and passes it the array named six_ones
+	System.out.println("The array of six ones adds up to "
+			   + ArraySum.array_sum(six_ones));
+	System.out.println("Bentley's array adds up to " 
+			   + ArraySum.array_sum(bentley));
+    }
+}
+
+---------
+
+This command compiles ArraySum.java and produces ArraySum.class:
+
+$ javac ArraySum.java
+
+This command compiles ArrayDemo.java and produces ArraySumDemo.class:
+
+$ javac ArraySumDemo.java
+
+This command executes the main method in the ArraySumDemo class:
+
+$ java ArraySumDemo
+The array of six ones adds up to 6
+Bentley's array adds up to 145  
+
+---------------------------------------------
+
+Your assignment: add a method to the ArraySum class named
+signed_array_sum.  The first parameter is a boolean, the second
+parameter is an array of integers.  When the first parameter is true,
+the function returns the sum of all the elements in the array that are
+positive (greater than zero).  When the first parameter is false, the
+function returns the sum of all the negative elements.  In the
+ArraySumDemo class, add three more well-chosen arrays of test data.
+In the main method of the ArraySumDemo class, add statements to test
+signed_array_sum with both values of the first parameter on six_ones,
+bentley, and your three new arrays.

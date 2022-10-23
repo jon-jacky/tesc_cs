@@ -16,11 +16,11 @@ differ slightly from mine:
 
 <http://archives.evergreen.edu/webpages/curricular/1999-2000/cofc99/cofcii.html>
 
-<http://archives.evergreen.edu/webpages/curricular/2000-2001/fofc00/fofc-desc-fall.html>
+<http://archives.evergreen.edu/webpages/curricular/2000-2001/fofc00/fofc.html>
 
 also winter and spring fofc pages?
 
-<http://archives.evergreen.edu/webpages/curricular/2001-2002/dsa01/dsa-desc.html>
+<http://archives.evergreen.edu/webpages/curricular/2001-2002/dsa01/dsa.html>
 
 These are web pages, so the content is in the gh-pages branch.
 

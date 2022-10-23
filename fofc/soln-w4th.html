@@ -1,0 +1,68 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz Solutions, Foundations of Computing, Week 4 (Thursday) -- Oct 19, 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz Solutions, Foundations of Computing, Week 4 (Thursday) -- Oct 19, 2000</h4>
+Name:<br><br><br>
+
+<ol>
+
+<li>
+<p>
+For each expression, write down its type.  Give the most specific type you
+can: for the expression <code>8</code>, <em>number</em> is a better
+answer than <em>word</em>.
+</p>
+
+<ol>
+<li><code>x</code> -- Symbol, atom or word<br><br></li>
+<li><code>(x)</code> -- List<br><br></li>
+<li><code>'(x y z)</code> -- List <br><br></li>
+<li><code>8</code> -- Number or integer (symbol etc. are less specific)<br><br></li>
+<li><code>+</code> -- Procedure (symbol etc. are less specific)<br><br></li>
+<li><code>(+ 9 10)</code> -- List <br><br></li>
+<li><code>(lambda (x) (word 'super- x))</code> -- List<br><br></li>
+</ol>
+
+</li>
+
+<li>
+<p>
+For each procedure, write down the types of its arguments and its result.
+Give the most specific types you can.
+</p>
+
+<ol>
+<li><code>+</code> -- Arguments: number, Result: number<br><br></li>
+<li><code>word</code> -- Arguments: word, Result: word<br><br></li>
+<li><code>sentence</code> -- Arguments: word or sentence, Result: sentence<br><br></li>
+<li><code>every</code> -- Argument 1: procedure, Argument 2: List, Result: List<br><br></li>
+</ol>
+</li>
+
+<li>
+<p>
+For each expression, write down whether it can be evaluated or not (do <em>not</em>
+write down the value).
+</p>
+
+<ol>
+<li><code>(+ 1 2)</code> -- Yes<br><br></li>
+<li><code>(+ 1 'two)</code> -- No, second argument is not a number, it's just a symbol<br><br></li>
+<li><code>(+ 1 (2))</code> -- No, second argument is not a number, it's a list<br><br></li>
+<li><code>(word 1 2)</code> -- Yes<br><br></li>
+<li><code>(word 'super 'stitious)</code> -- Yes<br><br></li>
+<li><code>(word '(super stitious))</code> -- No, argument is not a word, it's a list<br><br></li>
+<li><code>(every 'super '(duper sonic))</code> -- No, first argument is not a procedcure<br><br></li>
+<li><code>(every (lambda (x) (word 'super- x)) '(duper sonic))</code> -- Yes<br><br></li>
+<li><code>(every '(lambda (x) (word 'super- x)) '(duper sonic))</code> -- No, first argument is not a procedure, it's just a list<br><br></li>
+</ol>
+</li>
+
+
+</body>
+</html>

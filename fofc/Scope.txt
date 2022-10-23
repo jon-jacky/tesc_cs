@@ -1,0 +1,100 @@
+/**
+ * Scope.java -- Illustrate Java variables and scope rules
+ *
+ * @author  J. Jacky
+ * @version 6-Apr-2001 Written
+ */
+
+import java.io.*;  // needed for println
+
+// Each file must contain one public class, with the same name as the file
+public class Scope {
+    
+    // Class variables are like global variables.  
+    // They are declared with the static modifier
+    public static int x = 1;  // you can initialize variables in declarations
+    public static int y = 2;
+
+    // Class methods are like functions, also must be declared static
+    public static int sum(int a, int b, int c) {
+	return a + b + c;
+    }
+
+    // We can define our own println method for this class
+    public static void println(int x, int y, int z, int s) {
+	// Java automatically converts variables to strings in this context
+	// Between strings + is concatentation, between numbers + is addition
+	System.out.println(" x " + x + "  y " + y + "  z " + z + "   s " + s);
+    }	
+
+    // The main method in the class runs when you execute "java <classname>"
+    public static void main(String args[]) {
+	// Local variables are declared within methods
+	int y = 3;
+	int z = 4;
+	int s;
+
+	System.out.print("Scope.main, global x, local y, local z : ");
+	s = sum(x,y,z); println(x,y,z,s);
+
+	System.out.print("Scope.main, global x, global y, local z: ");
+	s = sum(x,Scope.y,z); println(x,Scope.y,z,s);
+	
+	// Call the aux method and pass the local y, then again with global y
+	// \n is newline, forces linebreak
+	System.out.println("\nmain passes local y to aux: "); aux(y);
+	System.out.println("\nmain passes global y to aux: "); aux(Scope.y);
+
+	// Call the aux method in the Other class
+	System.out.println("\nmain passes local y to Other.aux: "); 
+	Other.aux(y);
+	System.out.println("\nmain passes global y to Other.aux: ");
+	Other.aux(Scope.y);
+	System.out.println("\nmain passes Other.y to Other.aux: ");
+	Other.aux(Other.y);
+    }
+
+    public static void aux(int y) {
+	int z = 5;
+	System.out.print("Scope.aux, global x, passed y, local z : ");
+	int s = sum(x,y,z); println(x,y,z,s);
+    }
+}
+
+// You can put several classes in a file, but only one can be public
+class Other {
+    public static int x = 6; 
+    public static int y = 7;
+    
+    public static void aux(int y) {
+	int z = 8;
+	System.out.print("Other.aux, global x, passed y, local z : ");
+	
+	// call methods in another class
+	int s = Scope.sum(x,y,z); Scope.println(x,y,z,s);
+    }	
+}
+
+---------------------------------------------------------------------------
+
+$ java Scope
+Scope.main, global x, local y, local z :  x 1  y 3  z 4   s 8
+Scope.main, global x, global y, local z:  x 1  y 2  z 4   s 7
+ 
+main passes local y to aux:
+Scope.aux, global x, passed y, local z :  x 1  y 3  z 5   s 9
+ 
+main passes global y to aux:
+Scope.aux, global x, passed y, local z :  x 1  y 2  z 5   s 8
+ 
+main passes local y to Other.aux:
+Other.aux, global x, passed y, local z :  x 6  y 3  z 8   s 17
+ 
+main passes global y to Other.aux:
+Other.aux, global x, passed y, local z :  x 6  y 2  z 8   s 16
+ 
+main passes Other.y to Other.aux:
+Other.aux, global x, passed y, local z :  x 6  y 7  z 8   s 21 
+
+
+

@@ -1,0 +1,149 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Emacs survival guide</title>
+</head>
+
+<body>
+
+<h4>Emacs survival guide</h4>
+
+<p>
+These directions were tested on GNU Emacs 20.5.1 and Red Hat Linux 6.2.
+</p>
+
+<p>
+Last revised January 9, 2000.  
+Use your browser's <b>Reload</b> or <b>Refresh</b>
+button to get the latest version.
+</p>
+
+<hr>
+
+<h4>Notation</h4>
+
+<p>
+Emacs uses the control key and escape key heavily. We write it like this:
+</p>
+
+<table cellpadding=10>
+<tr>
+<td valign=top>
+<b>C-x</b> 
+</td>
+<td>
+Pronounced "Control-x"<br>
+Hold down the <b>Ctrl</b> key (usually in the lower left corner of the keyboard) while pressing the <b>x</b> key.<br>
+Both <b>Ctrl</b> and <b>x</b> must be down at the same time.
+</td
+</tr>
+<tr>
+<td valign=top>
+<b>M-x</b> 
+</td>
+<td>
+Pronounced "Meta-x"<br>
+Press the <b>Esc</b> key (usually in the upper left corner of the keyboard),
+release it, then press the <b>x</b> key.<br>
+<b>Esc</b> and <b>x</b> should not be down at the same time.
+</td
+</tr>
+</table>
+
+<p>
+So C-x C-f means hold down the control key, then type x and then f while
+holding it down.  (This is the command to load a file into emacs).
+
+
+<h4>Starting</h4>
+
+<p>
+To start Emacs, type one of these commands in a terminal window at the
+Unix prompt:
+</p>
+
+<dl>
+<dt><tt>emacs</tt></dt>
+<dd>
+<br>Starts emacs in a new window, possibly with different font, etc.
+However you can't use that terminal window until you exit emacs.<br><br>
+</dd>
+<dt><tt>emacs &</tt></dt>
+<dd>
+<br>Starts emacs in a new window, 
+releases control of your terminal window<br><br>
+</dd>
+<dt><tt>emacs test.txt</tt></dt>
+<dd>
+<br>Starts emacs in a new window, loads the file <tt>test.txt</tt> (if
+it doesn't exist, creates a new empty file).  Alternatively, you can
+load the file later.  See below.<br><br>
+</dd>
+<dt><tt>emacs -nw</tt></dt>
+<dd>
+<br>Starts emacs in the same terminal window.<br>
+Use this form to keep the same font etc., 
+or if system complains about X, privileges, or just because.<br><br>
+</dd>
+<dt><tt>emacs -fg black -bg gray73 -fn *-fixed-*-20-* -geometry 80x28</tt></dt>
+<dd>
+<br>Starts emacs in a new window with the specified foreground color,
+background color, font, and window size.<br><br>
+</dd>
+</dl>
+
+<h4>Typing</h4>
+
+<p>
+Just type.  All the regular keys, arrow keys, delete, backspace, and
+page up/down keys should work.  Alternatively, you can try these commands:
+<b>C-f</b> cursor forward, <b>C-b</b> cursor back, <b>C-p</b> previous line, 
+<b>C-n</b> next line, 
+<b>M-v</b> page up, <b>C-v</b> page down.
+</p>
+
+<h4>Exiting</h4>
+
+<p>
+Type <b>C-x C-c</b>.  If you have any unsaved work,
+emacs will ask you if you want to save it.  Type y.
+</p>
+
+<h4>Other commands</h4>
+
+<p>
+Most control or escape sequences are commands.  Usually a prompt appears
+in the command line at the bottom of the window.  Here are a few:
+</p>
+
+<table>
+<tr><td>C-x C-f</td><td>Load file, prompt for filename</td></tr>
+<tr><td>C-x C-s</td><td>Save file without exiting</td></tr>
+<tr><td>C-x C-c</td><td>Exit, prompt to save files</td></tr>
+<tr><td>C-s</td><td>Search forward, prompt for search string</td></tr>
+<tr><td>C-r</td><td>Search backward, prompt for search string</td></tr>
+<tr><td>C-h ?</td><td>Show help options, prompt for choice</td></tr>
+<tr><td>C-h t</td><td>Start emacs tutorial</td></tr>
+</table>
+
+<p>
+If you make a mistake or change your mind you can always escape:
+<p>
+
+<table>
+<tr><td>C-g</td><td>Abandon command and resume typing</td></tr>
+</table>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+
+
+
+
+
+
+

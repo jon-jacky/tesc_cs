@@ -1,0 +1,189 @@
+win-gui.txt
+
+Using the Windows Graphical User Interface
+
+GUI - general
+
+ Mouse
+  Two button mouse (not one button like Mac or three-button like Unix/Linux).
+  Left-click to activate current selection (open file, launch program, do button command...)
+  "Click" means left click
+  Sometimes you must double click (left button) to activate
+  Double click is different from click, then click again -- speed matters
+  Right click to bring up "context menu" of additional options 
+
+ Desktop
+  Rest cursor over icon: see text description
+  Right click on desktop background for menu: "Arrange Icons" etc.
+
+ Windows
+
+  Title bar
+   Minimize, Maximize, Close buttons (urc)
+   System menu (ulc), alternative to Min, Max, Close buttons
+
+  Menu bar (File, Edit, View etc.)
+   File Edit View etc.
+   Left click menu name on menu bar to show menu
+   Left click menu entry to activate operation
+   Left click anywhere outside menu to make menu disappear
+   Menu path notation used here and in many books:
+    "File>Save As..."  means click "File" on menu bar, 
+      then click "Save As..." on File menu
+   Menu entries (from menu bar)
+    Grayed-out ("shadow") indicates operation is not enabled at this time
+    Little arrow on right edge means resting cursor on entry will pop up a cascaded menu
+    Three dots ("Save Project As...") indicates selection will pop up a dialog box
+
+  Toolbar (shortcuts to menu items)
+   Below menu bar
+   Row of icons (little pictures): open folder, floppy disk etc.
+   Icons are shortcuts for menu paths: VB open folder icon is shortcut for File>Open Project
+   Place cursor over icon for a moment to see spelled-out name of operation  
+   Click icon to perform operation
+
+  Status bar at bottom of window often shows useful information
+
+  usually Toolbar and Status bar can be customized from View menu to reduce clutter
+
+ Keyboard shortcuts or accelerators (especially useful on notebook computers with no mouse)
+
+  Programs
+   Ctrl-Esc brings up Start menu
+    letter select items, arrows move between items, Enter selects item, Alt dismisses menus
+   Windows-logo key (usually left of space bar) brings up Start menu like Ctrl-Esc
+
+  Windows
+   Alt-Esc brings the next window to the top (current window goes to bottom of pile)
+    (also cycles through minimized icons - click enter to open)
+   Alt-Tab brings up row of icons for open windows (including minimized windows)
+    Tab to select next icon
+    release Alt to bring selected window to top
+   Ctrl-Alt-Del brings up Close Program menu (for shutting down "hung" program)
+    Ctrl-Alt-Del again to reboot
+
+  (Is there any way to select icons on desktop without using mouse "My Computer" etc.?)
+
+  Within a window
+   PgUp, PgDn scrolls window contents - usually much more convenient than mouse, scroll bar
+   up, down arrows also scroll but with finer control - usually easier than mouse
+   Home - top of document, page, list ...
+   End - end of ...
+   Alt-(letter) brings up menu (Alt-F file menu, Alt-E edit, Alt-V view ...)
+    when menu is displayed (letter) alone selects that item (Alt-F then r > Properties)
+   Alt-space brings up system menu (Minimize, Maximize, Restore, Close
+   Alt by itself when no menu displayed selects menu bar (but does not open any menu) 
+    so arrows can select (but not open) menus
+   Alt by itself when menu displayed dismisses menu (including start menu)
+   (Is there any way to select toolbar items without using the mouse?)
+   Tab moves to next field (pane in Explorer, link in browser, button in dailog box, etc.) 
+    Shift-Tab moves backward
+   Arrow keys move among items within a field (file icons in Explorer, menu items, etc.)
+   Enter selects item (like click)
+   Space bar toggles check box
+
+
+Editing text
+ Notepad editor, but also other MS programs: Outlook/Exchange mail, VB code windows etc.
+
+ Cursor movement
+  arrow keys: one character or line at a time
+  Pg Up, Pg Dn: larger vertical movements
+  Home, End: start, end of current line
+  Ctrl-Home, Ctrl-End: start, end of document
+
+ Selecting text
+  Shift while moving cursor - selected text turns blue
+  Unselecting selected text: move cursor while Shift *not* pressed - blue disappears
+  
+ Processing selected text
+  Del Delete
+  Ctrl-Z Undo (restores deleted text)
+  Ctrl-X Cut (removes text from file, puts it in paste buffer), Enter also cuts
+  Ctrl-C Copy (copies text to paste buffer but does not remove it from original location)
+  Ctrl-V Paste (inserts contents of paste buffer back into file, cut or copied)
+
+My Computer
+ alternative to Windows Explorer, does not show tree structure
+ Works best with these View options checked (almost useless without them, in fact):
+ View > Status bar: checked (bar at bottom of window show n of items and size)
+ View > Folder Options > General 
+  check "Custom...", click Settings
+   under "Browse folders as follows" 
+    click "Open each folder in same window" (not "own window" -- opens too many windows!)
+ View > Folder Options > View
+  check "Display the full path in title bar"
+  check "Show pop-up description for desktop and folder items"
+  *un*check "Hide file extensions for known file types" -- you need to see .txt, .html etc.
+  Hidden files: check "Show all files"
+
+Windows Explorer
+ Alternative to "My Computer", shows directory tree structure in left "Folders" panel
+ Works best with these View options checked (almost useless without them, in fact):
+ View > Folder Options > View ...
+  (same as My Computer, see above)
+ View > Small Icons (so more can fit in the panel at one time)
+ View > List (arrange files in one vertical column, not rows and columns)
+ View > Details (show name, type, size, modified date)
+ View > Arrange Icons > By Name, or BySize, Type, Date (sort file list)
+
+Browser (IE)
+ URL: Address bar or textbox
+  arrow on right: drop-down list of recently-visited URL's
+  URL abbreviations
+   foo instead of http://www.foo.com works
+  to edit, move cursor into URL textbox - cursor turns to vertical line
+  click in URL textbox - URL turns blue
+   (I think these editing rules apply to other contexts, e.g. filenames in Explorer etc.)
+   to clear URL and start over, press Delete key
+   to edit URL from keyboard click in blue: puts text cursor (vertical line) 
+     at mouse pointer, blue goes away.  Now you are in editing mode
+   to move text cursor in URL use arrow keys or move mouse and click again
+   to insert characters just type
+   to delete after cursor press Delete key
+   to delete before cursor press Backspace key
+   to quit editing mode click outside URL textbox, vertical line cursor disappears
+  autocomplete (or whatever they call it)
+   autocompleted text appears in blue
+   to accept, press End (key) *or* (left) click - cursor moves to end
+   to get rid of autocompleted text, type Delete (key)
+   to override, just keep typing - it will disappear
+ View
+   View > Toolbars: *Uncheck* Links to get rid of space-wasting row of advertising links
+   View > Status Bar: *Check* this for useful info at the bottom
+   View > Explorer Bar: divides browser window into two panels,  
+    links appear in bar at left, check *History* sometimes useful, shows recent URL's
+      sorted by date, uncheck History again to restore single-panel browser window
+ Keyboard shortcuts
+  Home: top of page
+  End: bottom of page
+  PgUp, PgDn: scroll through page (much easier than mouse, scroll bar)
+  up, down arrows: scroll through page (finer control)
+  Tab: move focus forward to next link (like moving cursor to link with mouse) 
+  Shift-Tab: move focus backward to previous link
+  Enter: go to link (like clicking mouse)
+
+Find
+
+Notepad
+ File > Open ...
+  Open dialog box 
+  Files of type: 
+   click arrow on right of box for drop-down list
+   select "All Files (*.*)" to list, open any file, for example .html files
+   if select "Text Documents", can only list, open .txt files
+ File > Save As ...
+  ditto, same as Open
+
+ Editing text in Notepad - see Editing text, above
+
+Run
+
+Command Line 
+ Long filenames
+
+Task Manager
+
+Customizing Windows
+ Desktop icons, Start menu contents different on every system
+ Desktop shortcuts - adding, getting rid of 

@@ -1,0 +1,458 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Visual Basic How-To</title>
+</head>
+<body>
+<h2>Concepts of Computing, Section II</h2>
+
+<h2>How to build and run a Visual Basic program</h2>
+
+<ul>
+<li><a href="#create">Create and save a new program</a></li>
+<li><a href="#restore">Restore a saved program</a></li>
+<li><a href="#based">Write a program based on an earlier program</a></li>
+<li><a href="#controls">Add controls to the form</a></li>
+<li><a href="#properties">Set control properties</a></li>
+<li><a href="#code">Write code for event subroutines</a></li>
+<li><a href="#run">Run the program</a></li>
+<li><a href="#stop">Stop the program</a></li>
+<li><a href="#revise">Revise the program</a></li>
+<li><a href="#break">Examine the program in <b>Break</b> mode</a></li>
+<li><a href="#exit">Exit</a></li>
+</ul>
+
+<p>
+Here are some rough <a href="vb-ide.txt">notes</a> about using VB.
+</p>
+
+<p>
+Back to <a href="cofcii.html">course page</a>.
+</p>
+
+<hr>
+
+<h3><a name="create">Create and save a new program</a></h3>
+
+<ol>
+
+<li>
+<p>
+Start VB.
+</p>
+
+<p>
+Find Visual Basic on the Windows Start menu and start it.
+</p>
+
+<p>
+The large VB window appears with a 
+<b>New Project</b> dialog box (if there is no dialog box, bring it up by 
+<b>File &gt; New Project</b>).  
+</p>
+
+<p>
+Select <b>Standard Exe</b>.
+The VB window shows <b>Project1</b> with an empty <b>Form1</b>.
+</p>
+</li>
+
+<li>
+<p>
+Name the project.
+</p>
+
+<p>
+Select <b>Project &gt; Project1 Properties</b>.
+In the <b>Project Properties</b> dialog box, change <b>Project1</b> to
+your project name, say <b>Counter</b>.
+</p>
+
+<p>
+The title bar on the VB window changes to match.
+</p>
+</li>
+
+<li>
+<p>
+Name the form and set the form caption.  
+</p>
+
+<p>
+The <b>Properties</b> window at the right of the VB window shows the 
+properties for the form.  The first property at the top of the 
+list is <b>Name</b>.  Change the name to, say, <b>frmCounter</b>.
+</p>
+
+<p>
+The title bar in the Form window changes to match.
+</p>
+
+<p>
+Still in the Properties window, scroll down to <b>Caption</b>.
+Change the caption to the same name as the project, say <b>Counter</b>.
+</p>
+
+<p>
+The title bar on the form itself changes to match.
+</p>
+</li>
+
+
+<li>
+<p>
+Save the form (you should always name and save the form
+<em>before</em> you save the project).
+</p>
+
+<p>
+Select <b>File &gt; Save frmCounter As ...</b>.  The <b>Save Form
+As</b> dialog box appears.  The <b>Save in:</b> textbox shows the name
+of the folder where the form will be saved.  You should create a new
+folder for this project.  Navigate to the folder where you want to
+keep all your VB projects and click on the new folder icon (a picture
+of a folder with a little highlight).  After you create the new
+folder, select that folder.  Its name should appear in the <b>Save
+in:</b> box.  The form file name <b>frmCounter.frm</b> should appear
+in the <b>File name:</b> box (if not, type in the correct name).
+Click on <b>Save</b>.
+</p>
+
+<p>
+The form is saved.
+</p>
+
+<li>
+<p>
+Save the project (be sure to name and save the form
+<em>before</em> you save the project).
+</p>
+
+<p>
+Select <b>File &gt; Save Project As ...</b>.  The <b>Save Project As</b>
+dialog box appears.  The <b>Save in:</b> textbox should show the correct
+folder (the one you just created for the form).  The <b>File name:</b>
+box should show the correct name (<b>Counter.vbp</b> in this example).
+Click on <b>Save</b>.
+</p>
+
+<p>
+The project is saved.
+</p>
+</li>
+</ol>
+
+<p>
+After you name and save the form and the project, it is a good idea to exit
+and then restart VB to make sure you can restore your project --- before you 
+invest a lot of work in it.
+</p>
+
+
+<h3><a name="restore">Restore a saved program</a></h3>
+
+<ol>
+
+<li>
+<p>
+Start VB.
+</p>
+
+<p>
+Find Visual Basic on the Windows Start menu and start it.
+</p>
+
+<p>
+The large VB window appears with a 
+<b>New Project</b> dialog box.  This time choose the <b>Existing</b>
+tab (if there is no dialog box, bring it up by 
+<b>File &gt; Open Project</b>).  
+</p>
+
+<p>
+Navigate to the folder you created earlier.  It should 
+contain a <b>.vbp</b> file for the project you created earlier
+(<b>Counter.vbp</b> in this example).  Select that file.
+</p>
+
+<p>
+Alternatively, instead of using the Start menu,
+you can navigate to the project folder using My Computer or Windows
+Explorer.  Then double-clicking on the .vbp file or the .frm file
+starts VB and opens that project.
+</p>
+
+<p>
+The restored project appears in the VB window.  The project name appears in the
+title bar.
+</p>
+</li>
+
+<li>
+<p>
+Open the form.
+</p>
+
+<p>
+An icon for a folder of forms appears in the <b>Project</b> window on the right
+side of the VB window.   Open this folder and select the form you saved.
+Click on the <b>View Code</b> and <b>View Object</b> icons to display the
+code or form layout windows.
+</p>
+
+<p>
+Now you are ready to add controls and code to the form.  At any time, you can
+use <b>File &gt; Save frmCounter</b> and <b>File &gt; Save Project</b>
+to save your changes to the form and the project without going through
+the <b>Save As ...</b> dialogs.
+</p>
+</li>
+
+</ol>
+
+
+<h3><a name="based">Write a program based on an earlier program</a></h3>
+
+<ol>
+<li>
+<p>
+Restore a saved VB program, as described in <b>How to Restore
+...</b> above.
+</p>
+</li>
+
+<li>
+<p>
+It is a good idea to change the project name and the form name,
+as described in <b>How to Create ...</b>
+above. 
+</p>
+</li>
+
+<li>
+<p>
+Make changes in the program. 
+</p>
+</li>
+
+<li>
+<p>
+Save the form and the project in a new folder, using <b>Save As
+...</b> (not <b>Save</b>) as described in <b>How to Create ...</b>
+above. 
+</p>
+
+<p>
+Make sure you save the changed program in a different folder.  This is necessary
+to ensure that the earlier program is preserved.  Be sure to save the form first.
+</p>
+</li>
+</ol>
+
+<h3><a name="controls">Add controls to the form</a></h3>
+
+<p>
+Repeat for each control:
+</p>
+
+<ol>
+<li>
+<p>
+Choose the control.
+</p>
+
+<p>
+In the Toolbox window at the left, point at a control icon.
+The name of the control (for example, Label) will appear.
+</p>
+
+<p>
+Double click on the control icon.
+</p>
+
+<p>
+The control appears in the middle 
+of the form layout window.
+</p>
+</li>
+
+<li>
+<p>
+Position and size the control.
+</p>
+
+<p>
+In the Form Layout window, point at the center of the control.  Drag
+control to the position you want (hold down the left mouse button
+while you move the mouse).
+</p>
+
+<p>
+To size the control, point at one of the little grab boxes at the
+sides and corners of the control.  Drag the side (or corner) to 
+make the size you want.
+<p>
+</li>
+
+</ol>
+
+<p>
+It is best to set the properties for each control right after
+you select it and position it.
+</p>
+
+<h3><a name="properties">Set control properties</a></h3>
+
+For each control:
+
+<ol>
+<li>
+<p>
+Use the Properties window at the right.
+</p>
+
+<p>
+Select the control from the drop-down menu at the top of the
+Properties window.  Or, click on the control in the form layout
+window.
+</p>
+
+<p>
+A table showing all the control properties appears, with property
+names in the left column and property values in the right.
+</p>
+</li>
+
+<li>
+<p>
+The first property is Name.  Type in a meaningful name, using the naming
+conventions: <code>frm...</code> for forms, <code>cmd...</code> for
+command buttons, <code>lbl...</code> for labels, <code>tmr...</code>
+for timers etc.
+</p>
+</li>
+
+<li>
+<p>
+Set the other properties.  For command buttons, set alignment, caption
+and font.  For labels, set alignment, caption, font, and (often)
+background color.  For timers, set interval.  And so on.
+</p>
+</li>
+
+</ol>
+
+<h3><a name="code">Write code for event subroutines</a></h3>
+
+For each pertinent control and event:
+
+<p>
+Use the Code window.  Find the relevant event subroutine.
+</p>
+
+<p>
+For controller <var>Ctlr</var>
+and event <var>Event</var>, the subroutine is named
+<var>Ctlr_Event</var>, for example <code>cmdEnter_Click</code>.
+</p>
+
+<p>
+Double-clicking on the controller in the Form layout window
+puts the cursor at the pertinent subroutine in the Code window.
+</p>
+
+<h3><a name="run">Run the program</a></h3>
+
+There are several ways to run your program:
+
+<ul>
+<li>Press the <b>F5</b> key.</li>
+<li>On the VB menu bar, <b>Run &gt; Start</b></li>
+<li>On the VB toolbar, click the VB Run icon (the arrow)</li>
+</ul>
+
+<p>
+The program window appears, looking much like the form you designed.
+The controls on the window are active.  While the program is running,
+it behaves like any other window on the desktop: you can move it,
+minimize it, etc.
+</p>
+ 
+<p>
+The indicator on the VB window title bar changes from <b>design
+mode</b> to <b>run mode</b>.  Many items in the VB window disappear
+during run mode and many menu and toolbar operations not enabled.
+</p>
+
+<h3><a name="stop">Stop the program</a></h3>
+
+There are several ways to stop your program:
+
+<ul>
+<li>In your program's window, click the <b>Exit</b> button or menu 
+(if you provided one)</li>
+<li>In your program window's title bar, click the <b>Close</b> button 
+(VB always provides one)</li>
+<li>On the VB menu bar, <b>Run &gt; Stop</b></li>
+<li>On the VB toolbar, click the VB <b>Stop</b> icon (the box)</li>
+</ul>
+
+<p>
+The indicator on the VB window title bar changes from <b>run
+mode</b> to <b>design mode</b>.  Items in the VB window reappear,
+and menu and toolbar operations are enabled again.
+</p>
+
+<h3><a name="revise">Revise the program</a></h3>
+
+<p>
+In design mode, you can add or remove controls, change control
+properties and revise code.  Your changes will be in effect when you
+run the program again.
+</p>
+
+<p>
+It is not necessary to use the <b>Save</b> operations before your next
+program run.  It is only necessary to save before you exit VB.
+</p>
+
+<h3><a name="break">Examine the program in <b>Break</b> mode</a></h3>
+
+<p>
+When the program is running, there are several ways to put VB in
+break mode:
+</p>
+
+<ul>
+<li>On the VB menu bar, <b>Run &gt; Break</b></li>
+<li>On the VB toolbar, click the <b>Break</b> icon (the vertical bars)</li>
+<li>Your program reaches a breakpoint or experiences an error</li>
+</ul>
+
+<p>
+(Could say more about debugging ...)
+</p>
+
+<h3><a name="exit">Exit</a></h3>
+
+<p>There are several ways to exit VB.</p>
+
+<ul>
+<li>On the menu bar, <b>File &gt; Exit</b></li>
+<li>On the VB window title bar, click the <b>Close</b> button</li>
+</ul>
+
+<p>
+VB will warn you if you have unsaved work.
+</p>
+
+<p>
+Back to <a href="#top">top</a>
+</p>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

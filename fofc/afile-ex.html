@@ -1,0 +1,106 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Assignment, Foundations of Computing</title>
+</head>
+
+<body>
+
+<h4>Lab Assignment, Foundations of Computing</h4>
+
+<p>
+Revised March 10, use your browsers <b>Reload</b> or <b>Refresh</b>
+button to get the latest version.
+</p>
+
+<hr>
+
+<p>
+Write an awk program to check file type.
+</p>
+
+<p>
+Name the program <tt>afile</tt>.  The program reads from standard
+input.  The program writes one line containing one word to standard
+output, indicating the type of the input: <tt>HTML</tt>,
+<tt>Scheme</tt>, <tt>Numeric</tt>, <tt>Text</tt>, or <tt>Other</tt>.
+<p>
+
+<p>
+This example shows one way to run the program on a file named
+<tt>foo.dat</tt>.   Here <tt>afile</tt> detects that <tt>foo.dat</tt>
+contains numeric data:
+
+<pre>
+    $ cat foo.dat | awk -f afile
+    Numeric
+</pre>
+
+<p>
+The criteria used to identify each type of file are described in these pages,
+and summarized in line here:
+</p>
+
+<ul>
+<li><a href="http://grace.evergreen.edu/~cccon18/afile.html">HTML</a>
+- contains an <tt>&lt;HTML&gt;</tt> or <tt>&lt;html&gt;</tt>
+tag anywhere in the file</li> <li><a
+href="http://grace.evergreen.edu/~gutkim14/afile.html">Scheme</a> -
+contains the pattern <tt>(define (</tt> anywhere in the file (note the second parentheses)
+</li> <li><a
+href="http://grace.evergreen.edu/~saberi11/afile.html">Numeric</a> -
+contains only the digits <tt>0</tt> - <tt>9</tt> and the special
+characters <tt>$ % * . / ^ =</tt> and the space character.</li> <li><a
+href="http://grace.evergreen.edu/~mikdon04/afile.html">Text</a> -
+contains only bytes with (octal) ASCII codes in the range <tt>000</tt>
+- <tt>177</tt></li>
+<li>
+Other - anything else, including GIF's, JPEG's, binary executables etc.
+</li>
+</ul>
+
+<p>
+To understand the definition of the text file type, it may be useful
+to refer to a table of ASCII codes.  Here are some samples from the
+web:
+</p>
+
+<ul>
+<li>
+<a href="http://www.cs.mun.ca/~michael/c/ascii-table.html">
+This table</a> shows the octal codes.
+</li>
+<li>
+<a href="http://www.physics.udel.edu/wwwusers/watson/scen103/ascii.html">
+This table</a> shows the control character names and control key 
+sequences but doesn't show the octal codes.
+</li>
+<li>
+<a href="http://members.tripod.com/~plangford/ascii.html">
+This table</a> shows the extended 8-bit codes (plus a lot of 
+annoying ads).
+</li>
+</ul>
+
+
+<p>
+The file types are not mutually exclusive -- the first three 
+file types are also text files -- so your program must test for file type
+in this order: <tt>HTML</tt>, <tt>Scheme</tt>, <tt>Numeric</tt>,
+<tt>Text</tt> and <tt>Other</tt>.  So <tt>Text</tt> really means the
+file is a text file which is not also an HTML file, Scheme file, or
+Numeric file.  The <tt>Other</tt> category should include binary files
+including GIF's, JPEG's, executable code (as found in the files
+in the <tt>bin</tt> directories) etc.
+</p>
+
+<p>
+The assignment is due in the lab on Thursday, March 15.
+</p>
+
+</body>
+</html>
+
+
+
+

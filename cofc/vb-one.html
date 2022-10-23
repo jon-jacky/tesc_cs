@@ -1,0 +1,278 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab, Visual Basic I, Concepts of Computing, Section II</title>
+</head>
+<body>
+<h2>Concepts of Computing, Section II</h2>
+
+<h2>Visual Basic Introduction</h2>
+
+<p>
+Back to <a href="cofcii.html">course page</a>.
+</p>
+
+<hr>
+
+<h3>Example Programs</h3>
+
+<h4>Counter</h4>
+
+<ul>
+<li><a href="Counter-vbp.txt">Counter.vbp</a></li>
+<li><a href="Counter-vbw.txt">Counter.vbw</a></li>
+<li><a href="frmCounter-frm.txt">frmCounter.frm</a></li>
+</ul>
+
+
+<h4>Flip</h4>
+
+<ul>
+<li><a href="Flip-vbp.txt">Flip.vbp</a></li>
+<li><a href="Flip-vbw.txt">Flip.vbw</a></li>
+<li><a href="frmFlip-frm.txt">frmFlip.frm</a></li>
+</ul>
+
+
+<h4>Traffic</h4>
+
+<ul>
+<li><a href="Traffic-vbp.txt">Traffic.vbp</a></li>
+<li><a href="Traffic-vbw.txt">Traffic.vbw</a></li>
+<li><a href="frmTraffic-frm.txt">frmTraffic.frm</a></li>
+</ul>
+
+
+<h4>TrafficAnimation</h4>
+
+<ul>
+<li><a href="TrafficAnimation-vbp.txt">TrafficAnimation.vbp</a></li>
+<li><a href="TrafficAnimation-vbw.txt">TrafficAnimation.vbw</a></li>
+<li><a href="frmTrafficAnimation-frm.txt">frmTrafficAnimation.frm</a></li>
+</ul>
+
+<hr>
+
+<h3>How to build and run a Visual Basic program</h3>
+
+<p>
+These are the mechanics of working with Visual Basic (VB).
+</p>
+
+<h4>How to create and save a new VB program</h4>
+
+<ol>
+
+<li>
+<p>
+Start VB.
+</p>
+
+<p>
+Find Visual Basic on the Windows Start menu and start it.
+</p>
+
+<p>
+The large VB window appears with a 
+<b>New Project</b> dialog box (if there is no dialog box, bring it up by 
+<b>File &gt; New Project</b>).  
+</p>
+
+<p>
+Select <b>Standard Exe</b>.
+The VB window shows <b>Project1</b> with an empty <b>Form1</b>.
+</p>
+</li>
+
+<li>
+<p>
+Name the project.
+</p>
+
+<p>
+Select <b>Project &gt; Project1 Properties</b>.
+In the <b>Project Properties</b> dialog box, change <b>Project1</b> to
+your project name, say <b>Counter</b>.
+</p>
+
+<p>
+The title bar on the VB window changes to match.
+</p>
+</li>
+
+<li>
+<p>
+Name the form and set the form caption.  
+</p>
+
+<p>
+The <b>Properties</b> window at the right of the VB window shows the 
+properties for the form.  The first property at the top of the 
+list is <b>Name</b>.  Change the name to, say, <b>frmCounter</b>.
+</p>
+
+<p>
+The title bar in the Form window changes to match.
+</p>
+
+<p>
+Still in the properties window, scroll down to <b>Caption</b>.
+Change the caption to the same name as the project, say <b>Counter</b>.
+</p>
+
+<p>
+The title bar on the form itself changes to match.
+</p>
+</li>
+
+
+<li>
+<p>
+Save the form (you should always name and save the form
+<em>before</em> you save the project).
+</p>
+
+<p>
+Select <b>File &gt; Save frmCounter As ...</b>.  The <b>Save Form
+As</b> dialog box appears.  The <b>Save in:</b> textbox shows the name
+of the folder where the form will be saved.  You should create a new
+folder for this project.  Navigate to the folder where you want to
+keep all your VB projects and click on the new folder icon (a picture
+of a folder with a little highlight).  After you create the new
+folder, select that folder.  Its name should appear in the <b>Save
+in:</b> box.  The form file name <b>frmCounter.frm</b> should appear
+in the <b>File name:</b> box (if not, type in the correct name).
+Click on <b>Save</b>.
+</p>
+
+<p>
+The form is saved.
+</p>
+
+<li>
+<p>
+Save the project (be sure to name and save the form
+<em>before</em> you save the project).
+</p>
+
+<p>
+Select <b>File &gt; Save Project As ...</b>.  The <b>Save Project As</b>
+dialog box appears.  The <b>Save in:</b> textbox should show the correct
+folder (the one you just created for the form).  The <b>File name:</b>
+box should show the correct name (<b>Counter.vbp</b> in this example).
+Click on <b>Save</b>.
+</p>
+
+<p>
+The project is saved.
+</p>
+</li>
+</ol>
+
+<p>
+After you name and save the form and the project, it is a good idea to exit
+and then restart VB to make sure you can restore your project --- before you 
+invest a lot of work in it.
+</p>
+
+
+<h4>How to restore a saved VB program</h4>
+
+<ol>
+
+<li>
+<p>
+Start VB.
+</p>
+
+<p>
+Find Visual Basic on the Windows Start menu and start it.
+</p>
+
+<p>
+The large VB window appears with a 
+<b>New Project</b> dialog box.  This time choose the <b>Existing</b>
+tab (if there is no dialog box, bring it up by 
+<b>File &gt; Open Project</b>).  
+</p>
+
+<p>
+Navigate to the folder you created earlier.  It should 
+contain a <b>.vbp</b> file for the project you created earlier
+(<b>Counter.vbp</b> in this example).  Select that file.
+</p>
+
+<p>
+The restored project appears in the VB window.  The project name appears in the
+title bar.
+</p>
+</li>
+
+<li>
+<p>
+Open the form.
+</p>
+
+<p>
+An icon for a folder of forms appears in the <b>Project</b> window on the right
+side of the VB window.   Open this folder and select the form you saved.
+Click on the <b>View Code</b> and <b>View Object</b> icons to display the
+code or form layout windows.
+</p>
+
+<p>
+Now you are ready to add controls and code to the form.  At any time, you can
+use <b>File &gt; Save frmCounter</b> and <b>File &gt; Save Project</b>
+to save your changes to the form and the project without going through
+the <b>Save As ...</b> dialogs.
+</p>
+</li>
+
+</ol>
+
+
+<h4>How to write a VB program based on an earlier program</h4>
+
+<ol>
+<li>
+<p>
+Restore a saved VB program, as described in <b>How to Restore
+...</b> above.
+</p>
+</li>
+
+<li>
+<p>
+Make changes in the program. 
+</p>
+</li>
+
+<li>
+<p>
+Save the form and the project in a new folder, using <b>Save As
+...</b> (not <b>Save</b>) as described in <b>How to Create ...</b>
+above. 
+</p>
+
+<p>
+Make sure you save the changed program in a different folder.  This is necessary
+to ensure that the earlier program is preserved.  Be sure to save the form first.
+</p>
+</li>
+</ol>
+
+<p>
+Back to <a href="#top">top</a>
+</p>
+
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+
+
+
+

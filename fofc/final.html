@@ -1,0 +1,224 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Final Lab Quiz Solutions, Foundations of Computing, Fall 2000</title>
+</head>
+
+<body>
+
+<h4>Final Lab Quiz Solutions, Foundations of Computing, Fall 2000</h4> 
+
+Name:<br><br><br>
+
+<ol>
+
+<li>
+<p>
+The Scheme interpreter evaluates each of these expressions.  
+Write down the value that Scheme returns.
+</p>
+
+<ol type=a>
+<li><code>(+ 1 3)</code><br><br></li>
+<li><code>(* 3 (+ 1 3))</code><br><br></li>
+</ol>
+</li>
+
+<br><br>
+
+<li>
+<p>
+For all parts in this questions, assume the following definitions have been executed:
+</p>
+
+<pre>
+(define s '(a b c d))
+</pre>
+
+<pre>
+(define t '((a b) c d))
+</pre>
+
+<p>
+The Scheme interpreter evaluates each of these expressions.  
+Write down the value that Scheme returns.
+</p>
+
+<ol type=a>
+<li><code>s</code><br><br></li>
+<li><code>(car s)</code><br><br></li>
+<li><code>(cdr s)</code><br><br></li>
+<li><code>(cons 'a '(b c d))</code><br><br></li>
+<li><code>(cons (car s) (cdr s))</code><br><br></li>
+<li><code>(car (cdr s))</code><br><br></li>
+<li><code>t</code><br><br></li>
+<li><code>(car t)</code><br><br></li>
+<li><code>(cdr t)</code><br><br></li>
+<li><code>(cons '(a b) '(c d))</code><br><br></li>
+<li><code>(list '(a b) '(c d))</code><br><br></li>
+<li><code>(append '(a b) '(c d))</code><br><br></li>
+</ol>
+</li>
+
+<br><br>
+
+<li>
+<p>
+For all parts in this question, assume that a procedure named
+<code>add-1</code> has been defined.  It takes a number as an
+argument, and returns the number that is one greater than the
+argument.  For example <code>(add-1 3)</code> evaluates to
+<code>4</code>.
+</p>
+
+<p>
+The Scheme interpreter evaluates each of these expressions.  
+Write down the value that Scheme returns.
+</p>
+
+<ol type=a>
+<li><code>(map add-1 '(1 2 3))</code><br><br></li>
+<li><code>(map (lambda (x) (* 2 x)) '(1 2 3)) </code><br><br></li>
+</ol>
+</li>
+
+<br><br><br><br><br>
+
+<li>
+<p>
+Define a Scheme variable named <code>x</code> that has the value 3.
+</p>
+<br><br>
+</li>
+
+<li>
+<p>
+This table shows the number of electoral votes allocated to several states:
+</p>
+
+<table border cellpadding=10>
+<tr><td>Washington</td><td align=right>11</td></tr>
+<tr><td>Oregon</td><td align=right>7</td></tr>
+<tr><td>Iowa</td><td align=right>7</td></tr>
+<tr><td>California</td><td align=right>54</td></tr>
+<tr><td>Florida</td><td align=right>25</td></tr>
+</table>
+
+<p>
+Define a Scheme variable named <code>electoral-votes</code> to encode
+this table.  Represent the table by an association list: a list of
+sublists, one for each state, where each sublist has two elements.
+The first element of each sublist is the name of the state and the
+second element is the number of electoral votes for that state.
+</p>
+<br><br><br><br><br><br><br><br>
+<!-- <br><br><br><br><br><br><br><br><br><br><br><br> -->
+</li>
+
+
+<li>
+<p>
+Define a Scheme procedure named <code>add-1</code> that takes a number as an argument,
+and returns the number that is one greater than the argument. 
+</p>
+<br><br><br><br><br><br>
+</li>
+
+
+<li>
+<p>
+Define a Scheme procedure named <code>phase</code> that takes a number
+as an argument.  If the number is less than zero, it returns the
+symbol <code>ice</code>.  If the number is greater than one hundred,
+it returns the symbol <code>steam</code>.  Otherwise it returns the
+symbol <code>water</code>.
+</p>
+<br><br><br><br><br><br><br><br>
+</li>
+
+<br><br><br><br>
+
+
+<li>
+<p>
+This definition is executed:
+</p>
+
+<pre>
+;; Like Scheme length
+(define (len lst)
+  (if (null? lst)
+      0
+      (+ 1 (len (cdr lst)))))
+</pre>
+
+<p>
+Then this expression is typed into the Scheme interpreter and
+evaluated.  It returns the result shown:
+</p>
+
+<pre>
+> (len '(x y z))
+3
+</pre>
+
+<p>
+The following questions all concern what happens when the
+expression <code>(len '(x y z))</code>
+is evaluated.
+</p>
+
+<ol type=a>
+
+<li>
+What is the base case?
+<br><br><br>
+</li>
+
+<li>
+What does <code>len</code> return when the base case is reached?
+<br><br><br>
+</li>
+
+<li>
+How many times is <code>len</code> called?
+<br><br><br>
+</li>
+
+<li>
+What is <code>lst</code> bound to when <code>len</code> is called the first time?
+<br><br><br>
+</li>
+
+<li>
+What is the value of <code>(cdr lst)</code> when <code>len</code> is called the 
+first time?
+<br><br><br>
+</li>
+
+<li>
+What is the value of <code>(len (cdr lst))</code> when <code>len</code> is called the 
+first time?
+<br><br><br>
+</li>
+
+<li>
+What is the value of <code>(+ 1 (len (cdr lst)))</code> 
+when <code>len</code> is called the first time?
+<br><br><br>
+</li>
+
+</ol>
+
+</li>
+
+</ol>
+
+</body>
+</html>
+
+
+
+
+
+

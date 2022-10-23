@@ -1,0 +1,389 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Recursion examples,  Foundations of Computing, Fall 2000</title>
+</head>
+
+<body>
+
+<h4>Recursion examples, Foundations of Computing, Fall 2000</h4>
+
+<p>
+Here are some examples of recursive functions in Scheme.
+</p>
+
+<p>
+You can copy and paste these examples into your Scheme interpreter.  In DrScheme,
+paste them into the Definitions Window.
+</p>
+
+<p>
+It is informative to trace these functions.  In DrScheme, put the 
+expression <code>(require-library "trace.ss")</code> at the top of the
+Definitions window.
+</p>  
+
+<p>
+It is informative to trace both the recursive function being defined
+and the combining function that forms the results.  For example, in
+<code>rev</code> turn on tracing by typing this expression in the
+Interaction window: <code>(trace rev append)</code>.  To turn off
+tracing, use <code>(untrace rev append)</code>.
+</p>
+
+
+<p>
+<a href="#seq">Sequences</a><br>
+<a href="#bintree">Binary Trees</a><br>
+<a href="#tree">Other Trees</a><br>
+</p>
+
+<p>
+<a href="#numbers">Numbers</a><br>
+</p>
+
+<p>
+Last updated November 21, 2000 (to clarify the distinction between binary trees
+and other trees).
+
+Use your browser's <b>Reload</b> or <b>Refresh</b> button to get the
+latest version.
+</p>
+
+<hr>
+
+<a name="seq"><h2>Sequences</h2></a>
+
+<p>
+You can treat a list as a sequence of elements, processing
+the list from the beginning to the end.  Use this form when the list
+contains no sublists, or when you don't need to deal with the internal
+structure of the sublists.
+</p>
+
+<p>
+Here is the basic pattern:
+</p>
+
+<pre>
+(define (f lst ...)                            ;; One of the arguments is a list
+  (if (... base case ...)                      ;; Often (null? lst)
+      ... value to return for base case ...    ;; Often '()
+      (g ... (f (cdr lst) ...) ...)))          ;; Recursive call applies f to (cdr lst) 
+                                               ;; Combining function g forms the result
+                                               ;; Often g is cons or append
+                                               ;; Often another arg. to g is (car lst)
+</pre>
+
+
+<p>
+One of the arguments to the function is a list.  The base case is
+usually the empty list.  Each recursive call invokes the function on
+the cdr of the list, which guarantees that the list gets smaller on
+each recursive call until the base case is reached.  The recursive
+calls work their way down the list until the end.  The results of the
+recursive call are usually combined with something else (often the
+<code>car</code> of the list) by another function (often
+<code>cons</code> or <code>append</code>) to form the results.
+</p>
+
+<p> 
+This technique is called <em>single recursion</em> because there
+is a single recursive call in the body of the function.
+</p>
+
+<p>
+This example returns a list, the input list reversed.
+</p>
+
+<pre>
+;; Like Scheme reverse
+(define (rev lst)
+  (if (null? lst)
+      '()
+      (append (rev (cdr lst)) (list (car lst)))))
+</pre>
+
+
+<p>
+This example returns a number, the length of the list.
+</p>
+
+<pre>
+;; Like Scheme length
+(define (len lst)
+  (if (null? lst)
+      0
+      (+ 1 (len (cdr lst)))))
+</pre>
+
+<p>
+This example searches the list and returns the list from the point
+where the search was csuccessful.  If the search is unsuccessful, it
+returns <code>#f</code>.
+</p>
+
+<pre>
+;; Like Scheme member
+(define (memb x lst)
+  (if (null? lst)
+      #f
+      (if (equal? x (car lst))
+          lst
+          (memb x (cdr lst)))))
+</pre>
+
+<p>
+This example shows how to define a higher order function using recursion.
+The first argument <code>f</code> is itself a function.
+</p>
+
+<pre>
+;; Like Scheme map
+(define (mapper f lst)
+  (if (null? lst)
+      '()
+      (cons (f (car lst)) (mapper f (cdr lst)))))
+</pre>
+
+
+<p>
+This example shows how to define Scheme <code>append</code> using
+only <code>car</code>, <code>cdr</code>, and <code>cons</code>.
+</p>
+
+<pre>
+;; Like Scheme append, ex 17.6 from Simply Scheme
+(define (app lst1 lst2)
+  (if (null? lst1)
+      lst2
+      (cons (car lst1) (app (cdr lst1) lst2))))
+</pre>
+
+<p>
+This example is much like <code>rev</code> above but reverses a word (an atom)
+not a list.  
+</p>
+
+<pre>
+;; backwards - reverse a word
+;; Called reverse in Simply Scheme p 192 and 192.
+;; Requires last and bl from simply.scm or simply-teachpack.scm
+(define (backwards wd)
+  (if (empty? wd)
+      ""
+      (word (last wd)
+            (backwards (bl wd)))))
+</pre>
+
+<hr>
+
+<a name="bintree"><h2>Binary Trees</h2></a>
+
+
+<p> 
+Tree recursion treats a list as a branching data
+structure, exploring each branch.
+Use this form when the list contains sublists, and you must
+deal with the internal structure of the sublists.
+</p>
+
+<p>
+When the sublist in the <code>car</code> of the input should be
+treated the same as the sublists in the <code>cdr</code>, you can
+treat the list as a <em>binary tree</em> where each branch divides in
+two.  The <code>car</code> of each list (or sublist) is the left
+branch and the <code>cdr</code> of each list is the right branch.
+</p>
+
+<p>
+Here is the basic pattern:
+</p>
+
+
+<pre>
+(define (f struc ...)                          ;; One of the args is a structured list
+  (cond (... base case 1 ...) ... value1 ...)  ;; Often (null? struc), return '()
+        (... base case 2 ...) ... value2 ...)  ;; Often (word? struc), return struc
+        (else (g ... (f (car lst))             ;; Recursive call applies f to (car lst)
+                     (f (cdr lst))))))         ;; Recursive call applies f to (cdr lst)
+                                               ;; Combining function g forms the result
+                                               ;; Often g is cons or append
+</pre>
+
+<p>
+This looks almost the same as the pattern for single recursion,
+except there are <em>two</em> recursive calls in the body of the function, one
+for the <code>car</code> and the other for the <code>cdr</code> of the structure
+(instead of just for the <code>cdr</code>, as in single recursion).  The recursive
+call on the <code>car</code> guarantees that the function will dig into nested sublists
+as deeply as necessary.  Often there are two base cases as well, one for the
+empty list and another for an atom (tested by <code>word?</code> in Simply Scheme,
+roughly equivalent to <code>(not (list? ...))</code> using standard scheme functions).
+</p>
+
+<p>
+Notice the symmetry between the <code>car</code> and the <code>cdr</code> in the
+two recursive calls.
+</p>
+
+<p>
+This function flattens a structured list:
+</p>
+
+<pre>
+;; Ex 17.12 from Simply Scheme
+(define (flatten struc)
+  (cond ((null? struc) '())
+        ((word? struc) (list struc))
+        (else (append (flatten (car struc)) 
+                      (flatten (cdr struc))))))
+</pre>
+
+<p>
+This function counts all the words (that is, atoms) in a structured list:
+</p>
+
+<pre>
+;; Ex 17.13 from Simply Scheme
+(define (deep-count lst)
+  (cond ((null? lst) 0)
+        ((word? lst) 1)
+        (else (+ (deep-count (car lst))
+                 (deep-count (cdr lst))))))
+</pre>
+
+<hr>
+
+<a name="tree"><h2>Other Trees</h2></a>
+
+<p>
+Binary trees have just two branches from each node.  Other trees may
+have several branches from each node.  These trees can be represented
+as lists where the <code>car</code> of the list (and each sublist)
+represents the data at the node and the <code>cdr</code> of the list
+(and each sublist) is the list of branches attached to that node (called
+the <em>forest</em>).  The leaves of the tree are represented by lists
+with only one element, the data at that leaf (the <code>cdr</code> of
+the leaf nodes are empty lists, indicating there are no more branches.
+</p>
+
+<p>
+An example of such a tree appears in <b>Simply Scheme</b> chapter 18, 
+on page 315 (in the second edition).  Another example appears in 
+the solution to problem 2 in our <a href="soln-w7th.html">November 9 quiz</a>.
+</p>
+
+<p>
+In trees like this, the <code>car</code> of each list must be treated differently
+than the <code>cdr</code> because it plays a different role --- the <code>car</code>
+and <code>cdr</code> are not symmetrical.
+</p>
+
+<p>
+<b>Simply Scheme</b> handles these trees using two procedures that
+exhibit <em>mutual recursion</em> --- each procedure calls the other.
+The argument to the first procedure is the list itself (that is, the
+whole tree).  The first procedure calls the second, whose argument is
+the <code>cdr</code> of the list (that is, the list of branches or forest).  The
+second procedure in turn calls the first on the <code>car</code> of the 
+this list and calls itself on the <code>cdr</code>.
+</p>
+
+<hr>
+
+<a name="numbers"><h2>Numbers</h2></a>
+
+<p>
+Here is the basic pattern:
+</p>
+
+<pre>
+(define (f n ...)                              ;; One of the arguments is a number
+  (if (... base case ...)                      ;; Often (= n 0) or (= n 1)
+      ... value to return for base case ...    ;; Often 1 or 0
+      (g ... (f (- n 1) ...) ...)))            ;; Recursive call applies f to (- n 1) 
+                                               ;; Combining function g forms the result
+                                               ;; Often g is + or *
+</pre>
+
+<p>
+One of the arguments to the function is a number.  The base case is
+usually zero or one.  Each recursive call invokes the function on the
+number minus one, which guarantees that the number gets smaller on
+each recursive call until the base case is reached.  The results of
+the recursive call are usually combined with something else by another
+function (often <code>+</code> or <code>*</code>) to form the results.
+When the combining function is <code>+</code>, the base case is often
+0 (because adding zero does not change the result) and when it is
+<code>*</code>, the base case is 1 (because multiplying by one does
+not change the result).
+</p>
+
+<p>
+This is singly recursive, similar to functions that treat a list as a sequence.
+</p>
+
+
+<p>
+This example takes a single numeric argument.
+</p>
+
+<pre>
+;; Factorial: n! = n*(n-1)*...*1   from Simply Scheme p. 194
+(define (fact n)
+  (if (= n 1)
+      1
+      (* n (fact (- n 1)))))
+</pre>
+
+<p>
+This example takes two numeric arguments.
+</p>
+
+<pre>
+;; Like Scheme expt: raise i to the n-th power, i*i*i... n times
+(define (pow i n)
+  (if (= n 0) 
+      1 ; Base case: anything to the zero power is one
+      (* i (pow i (- n 1)))))
+</pre>
+
+<p>
+This example has <em>two</em> recursive calls, but each call makes the
+number smaller so eventually the function returns.
+</p>
+
+<pre>
+;; Fibonacci: fib(n) = fib(n-1) + fib(n-2)
+(define (fib n)
+  (if (< n 2)
+      1  ; Base case: fib(1) or fib(0) is 1
+      (+ (fib (- n 1))
+         (fib (- n 2)))))
+</pre>
+
+
+<p>
+This example shows how to use recursion to build up a list.  Each
+recursive call uses <code>append</code> to add an element to the end
+of the list.  However the numeric argument <code>n</code> gets smaller on each
+recursive call so the function can return.
+</p>
+
+
+<pre>
+;; Countup - put a list of numbers from 1 to n in ascending order on front of lst
+;; to get just a list from 1 to n, do (countup n '())
+(define (countup n lst)
+  (if (< n 1)
+      lst
+      (append (countup (- n 1) lst) (list n))))
+</pre>
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

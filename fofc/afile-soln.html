@@ -1,0 +1,324 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Assignment Solution and Comments, Foundations of Computing</title>
+</head>
+
+<body>
+
+<h4>Lab Assignment Solution and Comments, Foundations of Computing</h4>
+
+<p>
+Revised March 28, use your browsers <b>Reload</b> or <b>Refresh</b>
+button to get the latest version.
+</p>
+
+<hr>
+
+<h3>Problem statement</h3>
+
+<p>
+The assignment was: write an awk program to check file type.
+Here is the detailed <a href="afile-ex.html">problem statement</a>
+</p>
+
+<h3>A solution</h3>
+
+<p>
+Here is my solution, which I handed out in class:
+</p>
+
+<pre>
+# afile - file type detection program in Awk
+
+# Check each of these patterns on every input line
+# Use variables to remember whether we have seen each pattern anywhere in file
+# Awk variables are initialized to FALSE (0 or ""), any other values mean TRUE
+
+# HTML and Scheme use positive logic
+# Make identification if pattern is found anywhere in file
+
+/<html>|<HTML>/ { html = 1 }   # Found HTML file.  Any nonzero value means TRUE
+/\(define \(/     { scheme = 1 } # Found Scheme file.  Use \ to escape (
+
+# Numeric and Text require negative logic 
+# Disqualify if forbidden character is found anywhere in file
+# Use ^ complement operator in character class
+
+/[^0-9$%*./^= ]/ { not_numeric = 1 } # Found non-numeric character
+/[^\000-\177]/   { not_text = 1 }    # Found non-ASCII byte
+
+# When we reach the end of the file, more than one variable might be TRUE.
+# Use if-else (similar Scheme cond) to establish precedence
+
+END {  if (html) 
+	print "HTML"
+       else if (scheme)
+        print "Scheme"
+       else if (!not_numeric) 
+        print "Numeric"
+       else if (!not_text)
+        print "Text"
+       else
+        print "Other"
+     }
+</pre>
+
+<h3>Scoring</h3>
+
+<p>
+I awarded up to four points for each solution, one point each for:
+</p>
+
+<ul>
+<li>Correct patterns</li>
+<li>Correct logic (character class complement
+or equivalent) when checking the numeric and text file types</li>
+<li>Read entire file (not just a single line) to check
+numeric and text file types</li>
+<li>Correct precedence in assigning file type</li>
+</ul>
+
+<h3>Other solutions</h3>
+
+<p>
+Many solutions were quite different from mine.  Here are some interesting
+approaches.
+</p>
+
+<p>
+Many solutions read the entire file into one big string.  Then in the
+<tt>END</tt> section, just check that string for each pattern.  With
+this method, it is not necessary to use variables to remember what was
+seen on each line.  It looks like this:
+</p>
+
+<pre>
+# contents variable stores entire file contents in one string
+# This rule executed for each line, $0 is entire line
+# The awk string concatenation operator is juxtaposition
+    { contents = contents $0 " " } 
+
+# At END, check contents in precedence order
+END {
+       if (contents ~ /&lt;html&gt;|&lt;HTML&gt;/)  { print "HTML" }
+       else ...
+       ...
+    }
+</pre>
+          
+<p>
+Some solutions used alternate (but equally effective) ways of expressing 
+the logic needed to check for the numeric and text types.
+</p>
+
+<pre>
+/[^0-9]/ { print "This line contains characters that are not digits" }
+</pre>
+
+<pre>
+# $0 is the entire input line, !~ is the not-match operator
+$0 !~ /[^0-9]/ { print "This line is all digits" }
+</pre>
+
+<p>
+Some solutions used <tt>exit</tt> where the file type could be classified
+immediately.
+<p>
+
+<pre>
+/&lt;html&gt;|&lt;HTML&gt;/ { print "HTML"; exit }
+</pre>
+
+<h3>Some errors</h3>
+
+<p>
+This section decribes some of the errors people made.
+</p>
+
+
+<h4>Not checking the entire file</h4>  
+
+<p>
+A file is not numeric (or text) if it
+contains only one non-numeric character (or non-text character).  That
+character might appear at the end of the last line in the file, so you
+have to check the entire file.  Any solution that exits or prints
+<tt>Numeric</tt> or <tt>Text</tt> before reading the entire file must be wrong.
+</p>
+
+<h4>Not checking the numeric file type correctly</h4>
+
+<p>
+The numeric type was
+allowed to contain digits, spaces, and a specifict list of special
+characters including <tt>$, %, *</tt> etc.  It was not sufficient to
+just check that the characters were not alphabetic - not all
+non-alphabetic characters were permitted.
+</p>
+
+<h4>Incorrect use of logical operators</h4>
+
+<p>
+This does not work as intended:
+<p>
+
+<pre>
+if (afile == "HTML" || "Scheme" || "Numeric" || "Text")
+   print afile
+else
+   print "Other"
+</pre>
+
+<p>
+In awk, any nonzero number or nonempty string means <em>true</em>,
+so <tt>"Scheme"</tt> etc. will always evaluate to <em>true</em>, 
+so the <tt>else</tt> branch can never be reached.   This is the correct 
+way to express what was probably intended.  Each branch of the 
+<tt>||</tt> <em>or</em> operator must contain a test:
+</p>
+
+<pre>
+if (afile == "HTML" || afile == "Scheme" || afile == "Numeric" || afile == "Text")
+   ...
+</pre>
+
+<h4>Incorrect or redundant logic in if ... else if ... </h4>
+
+<p>
+The last <tt>else</tt> branch in a cascaded <tt>if ... else if
+... else ...</tt> should be the default action that is executed when
+all the previous <tt>if</tt> tests are <em>false</em>.  There should
+not be another <tt>if</tt> after the last <tt>else</tt>.
+</p>
+
+<p>
+In this case the last <tt>if</tt> to test for <tt>Text</tt> is redundant
+because the same condition was already checked for at <tt>Other</tt>:
+</p>
+
+<pre>
+if (input ~ /[^\000-\176]/) { print "Other" }
+else 
+...
+else 
+if (input ~ /[\000-\176]/) { print "Text" }
+</pre>
+
+<p>
+The previous example is not incorrect, but this would be sufficient:
+</p>
+
+<pre>
+if (input ~ /[^\000-\176]/) { print "Other" }
+else 
+...
+else { print "Text" }
+</pre>
+
+<h4>Obscure combinations of patterns and operators in if ...</h4>
+
+<p>
+These are not errors but I found them hard to understand.
+</p>
+
+<p>
+Several solutions contained this rule:
+</p>
+
+<tt>
+if (input !~ /[A-Za-z]/ && /[0-9]/) { print "Numeric" }
+</tt>
+
+<p>
+It prints <tt>Numeric</tt> when <tt>input</tt> contains only
+non-alphabetic characters and digits.  I still can't figure out
+how or why it works.  The table on p. 46 of the Awk book suggests
+<tt>&&</tt> should bind tighter than <tt>!~</tt>.
+</p>
+
+<p>
+Another solution used a pattern in an <tt>if</tt>:
+</p>
+
+<pre>
+if (/&lt;html&gt;/ || /&lt;HTML&gt;/) { x = "HTML"'; exit }
+</pre>
+
+<p>
+I would have thought a match operator <tt>~</tt> was needed.
+Apparently this matches against the whole input line <tt>$0</tt>
+implicitly.
+</p>
+
+<h3>Test data</h3>
+
+<p>
+I did not require that test data and sample test runs be handed in, but 
+of course you should have tested your program.  Some obviously incorrect
+solutions would have been exposed by a simple test.
+</p>
+
+<p>
+Some solutions came with sample test runs on simple one-line test cases that
+would not have been sufficient to expose errors.
+</p>
+
+<p>
+An adequate set of test runs would include:
+</p>
+
+<ul>
+<li>At least one example of each file type, including <tt>Other</tt>.</li>
+<li>Examples designed to mislead: a file that begins with one or more lines
+of numeric data but then has non-numeric data.  A file that contains
+digits and a special character not included in the numeric file definition.
+<li>Examples designed to check the precedence rules: a file containing
+both an HTML tag and a Scheme define form.
+</ul>
+
+<h3>Checking a whole directory</h3>
+
+<p>
+We can invoke <tt>afile</tt> from a shell script to handle a whole directory at once
+</p>
+
+<pre>
+#!/bin/sh
+# afile-loop: invoke afile for all the files in a directory
+# $1 is first command line argument, should be a directory
+# afile script must be in working directory when you run this command
+for f in $1/*
+do 
+  if [ -d $f ]  # test if $f is a directory - Awk chokes on directories
+  then
+    echo `basename $f` is a directory
+  else
+    echo `basename $f` is `awk -f afile < $f`
+  fi
+done 
+</pre>
+
+<p>
+Here it is in action:
+</p>
+
+<pre>
+$ ./afile-loop /usr/java/jdk1.3
+COPYRIGHT is Text
+LICENSE is Text
+README is Other
+README.html is HTML
+bin is a directory
+demo is a directory
+.. etc. ...
+man is a directory
+src.jar is Other       
+</pre>
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,11 @@
+echo '<html>'
+echo '<head>'
+echo '<title>This is the demo.html file</title>'
+echo '</head>'
+echo '<body>'
+for i in 1 2 3 4
+do
+   echo "<a href=file-$i.html>file-$i.html</a>"
+done
+echo '</body>'
+echo '</html>'

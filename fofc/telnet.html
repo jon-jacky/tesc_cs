@@ -1,0 +1,192 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Using Linux over Telnet</title>
+</head>
+
+<body>
+
+<h4>Using Linux over Telnet</h4>
+
+<p>
+Revised January 16, 2001.  Press your browser's <b>Reload</b> or
+<b>Refresh</b> button to get the latest version.
+</p>
+
+<hr>
+
+<h3>Telnet</h3>
+
+<p>
+The telnet program enables you to use almost any Internet-connected
+computer to use a (suitably configured) remote system that is also
+connected to the Internet.  For example, you can run telnet on your
+home computer (running Windows perhaps) and work on the Evergreen lab
+computers running Linux, almost as if you were sitting right there in
+the ACC lab.  Each telnet session provides you with a text-only
+terminal window.  This enables you to use a Linux shell and a text
+editor such as emacs or vi.  However, you cannot use a graphical
+desktop such as KDE or Gnome over telnet.
+</p>
+
+<h3>Start telnet, connect, and log in</h3>
+
+<p>
+Here are the instructions for using telnet to connect to the
+Evergreen Linux systems from a computer running Windows:
+</p>
+
+<ol>
+<li>Connect to your Internet Service Provider. (If you have an "always
+on" DSL or cable modem connection this step may not be
+necessary.)</li> 
+<li>Run telnet from the Windows Start menu: Click
+<b>Start</b>, Click <b>Run</b>, in the dialog box type
+<tt>telnet</tt>, Click <b>OK</b>   The telnet window appears.</li>
+<li>In the telnet window, select the <b>Terminal</b> window, select
+<b>Preferences</b>.  Make sure <tt>VT-100/ANSI</tt> is checked 
+(not <tt>VT52</tt>).  On my system the arrow keys work if
+<tt>VT100 Arrows</tt> is <em>not</em> checked.  
+You may wish to select a font etc.  I like Font: FixedSys, Font Style: Regular,
+Size: 14, black letters on white bckground</li>
+<li>In the telnet
+window, select the <b>Connect</b> menu.  Select <b>Remote System</b>.
+In the dialog box, type <tt>grace.evergreen.edu</tt> to connect to the 
+Evergreen Linux systems, click on <b>Connect</b>.</li>
+<li>You should see some messages, then the <tt>login:</tt> prompt.</l>
+<li>Type your username and password at the prompts.  Use the same 
+username and password that you use in the ACC lab.  After you successfully
+log in, you should see a Unix shell prompt.</li>
+<li>Now you can type any Unix shell command.  Try <tt>pwd</tt> and 
+<tt>ls</tt> first, to get oriented.</li>
+<li>When you are done, type <tt>logout</tt> at the shell prompt.</li>
+<li>To exit telnet, select the <b>Connect</b> menu, then <b>Exit</b>.
+</ol>
+
+<p>
+Alternatively, you may be able to connect using the browser (Internet
+Explorer, Netscape, or ...) by typing in the URL
+<tt>telnet:/grace.evergreen.edu/</tt>.  If you use the DOS command prompt,
+you can just type <tt>telnet</tt> or <tt>telnet grace.evergreen.edu</tt>
+</p>
+
+<p>
+You may run several telnet sessions to obtain several terminal windows
+on the remote system.  Many telnet users like to have one window for
+the shell and another for the editor.
+</p>
+
+<h3>Configure your telnet session</h3>
+
+<p>
+Some Linux commands and programs will not work properly over some
+telnet sessions unless you tweak the configuration.  The easiest way
+to do this is to execute commands in a shell script.  I have placed
+the commands in the script in <tt>~jackyj/.bashrc.telnet</tt> Copy
+this script into your login directory.  Then, type this command right
+after you log in using telnet (but not when you log in at the ACC lab using
+the Linux login screen):
+</p>
+
+<pre>
+   source .bashrc.telnet
+</pre>
+
+<p>
+These are the commands in <tt>.bashrc.telnet</tt> at this writing:
+</p>
+
+<pre>
+   export TERM=vt100
+   alias emacs='emacs -nw -l ~/.emacs.telnet' 
+</pre>
+
+<p>
+You should not put these commands in your <tt>.bashrc</tt> because 
+they should not be in effect when you work in the ACC lab. (If you
+really understand <tt>.bash_profile</tt> and <tt>.bashrc</tt> you can
+tinker with both so you don't need to type the <tt>source</tt> command
+when you log in using telnet -- but don't try that until you're an expert).
+</p>
+
+<h3>Edit using emacs</h3>
+
+<p>
+Emacs will not work properly over some telnet sessions unless you
+tweak the configuration.  The easiest way to do this is to place the
+configuration commands in an emacs startup script.  I have placed them
+in <tt>~jackyj/.emacs.telnet</tt> Copy this script into your login
+directory.  Then, to start emacs, just type <tt>emacs</tt>.  The alias
+defined in <tt>.bashrc.telnet</tt> should load the script.
+</p>
+
+<p>
+Emacs behaves a bit differently over a telnet session. The main
+difference is that <tt>C-h</tt> does not invoke help, it now invokes
+backspace (just like the backspace key).  To get emacs help over a
+telnet session, use <tt>M-?</tt> instead.  If that doesn't work, use
+<tt>M-x help</tt>.
+</p>
+
+<p>
+Other emacs commands that may present problems over telnet are 
+<tt>C-SPC</tt> (set mark) and <tt>C-s</tt> (search forward).
+If these don't work, you can use <tt>M-x set-mark-command</tt> and
+<tt>M-x search-forward</tt>.
+</p>
+
+<p>
+These are the commands in <tt>.emacs.telnet</tt> at this writing:
+</p>
+
+<pre>
+   (global-set-key "\C-h" 'backward-delete-char) ; backspace not help
+   (global-set-key "\M-?" 'help-command) ; this is help instead
+   (menu-bar-mode nil) ; menu bar is useless over telnet
+</pre>
+
+<p>
+You should not put these commands in your <tt>.emacs</tt> because 
+they should not be in effect when you work in the ACC lab.
+</p>
+
+<h3>FTP</h3>
+
+<p>
+If you prefer not to edit over telnet, there is an alternative.  You
+can edit text files on your own computer (using a text editor such as
+Notepad, <em>not</em> a word processor such as Word or Wordpad), then
+copy the files to Evergreen using ftp (file transfer program).
+</p>
+
+<p>
+The easiest way to use ftp from a Windows system is to bring up 
+a DOS command prompt (Start->Run, type Command), then type
+<tt>ftp grace.evergreen.edu</tt>.  Here is a sample session:
+
+<pre>
+   C:\fofc> ftp grace.evergreen.edu
+   Connected to grace.evergreen.edu. 
+   220 grace.evergreen.edu FTP server (Version wu-2.4.2-VR17(1) Mon Apr 19 09:21:53 EDT 1999) ready.
+   Name (grace.evergreen.edu:jon): jackyj
+   331 Password required for jackyj. Password: 
+   230 User jackyj logged in. 
+   Remote system type is UNIX. Using binary mode to transfer files. 
+   ftp> ascii 
+   200 Type set to A.
+   ftp> put telnet.html
+   local: telnet.html remote: telnet.html
+   200 PORT command successful.
+   150 Opening ASCII mode data connection for telnet.html.
+   226 Transfer complete.
+   5784 bytes sent in 0.00218 secs (2.6e+03 Kbytes/sec)
+   ftp> quit                                                
+</pre>
+
+<hr>
+
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

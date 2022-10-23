@@ -1,0 +1,82 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Sorting examples,  Foundations of Computing, Fall 2000</title>
+</head>
+
+<body>
+
+<h4>Sorting examples, Foundations of Computing, Fall 2000</h4>
+
+<hr>
+
+<p>
+Brian Harvey, co-author of our textbook <b>Simply Scheme</b> compared
+several sorting methods in a posting to the Usenet <code>comp.edu</code> newsgroup.
+Brian writes:
+</p>
+
+
+<p>
+When I'm teaching data structures, in fact, I go ahead and lecture in
+Scheme no matter what language the students are using.  There is
+something really appealing about filling four chalkboards with
+</p>
+
+<pre>
+(define (insertion-sort stuff)
+  (if (null? stuff)
+      '()
+      (insert (car stuff)
+              (insertion-sort (cdr stuff)))))
+</pre>
+
+<pre>
+(define (selection-sort stuff)
+  (if (null? stuff)
+      '()
+      (cons (smallest stuff)
+            (selection-sort (remove (smallest stuff) stuff)))))
+</pre>
+
+<pre>
+(define (mergesort stuff)
+  (if (< (length stuff) 2)
+      stuff
+      (merge (mergesort (one-half stuff))
+             (mergesort (other-half stuff)))))
+</pre>
+
+<pre>
+(define (partition-sort stuff)
+  (if (< (length stuff) 2)
+      stuff
+      (let ((pivot (guess-median stuff)))
+        (append (partition-sort (filter (lambda (x) (< x pivot)) stuff))
+                (filter (lambda (x) (= x pivot)))
+                (partition-sort (filter (lambda (x) (> x pivot)) stuff))))))
+</pre>
+
+<p>
+Only imagine that the last two are in a column next to the first two.
+Then I can say "the first column (<code>insertion-sort</code> and
+<code>selection-sort</code>) takes things one at a time, the second
+column (<code>mergesort</code> and <code>partition-sort</code>) takes
+things half at a time.  The first row (<code>insertion-sort</code> and
+<code>mergesort</code>) divides arbitrarily and does the sorting in
+the recombination; the second row (<code>selection-sort</code> and
+<code>partition-sort</code>) sorts in the division, then just
+recombines the results by concatenation."
+</p>
+
+<p>
+(Brian Harvey's comments reproduced here with his permission.)
+</p>
+
+
+<hr>
+
+<a href="index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>

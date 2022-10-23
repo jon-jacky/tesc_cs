@@ -1,0 +1,102 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz Solution, Foundations of Computing, Spring, Week 6 -- Thurs May 10 2001</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz Solution, Foundations of Computing, Spring, Week 6 -- Thurs May 10 2001</h4> 
+
+<p>
+A file contains the following Java code (exactly as it appears
+here, there is nothing else in the file).  The file is compiled
+by the Java compiler and the resulting Java program is run.
+</p>
+
+<pre>
+class Zeta {
+    int i;
+    public Zeta() { i = 0; }
+    public void print_i() { System.out.print("  i " + i); }
+}
+
+class Sigma extends Zeta {
+    int k; 
+    public Sigma() { super(); k = 2; }
+    public void print_k() { System.out.print("  k " + k); }
+}
+
+class Tau extends Sigma {
+    int m;
+    public Tau() { super(); m = 3; }
+    public void print_m() { System.out.print("  m " + m); }
+}
+
+public class Inherit {
+    public static void main(String argv[]) {
+	Sigma s = new Sigma(); Tau t = new Tau();
+	System.out.print("From s:"); s.print_i(); s.print_k(); 
+	System.out.println();
+	System.out.print("From t:"); t.print_i(); t.print_k(); t.print_m();
+	System.out.println();
+    }
+}
+</pre>
+
+<ol>
+<li>
+What is (are) the superclass(es) of <tt>Zeta</tt>? &nbsp; &nbsp; <tt>Object</tt>
+<br><br>
+</li>
+<li>
+What is (are) the subclass(es) of <tt>Zeta</tt>? &nbsp; &nbsp; 
+<tt>Sigma</tt>, also <tt>Tau</tt>
+ (full credit for <tt>Sigma</tt>)
+<br><br>
+</li>
+<li>
+What is (are) the superclass(es) of Sigma? &nbsp; &nbsp; 
+<tt>Zeta</tt>, also <tt>Object</tt>
+ (full credit for <tt>Zeta</tt>)
+<br><br>
+</li>
+<li>
+What is (are) the subclass(es) of Sigma?  &nbsp; &nbsp; <tt>Tau</tt>
+<br><br>
+</li>
+<li>
+What is (are) the instance variables of Tau?  &nbsp; &nbsp; <tt>m, k, i</tt>
+<br><br>
+</li>
+<li>
+What is (are) the instance methods of Tau?   &nbsp; &nbsp; 
+<tt>print_m, print_k, print_i</tt>, also <tt>Tau, Sigma, Zeta</tt>
+(full credit just for the <tt>print</tt> methods)
+<br><br>
+</li>
+<li>
+What class(es) do(es) the variable <tt>s</tt> belong to?  &nbsp; &nbsp;
+<tt>Sigma</tt> only, according to the 
+<a href="http://java.sun.com/docs/books/jls/second_edition/html/typesValues.doc.html#24887">language specification</a>.
+Credit also given for the superclasses <tt>Zeta</tt> and <tt>Object</tt>
+(<tt>s</tt> is an <em>instance</em> of the superclasses, according to the specification.)
+<br><br>
+</li>
+<li>
+What class(es) do(es) the variable <tt>t</tt> belong to? &nbsp; &nbsp;
+strictly speaking <tt>Tau</tt> only,
+but credit also given for the superclasses <tt>Sigma</tt>, <tt>Zeta</tt> and <tt>Object</tt>
+<br><br>
+</li>
+<li>
+What output does the program produce?
+<pre>
+From s:  i 0  k 2 
+From t:  i 0  k 2  m 3     
+</pre>
+</li>
+</ol>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz Solutions, Foundations of Computing, Week 6 -- Thurs Nov 2 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz Solutions, Foundations of Computing, Week 6 -- Thurs Nov 2 2000</h4>
+
+<p>
+For all questions, assume the following definitions have been executed:
+</p>
+
+<pre>
+(define s '(a b c d)) 
+</pre>
+
+<pre>
+(define l '((a b) c d))  ;; That's the letter l (small L), not the numeral 1 (one)
+</pre>
+
+<p>
+Write down the value of each of these expressions:
+</p>
+
+<ol>
+<li><code>s</code><br>
+<code>(a b c d)</code><br><br></li>
+<li><code>(car s)</code><br>
+<code>a</code><br><br></li>
+<li><code>(cdr s)</code><br>
+<code>(b c d)</code><br><br></li>
+<li><code>(cons 'a '(b c d))</code><br>
+<code>(a b c d)</code><br><br></li>
+<li><code>(cons (car s) (cdr s))</code><br>
+<code>(a b c d)</code><br><br></li>
+<li><code>(car (cdr s))</code><br>
+<code>b</code><br><br></li>
+<li><code>(cadr s)</code><br>
+<code>b</code><br><br></li>
+<li><code>l    ;; That's the letter l (small L), not the numeral 1 (one)</code><br>
+<code>((a b) c d)</code><br><br></li>
+<li><code>(car l)</code><br>
+<code>(a b)</code><br><br></li>
+<li><code>(cdr l)</code><br>
+<code>(c d)</code><br><br></li>
+<li><code>(cons '(a b) '(c d))</code><br>
+<code>((a b) c d)</code><br><br></li>
+<li><code>(cons (car l) (cdr l))</code><br>
+<code>((a b) c d)</code><br><br></li>
+<li><code>(list '(a b) '(c d))</code><br>
+<code>((a b) (c d))</code><br><br></li>
+<li><code>(append '(a b) '(c d))</code><br>
+<code>(a b c d)</code><br><br></li>
+</ol>
+</body>
+</html>

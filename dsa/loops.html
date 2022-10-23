@@ -1,0 +1,404 @@
+<!-- Localized -->
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Loop Invariants, Correctness, and Program Derivation</title>
+</head>
+
+<body>
+
+<h2>Loops Invariants, Correctness, and Program Derivation</h2>
+
+<p>
+A <em>loop invariant</em> is a relation among program variables that
+is true when control enters a loop, remains true each time the program
+executes the body of the loop, and is still true when control exits the
+loop.  Understanding loop invariants can help us analyze programs,
+check for errors, and derive programs from specifications.
+</p>
+
+<h3>A first example</h3>
+
+<p>
+Here is a simple example.  This Java method named <code>sum</code> is
+a function that returns the sum of the elements in array
+<code>a</code>, its argument.  It uses the local variable
+<code>s</code> to accumulate the sum and uses <code>i</code> to index
+the array elements.
+</p>
+
+<pre>
+    public static int sum(int a[]) {
+	int s = 0;
+	for (int i = 0; i < a.length; i++) {
+	    // s is the sum of the first i array elements
+	    // s == a[0] + .. + a[i-1]
+	    s = s + a[i];
+	}
+	return s;
+    }
+</pre>
+
+<p>
+The comments in the loop body describe the invariant.  The first
+comment describes the invariant in English: <code>s</code> is the sum
+of the first <code>i</code> array elements.  The second comment
+expresses the invariant in a form similar to a Java boolean
+expression: <code>s == a[0] + .. + a[i-1]</code>. This form emphasizes
+that the invariant is an <em>assertion</em>, an expression that
+should always evaluate to <code>true</code> (the two dots
+<code>..</code> used here to indicate the other terms in the sum are
+not legal Java syntax).
+</p>
+
+<p>
+The invariant expresses a relation between the three variables
+<code>s</code>, <code>i</code>, and <code>a</code> that remains true even
+when the values of <code>s</code> and <code>i</code> change:
+<code>s</code> is always the sum of the first <code>i</code>
+elements in <code>a</code>.  When control enters the loop,
+<code>i</code> is <code>0</code> so <code>s</code> is the sum of no 
+array elements.  When control exits the loop, <code>i</code> is 
+<code>a.length</code>, so <code>s</code> is the sum of all of 
+the array elements. This is the intended result.
+</p>
+
+<p>
+This simple example shows why thinking about loop invariants can help
+us write programs.  When the program exits a loop, the loop invariant
+expresses the intended value(s) of the variable(s) at that point.
+Therefore we can work backwards from the intended values to the loop
+invariant, and then to the code itself.  This can be a systematic
+method for writing programs which can supplement the usual method of
+relying on intuition and lots of trial-and-error.  Programs derived 
+in this way can be surprising and unobvious --- the kind that make
+you wonder, "How did they come up with that?"
+</p>
+
+<h3>Making it clearer</h3>
+
+<p>
+It is necessary that the loop invariant be true on each iteration
+before executing the body of the loop, and again after executing the
+body.  In our example, the body of the loop is the
+statement <code>s = s + a[i]</code>, followed by <code>i++</code>
+(because the third expression in the <code>for</code> statement is
+actually executed at the end of the body of the loop, each time the
+body is executed).  The first time the program executes the loop,
+<code>i == 0</code> and <code>sum == 0</code>
+before executing the body, and <code>i == 1</code> and <code>sum ==
+a[0]</code> after executing the body.  Both 
+situations satisfy the invariant.
+</p>
+
+<p>
+The <code>for</code> loop makes it a bit difficult to see what's going
+on because the statement which is actually executed at the end of the
+body of the loop (<code>i++</code> in our example) doesn't appear
+there, it appears in the <code>for</code> statement itself.  For the
+purposes of understanding and deriving loops, it is often clearer to
+express a <code>for</code> loop as the equivalent <code>while</code> loop.
+</p>
+
+<p>
+Here is how to transform a <code>for</code> loop to the equivalent
+<code>while</code> loop.  This <code>for</code> loop
+</p>
+
+<pre>
+   for (s; p; u) {
+      t;
+   }
+</pre>
+
+<p>
+is equivalent to this <code>while</code> loop
+</p>
+
+<pre>
+   s;
+   while (p) {
+      t;
+      u;
+   }
+</pre>
+
+<p>
+So our example code can be transformed to
+</p>
+
+<pre>
+    public static int sum2(int a[]) {
+	int s = 0, i = 0;
+	while (i < a.length) {
+	    // s is the sum of the first i array elements
+	    // s == a[0] + .. + a[i-1]
+	    s = s + a[i];
+	    i = i + 1;
+	}
+	return s;
+    }
+</pre>
+
+<h3>Understanding loops</h3>
+
+<p>
+We need a few more definitions.
+</p>
+
+<p>
+The <em>guard</em> is the boolean expression that determines whether
+to execute the body of the loop.  The program executes the body of the
+loop as long as the guard is true.  In a
+<code>while</code> loop, the guard is the boolean expression that
+occurs in the <code>while</code> statement (in a <code>for</code>
+loop, the guard is the second expression in parentheses in the
+<code>for</code> statement).  In this example, the guard is <code>i <
+a.length</code>.
+</p>
+
+<p>
+The <em>variant</em> is a numeric expression that measures how much work 
+is left to do.  Usually the variant does not occur explicitly in the
+code, you must infer it.  Quite often the variant is simply the 
+number of loop iterations that remain to be done.  In our example, 
+the variant is <code>a.length - i</code>.
+</p>
+ 
+<p>
+Now we have all the concepts we need to understand loops.
+A loop is correct if the five conditions in this checklist are all true:
+</p>
+
+<ol>
+<li>
+Initialization: the invariant is true before entering the loop
+</li>
+<li>
+Invariance: the body of the loop preserves the invariant
+</li>
+<li>
+Progress: the body of the loop decreases the variant.
+</li>
+<li>
+Boundedness: when the value of the variant falls below some 
+threshold, the guard becomes false.
+</li>
+<li>
+Exit: the negation of the guard and the invariant describe the goal.
+</li>
+</ol>
+
+<p>
+We can confirm all five conditions in our example:
+</p>
+
+<ol>
+<li>
+Initialization: <code>i == 0 && s == 0</code> before entering the loop
+</li>
+<li>
+Invariance: executing the body of the loop gives <code>i == 1
+&& s == a[0]</code>, then <code>i == 2 && s == a[0] + a[1]</code>,
+etc.
+</li>
+<li>
+Progress: when we execute the body of the loop, the statement
+<code>i = i + 1</code> decreases the variant <code>a.length - i</code>.
+</li>
+<li>
+Boundedness: when the value of the variant falls below <code>1</code>,
+the guard <code>i < a.length</code> becomes false.
+</li>
+<li>
+Exit: The negation of the guard <code>i == a.length</code>
+and the invariant <code>s == a[0] + .. + a[length-1]</code>
+describe the goal.
+</li>
+</ol>
+
+<h3>Exercises</h3>
+
+<p>
+Before we go on, let's check our understanding of invariants.
+For each of these code samples, see if you can express the loop
+invariant in English and in symbols (as a Java boolean expression, or
+as near to one as you can write).
+</p>
+
+<p>
+This code computes the power x<sup>n</sup> by repeated multiplication:
+</p>
+
+<pre>	  
+    public static int power(int x, int n) {
+	int p = 1, i = 0;
+	while (i < n) {
+	    p = p * x;
+	    i = i + 1;
+	}
+	return p;
+    }
+</pre>
+
+<p>
+This code performs integer division by repeated subtraction.  It
+divides numerator <code>n</code> by divisor <code>d</code>, returning quotient
+<code>q</code> and also calculating remainder <code>r</code>.  To
+understand this code, it is useful to understand this definition for for
+integer division that relates relates the outputs <code>q</code> and
+<code>r</code> to the inputs <code>n</code> and <code>d</code>: &nbsp;
+<code>r < d && n = q*d + r</code>
+</p>
+
+<pre>
+    public static int quotient(int n, int d) {
+	int q = 0, r = n;
+	while (r >= d) { 
+	    r = r - d;
+	    q = q + 1;
+	}
+	return q;
+    }
+</pre>
+
+<p>
+These exercises are a little contrived.  As we shall see, it is usually more
+effective to start with the loop invariant and derive the code from that.
+</p>
+
+<h3>Deriving loops</h3>
+
+<p>
+We can derive loops by considering the general pattern that relates
+the code in the loop to the assertions.  Here <code>I</code> is the
+invariant, <code>P</code> is the guard,  <code>S</code> is the code that precedes the loop and <code>T</code>is the code in the body of the loop:
+</p>
+
+<pre>
+   S
+   // I 
+   while (P) {
+      // I 
+      T
+      // I 
+   }
+   // !P && I 
+</pre>
+
+<p>
+This shows that the assertion <code>!P && I</code> will be true when 
+code exits the loop.  This is called the <em>postcondition</em> (because
+it is true after executing the loop).
+</p>
+
+<p>
+Let's look again at integer division.  Now we know enough to derive
+the code from the definition <code>r < d && n == q*d + r</code>.
+We want this definition to match the postcondition <code>!P && I</code>.
+We notice that <code>!P</code> in the postcondition matches <code>r < d</code>
+in the definition, and the invariant 
+<code>I</code> matches <code>n == q*d + r</code>.
+We can derive the guard <code>P</code> by negating <code>r < d</code>
+to obtain <code>r >= d</code>.  Filling in the assertions, we now have:
+</p>
+
+<pre>
+   S
+   // n == q*d + r 
+   while (r >= d) {
+      // n == q*d + r 
+      T
+      // n == q*d + r 
+   }
+   // r < d && n == q*d + r 
+</pre>
+
+<p>
+Now we have to derive the code fragments <code>S</code> and
+<code>T</code>.  The basic idea is to count how many times we can
+subtract the divisor <code>d</code> from the numerator <code>n</code>.
+The quotient <code>q</code> is the counter, and remainder
+<code>r</code> is what remains after the subtraction.
+</p>
+
+<p>
+Our first job is to write <code>S</code>, the startup code that
+initializes <code>q</code> and <code>r</code>.  <code>S</code> has to
+establish the invariant <code>I</code>.  It seems reasonable to start
+with <code>r = n; q = 0;</code>.  Substituting these values into
+<code>I</code>, we obtain <code>n == 0*d + n</code> which is true.
+Checking <code>S</code> against <code>I</code> in
+this way gives us confidence that our code is correct.
+</p>
+
+<p>
+Our next job is to write  <code>T</code>, the body of the loop.  <code>T</code>
+must preserve the invariant <code>I</code>.  It seems reasonable to try
+<code>r = r - d; q = q + 1</code>.  So, for example, after the first time
+we execute the loop body we'll have <code>r == n - d && q == 1</code> (why?).
+Plugging these values back into <code>I</code> we obtain
+<code>n == 1*d + n - d</code> which is true.  And so on, each time we execute
+the body of the loop.  Again, checking <code>T</code> against <code>I</code>
+shows that our code is correct.  We have derived
+</p>
+
+<pre>
+   r = n;   
+   q = 0; 
+   // n == q*d + r 
+   while (r >= d) {
+      // n == q*d + r 
+      r = r - d; 
+      q = q + 1;
+      // n == q*d + r 
+   }
+   // r < d && n == q*d + r 
+</pre>
+
+<p>
+If you wish, you can use Java coding tricks to express this in a more
+compressed form:
+</p>
+
+<pre>
+   for (r = n, q = 0; r >= d; q++) r -= d;
+</pre>
+
+<h3>Exercises</h3>
+
+<p>
+Consider the code for x<sup>n</sup> in the previous exercise.  
+Write the boolean expressions for the guard <code>P</code> and 
+the invariant <code>I</code>.  Annotate the code with assertions
+and confirm to your satisfaction that the assertions are correct.
+</p>
+
+<p>
+A boolean expression that defines the integer square root
+<code>r</code> of non-negative integer <code>n</code> is <code>r*r <=
+n && n < (r+1)*(r+1)</code>.  Derive a function <code>sqrt</code>
+that takes argument <code>n</code> and returns its root <code>r</code>
+(the easiest algorithm simply counts up to <code>r</code>).
+</p>
+
+<h3>References</h3>
+
+<p>
+My favorite book on program derivation is <b>Programming in the
+1990s: An Introduction to the Calculation of Programs</b> by Edward
+Cohen, Springer 1990.  There are other good books by Dijkstra,
+Gries, and Kaldewaij.
+</p>
+
+<hr>
+
+<a href="http://academic.evergreen.edu/curricular/index.html">Jon Jacky</a>, <em class="email">jackyj@evergreen.edu</em>
+
+</body>
+</html>
+
+
+
+
+

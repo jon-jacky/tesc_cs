@@ -1,0 +1,95 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Awk quiz, arrays and loops, Foundations of Computing</title>
+</head>
+
+<body>
+
+<h4>Awk quiz, arrays and loops, Foundations of Computing</h4>
+
+
+<p>
+Write the "percent" program (described below) in Awk.
+A <a href="#soln">solution</a> appears at the end of this page.
+</p>
+
+<p>
+You may refer to books or notes, and you may use the computer,
+but you must work alone.  
+</p>
+
+<p>
+You can turn in a handwritten program, or print out a computer file.
+</p>
+
+<p>
+Be sure to turn in something -- if you get stuck, turn in your best
+attempt.  If you get stuck on the computer, turn in something handwritten.
+</p>
+
+<p>
+Write a program named percent - total and percentage calculation in Awk.
+</p>
+
+<p>
+In the input, the first field in each line is an identifier (any
+string). The second field in each line is a non-negative number. 
+</p>
+
+<p>
+The program calculates the total of all the numbers and the percentage
+contributed by each line.  The percent contribution of each line is
+the number on that line, divided by the total, times one hundred.
+</p>
+
+<p>
+The program generates this output: It prints a blank line, then prints
+out a sequence of lines in the same order as the input lines, each
+line showing the identifier, number, and percent contribution.  The
+beginning of each output line shows the identifier and number exactly
+as they appear in the input, then a comma after the number, then the
+percent contribution, then a percent sign.  After all the data lines
+the program prints out another blank line, then prints out the total
+on the last line.
+</p>
+
+<p>
+Here is a sample program run:
+</p>
+
+<pre>
+$ awk -f percent
+Washington 3
+Oregon 2
+California 5
+
+Washington 3, 30%
+Oregon 2, 20%
+California 5, 50%
+
+Total: 10        
+</pre>
+
+<hr>
+
+<h4><a name=soln>Solution</a></h4>
+
+<p>
+Here is a solution:
+</p>
+
+<pre>
+ # Calculate total as we read file, storing data in arrays
+ { id[NR] = $1; num[NR] = $2; total = total + $2 }
+
+
+END {  
+       print ""
+       for (i=1; i<=NR; i=i+1) {
+         print id[i] " " num[i] ", " 100.0*num[i]/total "%"
+       }
+       print ""
+       print "Total: " total
+    }
+</pre>

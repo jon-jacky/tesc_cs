@@ -1,0 +1,62 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz, Foundations of Computing, Week 4 -- Oct 17, 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz, Foundations of Computing, Week 4 -- Oct 17, 2000</h4>
+Name:<br><br><br>
+
+<p>
+Given these definitions:
+</p>
+
+<pre>
+(define x 1)
+
+(define (add-x y)
+  (+ x y))
+
+(define (dbl-x x)
+  (+ x x))
+
+(define (add-sum y)
+  (let ((sum (add-x x)))
+    (+ sum y)))
+
+(define (add-list y)
+  (every add-x y))
+</pre>
+
+<p>
+For each of the following expressions, if the expression can be
+evaluated, write its value.  If the expression cannot be evaluated,
+explain why not.
+</p>
+
+<ol>
+<li><pre>1</pre></li>
+<li><pre>x</pre></li>
+<li><pre>'x</pre></li>
+<li><pre>y</pre></li>
+<li><pre>'y</pre></li>
+<li><pre>(x)</pre></li>
+<li><pre>'(x)</pre></li>
+<li><pre>('x)</pre></li>
+<li><pre>(add-x 1)</pre></li>
+<li><pre>(add-x x)</pre></li>
+<li><pre>(add-x 'x)</pre></li>
+<li><pre>(dbl-x 1)</pre></li>
+<li><pre>(dbl-x x)</pre></li>
+<li><pre>(dbl-x 2)</pre></li>
+<li><pre>(add-sum 1)</pre></li>
+<li><pre>(add-list (1 2 3))</pre></li>
+<li><pre>(add-list '(1 2 3))</pre></li>
+<li><pre>(add-x '(1 2 3))</pre></li>
+<li><pre>(keep even? (add-list '(1 2 3)))</pre></li>
+</ol>
+
+</body>
+</html>

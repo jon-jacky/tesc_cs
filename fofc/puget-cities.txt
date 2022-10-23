@@ -1,0 +1,7 @@
+;; puget-cities.txt - name .txt not .dat or .scm so W98 will open it with Notepad
+;; like puget-cities.scm except it doesn't begin with (define ...
+(("Bremerton" "Seattle" "Gig Harbor")
+ ("Gig Harbor" "Bremerton" "Tacoma" "Olympia")
+ ("Olympia" "Gig Harbor" "Tacoma")
+ ("Tacoma" "Olympia" "Gig Harbor" "Seattle")
+ ("Seattle" "Bremerton" "Tacoma"))

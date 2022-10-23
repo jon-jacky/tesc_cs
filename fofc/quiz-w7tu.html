@@ -1,0 +1,96 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz, Foundations of Computing, Week 7 -- Tues Nov 7 2000</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz, Foundations of Computing, Week 7 -- Tues Nov 7 2000</h4> 
+
+Name:<br><br><br>
+
+<p>
+This definition is executed:
+</p>
+
+<pre>
+;; Like Scheme reverse
+(define (rev lst)
+  (if (null? lst)
+      '()        
+      (append (rev (cdr lst)) (list (car lst)))))
+</pre>
+
+<p>
+Then this expression is typed into the Scheme interpreter and
+evaluated.  It returns the result shown:
+</p>
+
+<pre>
+> (rev '(x y z))
+(z y x)
+</pre>
+
+<p>
+The following questions all concern what happens when the
+expression <code>(rev '(x y z))</code>
+is evaluated.  It may be helpful to imagine what you would see if you traced the 
+execution of <code>rev</code> and <code>append</code>.
+</p>
+
+<ol>
+
+<li>
+What is the base case in this example?
+<br><br><br>
+</li>
+
+<li>
+How many times is <code>rev</code> called?
+<br><br><br>
+</li>
+
+<li>
+What is <code>lst</code> bound to when <code>rev</code> is called the first time?
+<br><br><br>
+</li>
+
+<li>
+What is the value of <code>(cdr lst)</code> when <code>rev</code> is called the 
+first time?
+<br><br><br>
+</li>
+
+<li>
+What is the value of <code>(rev (cdr lst))</code> when <code>rev</code> is called the 
+first time?
+<br><br><br>
+</li>
+
+<li>
+What is the value of <code>(car lst)</code> when <code>rev</code> is called the 
+first time?
+<br><br><br>
+</li>
+
+<li>
+What is the value of <code>(list (car lst))</code> when <code>rev</code> is called the 
+first time?
+<br><br><br>
+</li>
+
+<li>
+What is the value of <code>(append (rev (cdr lst)) (list (car lst)))))</code> 
+when <code>rev</code> is called the first time?
+<br><br><br>
+</li>
+
+</body>
+</html>
+
+
+
+
+
+

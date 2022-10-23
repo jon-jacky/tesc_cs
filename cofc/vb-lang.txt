@@ -1,0 +1,32 @@
+vb-lang.txt
+
+The Visual Basic language
+
+----------------------------------
+
+Layout etc.
+
+Case is not significant.  As you type the code, the VB IDE automatically sets keywords in
+bicapitalized form: ElseIf etc.
+
+Line breaks are significant.  It must be 
+
+ if <condition> then <statement>
+
+or
+
+ if <condition> then
+   <statements>
+ end if
+
+but not
+
+ if <condition>
+   then <statement>
+
+which is a syntax error.
+
+You can break a single statement across lines by putting an underscore
+character _ at the end of the line
+
+-----------------------------------

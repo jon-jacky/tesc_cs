@@ -1,0 +1,233 @@
+<html>
+<head>
+
+<title>Scheme in Scheme</title>
+</head>
+<body bgcolor="white" text="black">
+
+<h1>Scheme in Scheme</h1>
+
+<p>
+The heart of any Scheme intepreter is the evaluator, a procedure which
+takes a Scheme expression as its first argument and returns the
+expression's value.  The evaluator is an ordinary Scheme procedure
+named <tt>eval</tt>.
+</p>
+
+<p>
+<tt>Eval</tt> can itself be defined in Scheme.  This is called a
+metacircular definition.
+</p>
+
+<p>
+Here is a description of <tt>eval</tt> in Scheme from the classic textbook
+<a href="http://mitpress.mit.edu/sicp/">
+<em>Structure and Interpretation of Computer Programs</em></a>.
+These are excerpts from the online version at 
+<a href="http://sicp.arsdigita.org/text/sicp/">
+<tt>http://sicp.arsdigita.org/text/sicp/</tt></b></a>.
+</p>
+
+<p>
+<tt>Eval</tt> calls itself recursively (through
+<tt>list-of-values</tt>) to evaluate the subexpressions of the
+argument expression.  This is an example of the mutual recursion
+technique described on pps. 310 -- 312 in <b>Simply Scheme</b> and in
+the <a href="recurse.html#tree">class notes</a>.
+
+<hr>
+
+<table width=100%>
+	<tr>
+	<td><h2>The Core of the Evaluator</h2></td>
+	</table>
+
+Eval
+
+<P>
+<TT>Eval</TT> takes as arguments an expression and an environment.  It
+classifies the expression and directs its evaluation.  <TT>Eval</TT> is
+structured as a case analysis of the syntactic type of the expression
+to be evaluated.
+In order to keep the procedure general, we express
+the determination of the type of an expression abstractly, making no
+commitment to any particular 
+representation for the various types of
+expressions.  Each type of expression has a predicate that tests for
+it and an abstract means for selecting its parts.  This 
+<EM>abstract
+syntax</EM> makes it easy to see how we can change the syntax of the
+language by using the same evaluator, but with a different collection of
+syntax procedures.
+
+<P>
+Primitive expressions
+
+<P>
+<ul>
+
+For self-evaluating expressions, such as numbers, <TT>eval</TT> returns
+the expression itself.
+
+<P>
+
+<TT>Eval</TT> must look up variables in the environment to find their values.
+</ul>
+
+<P>
+Special forms
+
+<P>
+<ul>
+
+<P>
+For quoted expressions, <TT>eval</TT> returns the expression that was
+quoted.
+
+<P>
+An assignment to (or a definition of) a variable must recursively call
+<TT>eval</TT> to compute the new value to be associated with the
+variable.  The environment must be modified to change (or create) the
+binding of the variable.
+
+<P>
+An <TT>if</TT> expression requires special processing of its parts, so as to
+evaluate the consequent if the predicate is true, and otherwise to
+evaluate the alternative.
+
+<P>
+A <TT>lambda</TT> expression must be transformed into an
+applicable procedure by packaging together the parameters and body
+specified by the <TT>lambda</TT> expression with the environment of the
+evaluation.
+
+<P>
+A <TT>begin</TT> expression requires evaluating its sequence of
+expressions in the order in which they appear.
+
+<P>
+A case analysis (<TT>cond</TT>) is transformed into a nest of <TT>if</TT>
+expressions and then evaluated.
+</ul>
+
+<P>
+Combinations
+
+<P>
+<ul>
+
+For a procedure application, <TT>eval</TT> must recursively
+evaluate the operator part and the operands of the combination.  The
+resulting procedure and arguments are passed to <TT>apply</TT>, which
+handles the actual procedure application.
+</ul>
+
+<P>
+
+<P></P>
+Here is the definition of <TT>eval</TT>:
+
+<P>
+<pre>
+(define (eval exp env)
+  (cond ((self-evaluating? exp) exp)
+        ((variable? exp) (lookup-variable-value exp env))
+        ((quoted? exp) (text-of-quotation exp))
+        ((assignment? exp) (eval-assignment exp env))
+        ((definition? exp) (eval-definition exp env))
+        ((if? exp) (eval-if exp env))
+        ((lambda? exp)
+         (make-procedure (lambda-parameters exp)
+                         (lambda-body exp)
+                         env))
+        ((begin? exp) 
+         (eval-sequence (begin-actions exp) env))
+        ((cond? exp) (eval (cond-&gt;if exp) env))
+        ((application? exp)
+         (apply (eval (operator exp) env)
+                (list-of-values (operands exp) env)))
+        (else
+         (error "Unknown expression type - EVAL" exp))))
+</pre>
+
+
+<P>
+For clarity, <TT>eval</TT> has been implemented as a case analysis using
+<TT>cond</TT>.  The disadvantage of this is that our procedure handles
+only a few distinguishable types of expressions, and no new ones can
+be defined without editing the definition of <TT>eval</TT>.  In most Lisp
+implementations, dispatching on the type of an expression is done in a
+data-directed style.  This allows a user to add new types of
+expressions that <TT>eval</TT> can distinguish, without modifying the
+definition of <TT>eval</TT> itself.
+
+<P>
+Apply
+
+<P>
+<TT>Apply</TT> takes two arguments, a procedure and a list of arguments
+to which the procedure should be applied.  
+
+<P>
+... code for <TT>Apply</TT> omitted ...
+
+<P>
+Procedure arguments
+
+<P>
+When <TT>eval</TT> processes a
+procedure application, it uses <TT>list-of-values</TT> to produce the
+list of arguments to which the procedure is to be applied. <TT>
+List-of-values</TT> takes as an argument the operands of the combination.
+It evaluates each operand and returns a list of the corresponding
+values:
+
+<P>
+<pre>
+(define (list-of-values exps env)
+  (if (no-operands? exps)
+      '()
+      (cons (eval (first-operand exps) env)
+            (list-of-values (rest-operands exps) env))))
+</pre>
+
+
+<P>
+Conditionals
+
+<P>
+<TT>Eval-if</TT> evaluates the predicate part of an <TT>if</TT> expression
+in the given environment.  If
+the result is true, <TT>eval-if</TT> evaluates the consequent, otherwise
+it evaluates the alternative:
+
+<P>
+<pre>
+(define (eval-if exp env)
+  (if (true? (eval (if-predicate exp) env))
+      (eval (if-consequent exp) env)
+      (eval (if-alternative exp) env)))
+</pre>
+
+<P>
+The use of <TT>true?</TT> in <TT>eval-if</TT> highlights the issue of the
+connection between an implemented language and an implementation
+language.  The <TT>if-predicate</TT> is evaluated in the language being
+implemented and thus yields a value in that language.  The interpreter
+predicate <TT>true?</TT> translates that value into a value that can be
+tested by the <TT>if</TT> in the implementation language: The
+metacircular representation of truth might not be the same as that of
+the underlying Scheme.
+
+<!--
+<p>
+... sections for other cases omitted ...
+-->
+
+</body></html>
+
+
+
+
+
+

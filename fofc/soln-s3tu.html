@@ -1,0 +1,74 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz Solution, Foundations of Computing, Spring, Week 3 -- Tues Apr 17 2001</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz Solution, Foundations of Computing, Spring, Week 3 -- Tues Apr 17 2001</h4> 
+
+<p>
+A single file contains the following Java code (exactly as it appears
+here, there is nothing else in the file).  The is compiled
+by the Java compiler and the resulting Java program is run.
+</p>
+
+<pre>
+public class Review {
+    static boolean p = false;
+    static boolean q = true;
+    static boolean r = true;
+    
+    static int num[] = { 3, 2, 5 };
+    static int t;
+
+    public static void main(String argv[]) {
+
+	System.out.println("p || q is " + (p || q));
+	System.out.println("q || r is " + (q || r));
+	System.out.println("p && q is " + (p && q));
+	System.out.println("q && r is " + (q && r));
+                                           
+        if (p || q) {
+            System.out.println("p or q is true");
+        }
+ 
+        if (p && q) {
+            System.out.println("p and q is true");
+        }                                 
+   
+	t = 0;
+	for (int i = 0; i < 3; i++) {
+	    t = t + num[i];
+	    System.out.println("i " + i + "  t " + t);
+	}
+
+	for (int i = 0; i < 3; i++) {
+	    System.out.println(num[i] + ", " + 100.0*num[i]/t + "%");
+	}
+    }
+}
+</pre>
+
+<p>
+What output does the program produce?  (Don't worry about getting 
+the exact number of spaces or lining up the columns exactly  -- just
+write the output reasonably neatly.)
+</p>
+
+<pre>
+p || q is true
+q || r is true
+p && q is false
+q && r is true
+p or q is true 
+i 0  t 3
+i 1  t 5
+i 2  t 10
+3, 30.0%
+2, 20.0%
+5, 50.0%                
+</pre>
+
+

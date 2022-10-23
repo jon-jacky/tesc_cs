@@ -1,0 +1,60 @@
+<html>
+<head>
+<link rel="stylesheet" href="jacky.css" type="text/css">
+<title>Lab Quiz Solution, Foundations of Computing, Spring, Week 3 -- Thurs Apr 19 2001</title>
+</head>
+
+<body>
+
+<h4>Lab Quiz Solution, Foundations of Computing, Spring, Week 3 -- Thurs Apr 19 2001</h4> 
+
+<p>
+A single file contains the following Java code (exactly as it appears
+here, there is nothing else in the file).  The is compiled
+by the Java compiler and the resulting Java program is run.
+</p>
+
+<pre>
+public class Delta {
+    static int a = 1;
+    static int b = 3;
+
+    public static void show(int b) {
+	int c = 5;
+	System.out.println(" a " + a + "  b " + b + "  c " + c);
+    }
+
+    public static void main(String argv[]) {
+	show(b);
+	show(Gamma.b);
+	Gamma.show(b);
+	Gamma.show(Gamma.b);
+    }
+}
+
+class Gamma {
+    static int a = 2;
+    static int b = 4;
+
+    public static void show(int b) {
+	int c = 6;
+	System.out.println(" a " + a + "  b " + b + "  c " + c);
+    }
+}
+</pre>
+
+<p>
+What output does the program produce?  (Don't worry about getting 
+the exact number of spaces or lining up the columns exactly  -- just
+write the output reasonably neatly.)
+</p>
+
+<pre>
+ a 1  b 3  c 5
+ a 1  b 4  c 5
+ a 2  b 3  c 6
+ a 2  b 4  c 6                        
+</pre>
+
+
+

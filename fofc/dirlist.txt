@@ -1,0 +1,7 @@
+#!/bin/bash
+echo This is the script $0
+# $1 is the directory you want to list
+for file in $1/* 
+do 
+  echo The file is $file
+done
